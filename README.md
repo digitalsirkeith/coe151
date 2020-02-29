@@ -7,9 +7,7 @@
         Client
         Client
 ### Peer-Peer Model (?)
-    Peer -> Peer -> Head Peer <- Peer
-    The first one to run the program is considered the head peer. If the head peer quits, a successor is appointed.
-    
+    Basically choose if ur gonna run on server mode or client mode lmao.
 
 # Server-Client Messages and Format
 ## Serverbound Data
