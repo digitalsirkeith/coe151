@@ -526,6 +526,280 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
                           ProvideUserInfo Fields
 
+2.3.4.  SendLocalTime
+
+   This is the message sent by the server to the client after receiving
+   a RequestLocalTime message.
+
+   {"mtp": "SendLocalTime", "data": {"time": "08:30:55"}}
+
+   +---------+--------+------------------------------------------------+
+   | Field   | Data   |                  Description                   |
+   | Name    | Type   |                                                |
+   +---------+--------+------------------------------------------------+
+   | mtp     | string |  MessageType. All SendLocalTime messages have  |
+   |         |        |       this value set to "SendLocalTime"        |
+   |         |        |                                                |
+   | time    | string |            ISO 8601 formatted time.            |
+   +---------+--------+------------------------------------------------+
+
+                           SendLocalTime Fields
+
+2.3.5.  WhisperFromUser
+
+   This is the message sent by the server to the targetted client after
+   receiving a WhisperToUser message.  A private message sent to a user.
+
+   {"mtp": "WhisperFromUser", "data": {"from": "username", "message":
+   "hi"}}
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 10]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+   +---------+--------+------------------------------------------------+
+   | Field   | Data   |                  Description                   |
+   | Name    | Type   |                                                |
+   +---------+--------+------------------------------------------------+
+   | mtp     | string | MessageType. All WhisperFromUser messages have |
+   |         |        |      this value set to "WhisperFromUser"       |
+   |         |        |                                                |
+   | from    | string |     Name of the user who sent the message.     |
+   |         |        |                                                |
+   | message | string |            Private message content.            |
+   +---------+--------+------------------------------------------------+
+
+                          WhisperFromUser Fields
+
+2.3.6.  SendChatFromUser
+
+   This is the message sent by the server to all clients except the
+   source after receiving a SendChat message.
+
+   {"mtp": "SendChatFromUser", "data": {"name": "username", "message":
+   "hi"}}
+
+   +---------+--------+------------------------------------------------+
+   | Field   | Data   |                  Description                   |
+   | Name    | Type   |                                                |
+   +---------+--------+------------------------------------------------+
+   | mtp     | string |   MessageType. All SendChatFromUser messages   |
+   |         |        |   have this value set to "SendChatFromUser"    |
+   |         |        |                                                |
+   | name    | string |     Name of the user who sent the message.     |
+   |         |        |                                                |
+   | message | string |                Message content.                |
+   +---------+--------+------------------------------------------------+
+
+                          SendChatFromUser Fields
+
+2.3.7.  SendOnlineList
+
+   This is the message sent by the server after receiving a
+   RequestOnlineList message.
+
+   {"mtp": "SendOnlineList", "data": {"names": ["user1", "user2",
+   "user3"]}}
+
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 11]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+   +--------+-----------+----------------------------------------------+
+   | Field  | Data Type |                 Description                  |
+   | Name   |           |                                              |
+   +--------+-----------+----------------------------------------------+
+   | mtp    | string    |   MessageType. All SendOnlineList messages   |
+   |        |           |   have this value set to "SendOnlineList"    |
+   |        |           |                                              |
+   | names  | array of  |   Name of the users who are online in the    |
+   |        | string    |                   server.                    |
+   +--------+-----------+----------------------------------------------+
+
+                           SendOnlineList Fields
+
+2.3.8.  KickUser
+
+   This is the message sent by the server after receiving a KickUser
+   message from the client.
+
+   If a kick is successful:
+
+   {"mtp": "KickUser", "data": {}, status="OK"}
+
+   If the requesting client is not an admin:
+
+   {"mtp": "KickUser", "data": {}, status="NotAdminError"}
+
+   If the requested user is not online in the server:
+
+   {"mtp": "KickUser", "data": {}, status="UserDoesNotExist"}
+
+   +--------+--------+-------------------------------------------------+
+   | Field  | Data   |                   Description                   |
+   | Name   | Type   |                                                 |
+   +--------+--------+-------------------------------------------------+
+   | mtp    | string |   MessageType. All KickUser messages have this  |
+   |        |        |             value set to "KickUser"             |
+   |        |        |                                                 |
+   | status | Enum:  |    Possible values: "OK", "UserDoesNotExist",   |
+   |        | String | "NotAdminError". Status of the KickUser message |
+   |        |        |          previously sent by the client.         |
+   +--------+--------+-------------------------------------------------+
+
+                              KickUser Fields
+
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 12]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+2.3.9.  MuteUser
+
+   This is the message sent by the server after receiving a MuteUser
+   message from the client.
+
+   If a mute is successful:
+
+   {"mtp": "MuteUser", "data": {}, status="OK"}
+
+   If the requesting client is not an admin:
+
+   {"mtp": "MuteUser", "data": {}, status="NotAdminError"}
+
+   If the requested user is not online in the server:
+
+   {"mtp": "MuteUser", "data": {}, status="UserDoesNotExist"}
+
+   If the requested user is already muted:
+
+   {"mtp": "MuteUser", "data": {}, status="UserAlreadyMuted"}
+
+   +--------+--------+-------------------------------------------------+
+   | Field  | Data   |                   Description                   |
+   | Name   | Type   |                                                 |
+   +--------+--------+-------------------------------------------------+
+   | mtp    | string |   MessageType. All MuteUser messages have this  |
+   |        |        |             value set to "MuteUser"             |
+   |        |        |                                                 |
+   | status | Enum:  |    Possible values: "OK", "UserDoesNotExist",   |
+   |        | String | "NotAdminError", "UserAlreadyMuted".  Status of |
+   |        |        |   the MuteUser message previously sent by the   |
+   |        |        |                     client.                     |
+   +--------+--------+-------------------------------------------------+
+
+                              MuteUser Fields
+
+2.3.10.  UnmuteUser
+
+   This is the message sent by the server after receiving a UnmuteUser
+   message from the client.
+
+   If an unmute is successful:
+
+   {"mtp": "UnmuteUser", "data": {}, status="OK"}
+
+   If the requesting client is not an admin:
+
+   {"mtp": "UnmuteUser", "data": {}, status="NotAdminError"}
+
+
+
+Vargas                 Expires September 15, 2020              [Page 13]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+   If the requested user is not online in the server:
+
+   {"mtp": "UnmuteUser", "data": {}, status="UserDoesNotExist"}
+
+   If the requested user is already unmuted:
+
+   {"mtp": "UnmuteUser", "data": {}, status="UserAlreadyUnmuted"}
+
+   +--------+--------+-------------------------------------------------+
+   | Field  | Data   |                   Description                   |
+   | Name   | Type   |                                                 |
+   +--------+--------+-------------------------------------------------+
+   | mtp    | string |  MessageType. All UnmuteUser messages have this |
+   |        |        |            value set to "UnmuteUser"            |
+   |        |        |                                                 |
+   | status | Enum:  |    Possible values: "OK", "UserDoesNotExist",   |
+   |        | String |  "NotAdminError", "UserAlreadyUnmuted".  Status |
+   |        |        |   of the UnmuteUser message previously sent by  |
+   |        |        |                   the client.                   |
+   +--------+--------+-------------------------------------------------+
+
+                             UnmuteUser Fields
+
+2.3.11.  SetAsAdmin
+
+   This is the message sent by the server after receiving a SetAsAdmin
+   message from the client.
+
+   If an admin privilege transfer is successful:
+
+   {"mtp": "SetAsAdmin", "data": {}, status="OK"}
+
+   If the requesting client is not an admin:
+
+   {"mtp": "SetAsAdmin", "data": {}, status="NotAdminError"}
+
+   If the requested user is not online in the server:
+
+   {"mtp": "SetAsAdmin", "data": {}, status="UserDoesNotExist"}
+
+   If the requested user is already an admin, (i.e. client set self as
+   an admin):
+
+   {"mtp": "SetAsAdmin", "data": {}, status="AlreadyAdmin"}
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 14]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+   +--------+--------+-------------------------------------------------+
+   | Field  | Data   |                   Description                   |
+   | Name   | Type   |                                                 |
+   +--------+--------+-------------------------------------------------+
+   | mtp    | string |  MessageType. All SetAsAdmin messages have this |
+   |        |        |            value set to "SetAsAdmin"            |
+   |        |        |                                                 |
+   | status | Enum:  |    Possible values: "OK", "UserDoesNotExist",   |
+   |        | String | "NotAdminError", "AlreadyAdmin".  Status of the |
+   |        |        | KickUser message previously sent by the client. |
+   +--------+--------+-------------------------------------------------+
+
+                             SetAsAdmin Fields
+
 2.4.  Peer-Peer Messages
 
 2.4.1.  Handshake
@@ -538,29 +812,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    {"mtp": "Handshake", "data": {"ip": "192.168.0.1", "port": 15151,
    "name": "new_peer"}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Vargas                 Expires September 15, 2020              [Page 10]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
 
    +--------+---------+------------------------------------------------+
    | Field  | Data    |                  Description                   |
@@ -578,6 +829,18 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    +--------+---------+------------------------------------------------+
 
                              Handshake Fields
+
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 15]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
 
 2.4.2.  HandshakeResponse
 
@@ -611,13 +874,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
                          HandshakeResponse Fields
 
-
-
-Vargas                 Expires September 15, 2020              [Page 11]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
-
 3.  Server-Client Model
 
 3.1.  States / Phases
@@ -631,6 +887,16 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 3.2.1.  SetUsername
 
    Placeholder
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 16]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
 
 3.2.2.  UserInfo
 
@@ -664,16 +930,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    Placeholder
 
-
-
-
-
-
-Vargas                 Expires September 15, 2020              [Page 12]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
-
 3.2.10.  UnmuteUser
 
    Placeholder
@@ -689,6 +945,14 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    [RFC3470]  Hollenbeck, S., Rose, M., and L. Masinter, "Guidelines for
               the Use of Extensible Markup Language (XML) within IETF
               Protocols", RFC 3470, May 2013.
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 17]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
 
               This is a primary reference work.
 
@@ -725,4 +989,20 @@ Author's Address
 
 
 
-Vargas                 Expires September 15, 2020              [Page 13]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 18]

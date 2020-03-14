@@ -491,6 +491,267 @@
                             previously sent by the client.</c>
                     </texttable>
                 </section>
+                <section anchor="SendLocalTime" title="SendLocalTime">
+                    <t>
+                        This is the message sent by the server to the client after receiving a 
+                        RequestLocalTime message.
+                    </t>
+                    <t>
+                        {"mtp": "SendLocalTime", "data": {"time": "08:30:55"}}
+                    </t>
+                    <texttable title="SendLocalTime Fields">
+                        <ttcol>Field Name</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All SendLocalTime messages have this value set to "SendLocalTime"</c>
+        
+                        <c>time</c>
+                        <c>string</c>
+                        <c>ISO 8601 formatted time.</c>
+                    </texttable>
+                </section>
+                <section anchor="WhisperFromUser" title="WhisperFromUser">
+                    <t>
+                        This is the message sent by the server to the targetted client after receiving a 
+                        WhisperToUser message. A private message sent to a user.
+                    </t>
+                    <t>
+                        {"mtp": "WhisperFromUser", "data": {"from": "username", "message": "hi"}}
+                    </t>
+                    <texttable title="WhisperFromUser Fields">
+                        <ttcol>Field Name</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All WhisperFromUser messages have this value set to "WhisperFromUser"</c>
+        
+                        <c>from</c>
+                        <c>string</c>
+                        <c>Name of the user who sent the message.</c>
+        
+                        <c>message</c>
+                        <c>string</c>
+                        <c>Private message content.</c>
+                    </texttable>
+                </section>
+                <section anchor="SendChatFromUser" title="SendChatFromUser">
+                    <t>
+                        This is the message sent by the server to all clients except the source after 
+                        receiving a SendChat message.
+                    </t>
+                    <t>
+                        {"mtp": "SendChatFromUser", "data": {"name": "username", "message": "hi"}}
+                    </t>
+                    <texttable title="SendChatFromUser Fields">
+                        <ttcol>Field Name</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All SendChatFromUser messages have this value set to "SendChatFromUser"</c>
+        
+                        <c>name</c>
+                        <c>string</c>
+                        <c>Name of the user who sent the message.</c>
+        
+                        <c>message</c>
+                        <c>string</c>
+                        <c>Message content.</c>
+                    </texttable>
+                </section>
+                <section anchor="SendOnlineList" title="SendOnlineList">
+                    <t>
+                        This is the message sent by the server after receiving a RequestOnlineList message.
+                    </t>
+                    <t>
+                        {"mtp": "SendOnlineList", "data": {"names": ["user1", "user2", "user3"]}}
+                    </t>
+                    <texttable title="SendOnlineList Fields">
+                        <ttcol>Field Name</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All SendOnlineList messages have this value set to "SendOnlineList"</c>
+        
+                        <c>names</c>
+                        <c>array of string</c>
+                        <c>Name of the users who are online in the server.</c>
+                    </texttable>
+                </section>
+                <section anchor="ServerKickUser" title="KickUser">
+                    <t>
+                        This is the message sent by the server after receiving a KickUser message from the client.
+                    </t>
+                    <t>
+                        If a kick is successful:
+                    </t>
+                    <t>
+                        {"mtp": "KickUser", "data": {}, status="OK"}
+                    </t>
+                    <t>
+                        If the requesting client is not an admin:
+                    </t>
+                    <t>
+                        {"mtp": "KickUser", "data": {}, status="NotAdminError"}
+                    </t>
+                    <t>
+                        If the requested user is not online in the server:
+                    </t>
+                    <t>
+                        {"mtp": "KickUser", "data": {}, status="UserDoesNotExist"}
+                    </t>
+                    <texttable title="KickUser Fields">
+                        <ttcol>Field Name</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All KickUser messages have this value set to "KickUser"</c>
+        
+                        <c>status</c>
+                        <c>Enum: String</c>
+                        <c>Possible values: "OK", "UserDoesNotExist", "NotAdminError". Status of the KickUser message 
+                            previously sent by the client.</c>
+                    </texttable>
+                </section>
+                <section anchor="ServerMuteUser" title="MuteUser">
+                    <t>
+                        This is the message sent by the server after receiving a MuteUser message from the client.
+                    </t>
+                    <t>
+                        If a mute is successful:
+                    </t>
+                    <t>
+                        {"mtp": "MuteUser", "data": {}, status="OK"}
+                    </t>
+                    <t>
+                        If the requesting client is not an admin:
+                    </t>
+                    <t>
+                        {"mtp": "MuteUser", "data": {}, status="NotAdminError"}
+                    </t>
+                    <t>
+                        If the requested user is not online in the server:
+                    </t>
+                    <t>
+                        {"mtp": "MuteUser", "data": {}, status="UserDoesNotExist"}
+                    </t>
+                    <t>
+                        If the requested user is already muted:
+                    </t>
+                    <t>
+                        {"mtp": "MuteUser", "data": {}, status="UserAlreadyMuted"}
+                    </t>
+                    <texttable title="MuteUser Fields">
+                        <ttcol>Field Name</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All MuteUser messages have this value set to "MuteUser"</c>
+        
+                        <c>status</c>
+                        <c>Enum: String</c>
+                        <c>Possible values: "OK", "UserDoesNotExist", "NotAdminError", "UserAlreadyMuted". 
+                            Status of the MuteUser message previously sent by the client.</c>
+                    </texttable>
+                </section>
+                <section anchor="ServerUnmuteUser" title="UnmuteUser">
+                    <t>
+                        This is the message sent by the server after receiving a UnmuteUser message from the client.
+                    </t>
+                    <t>
+                        If an unmute is successful:
+                    </t>
+                    <t>
+                        {"mtp": "UnmuteUser", "data": {}, status="OK"}
+                    </t>
+                    <t>
+                        If the requesting client is not an admin:
+                    </t>
+                    <t>
+                        {"mtp": "UnmuteUser", "data": {}, status="NotAdminError"}
+                    </t>
+                    <t>
+                        If the requested user is not online in the server:
+                    </t>
+                    <t>
+                        {"mtp": "UnmuteUser", "data": {}, status="UserDoesNotExist"}
+                    </t>
+                    <t>
+                        If the requested user is already unmuted:
+                    </t>
+                    <t>
+                        {"mtp": "UnmuteUser", "data": {}, status="UserAlreadyUnmuted"}
+                    </t>
+                    <texttable title="UnmuteUser Fields">
+                        <ttcol>Field Name</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All UnmuteUser messages have this value set to "UnmuteUser"</c>
+        
+                        <c>status</c>
+                        <c>Enum: String</c>
+                        <c>Possible values: "OK", "UserDoesNotExist", "NotAdminError", "UserAlreadyUnmuted". 
+                            Status of the UnmuteUser message previously sent by the client.</c>
+                    </texttable>
+                </section>
+                <section anchor="ServerSetAsAdmin" title="SetAsAdmin">
+                    <t>
+                        This is the message sent by the server after receiving a SetAsAdmin message from the client.
+                    </t>
+                    <t>
+                        If an admin privilege transfer is successful:
+                    </t>
+                    <t>
+                        {"mtp": "SetAsAdmin", "data": {}, status="OK"}
+                    </t>
+                    <t>
+                        If the requesting client is not an admin:
+                    </t>
+                    <t>
+                        {"mtp": "SetAsAdmin", "data": {}, status="NotAdminError"}
+                    </t>
+                    <t>
+                        If the requested user is not online in the server:
+                    </t>
+                    <t>
+                        {"mtp": "SetAsAdmin", "data": {}, status="UserDoesNotExist"}
+                    </t>
+                    <t>
+                        If the requested user is already an admin, (i.e. client set self as an admin):
+                    </t>
+                    <t>
+                        {"mtp": "SetAsAdmin", "data": {}, status="AlreadyAdmin"}
+                    </t>
+                    <texttable title="SetAsAdmin Fields">
+                        <ttcol>Field Name</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All SetAsAdmin messages have this value set to "SetAsAdmin"</c>
+        
+                        <c>status</c>
+                        <c>Enum: String</c>
+                        <c>Possible values: "OK", "UserDoesNotExist", "NotAdminError", "AlreadyAdmin". 
+                            Status of the KickUser message previously sent by the client.</c>
+                    </texttable>
+                </section>
             </section>
             <section anchor="peer2peer" title="Peer-Peer Messages">
                 <section anchor="Handshake" title="Handshake">
