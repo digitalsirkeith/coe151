@@ -800,6 +800,60 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
                              SetAsAdmin Fields
 
+2.3.12.  ServerMessage
+
+   This is the message sent by the server to the client for general
+   purposes (e.g. announcements).
+
+   {"mtp": "ServerMessage", "data": {"message": "user has been kicked
+   from the server."}}
+
+   +---------+--------+------------------------------------------------+
+   | Field   | Data   |                  Description                   |
+   | Name    | Type   |                                                |
+   +---------+--------+------------------------------------------------+
+   | mtp     | string |  MessageType. All ServerMessage messages have  |
+   |         |        |       this value set to "ServerMessage"        |
+   |         |        |                                                |
+   | message | string |                Message content                 |
+   +---------+--------+------------------------------------------------+
+
+                           ServerMessage Fields
+
+2.3.13.  Disconnect
+
+   This is the message sent by the server on terminating the connection.
+   The reason for disconnecting is also included in the message.
+
+   {"mtp": "Disconnect", "data": {"message": "Server closing."}}
+
+
+
+
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 15]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+   +---------+--------+------------------------------------------------+
+   | Field   | Data   |                  Description                   |
+   | Name    | Type   |                                                |
+   +---------+--------+------------------------------------------------+
+   | mtp     | string | MessageType. All Disconnect messages have this |
+   |         |        |           value set to "Disconnect"            |
+   |         |        |                                                |
+   | message | string |           Reason for disconnecting.            |
+   +---------+--------+------------------------------------------------+
+
+                             Disconnect Fields
+
 2.4.  Peer-Peer Messages
 
 2.4.1.  Handshake
@@ -830,23 +884,20 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
                              Handshake Fields
 
-
-
-
-
-
-
-
-Vargas                 Expires September 15, 2020              [Page 15]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
-
 2.4.2.  HandshakeResponse
 
    The Handshake Response is sent back by peers active in the network to
    the ip and port found in the Handshake message sent by new peers
    attempting to join the network.  This message type can only be sent
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 16]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
    if the peer is considered as active in the network and the peer has a
    valid username.
 
@@ -888,19 +939,20 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    Placeholder
 
-
-
-
-
-
-Vargas                 Expires September 15, 2020              [Page 16]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
-
 3.2.2.  UserInfo
 
    Placeholder
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 17]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
 
 3.2.3.  LocalTime
 
@@ -946,15 +998,17 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
               the Use of Extensible Markup Language (XML) within IETF
               Protocols", RFC 3470, May 2013.
 
+              This is a primary reference work.
 
 
 
-Vargas                 Expires September 15, 2020              [Page 17]
+
+
+
+Vargas                 Expires September 15, 2020              [Page 18]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
-
-              This is a primary reference work.
 
 4.2.  Informative References
 
@@ -1005,4 +1059,6 @@ Author's Address
 
 
 
-Vargas                 Expires September 15, 2020              [Page 18]
+
+
+Vargas                 Expires September 15, 2020              [Page 19]

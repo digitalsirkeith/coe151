@@ -752,6 +752,49 @@
                             Status of the KickUser message previously sent by the client.</c>
                     </texttable>
                 </section>
+                <section anchor="ServerMessage" title="ServerMessage">
+                    <t>
+                        This is the message sent by the server to the client for general purposes (e.g. announcements).
+                    </t>
+                    <t>
+                        {"mtp": "ServerMessage", "data": {"message": "user has been kicked from the server."}}
+                    </t>
+                    <texttable title="ServerMessage Fields">
+                        <ttcol>Field Name</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All ServerMessage messages have this value set to "ServerMessage"</c>
+
+                        <c>message</c>
+                        <c>string</c>
+                        <c>Message content</c>
+                    </texttable>
+                </section>
+                <section anchor="ServerDisconnect" title="Disconnect">
+                    <t>
+                        This is the message sent by the server on terminating the connection. The reason for
+                        disconnecting is also included in the message.
+                    </t>
+                    <t>
+                        {"mtp": "Disconnect", "data": {"message": "Server closing."}}
+                    </t>
+                    <texttable title="Disconnect Fields">
+                        <ttcol>Field Name</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All Disconnect messages have this value set to "Disconnect"</c>
+
+                        <c>message</c>
+                        <c>string</c>
+                        <c>Reason for disconnecting.</c>
+                    </texttable>
+                </section>
             </section>
             <section anchor="peer2peer" title="Peer-Peer Messages">
                 <section anchor="Handshake" title="Handshake">
