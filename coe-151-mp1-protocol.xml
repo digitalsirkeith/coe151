@@ -923,6 +923,65 @@
                             received prior to sending this message.</c>
                     </texttable>
                 </section>
+                <section anchor="PeerSendChat" title="SendChat">
+                    <t>
+                        SendChat is a message format for general chat messages.
+                    </t>
+                    <t>
+                        {"mtp": "SendChat", "data": {"message": "hi"}}
+                    </t>
+                    <texttable title="SendChat Fields">
+                        <ttcol>Field Name</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All SendChat messages have this value set to "SendChat"</c>
+        
+                        <c>message</c>
+                        <c>string</c>
+                        <c>Message content.</c>
+                    </texttable>
+                </section>
+                <section anchor="Whisper" title="Whisper">
+                    <t>
+                        Whisper is a message format for private chat messages.
+                    </t>
+                    <t>
+                        {"mtp": "Whisper", "data": {"message": "hi"}}
+                    </t>
+                    <texttable title="Whisper Fields">
+                        <ttcol>Field Name</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All Whisper messages have this value set to "Whisper"</c>
+        
+                        <c>message</c>
+                        <c>string</c>
+                        <c>Private message content.</c>
+                    </texttable>
+                </section>
+                <section anchor="PeerDisconnect" title="Disconnect">
+                    <t>
+                        Peers send a Disconnect message to inform other peers on leaving the network.
+                    </t>
+                    <t>
+                        {"mtp": "Disconnect", "data": {}}
+                    </t>
+                    <texttable title="Disconnect Fields">
+                        <ttcol>Field Name</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All Disconnect messages have this value set to "Disconnect"</c>
+                    </texttable>
+                </section>
             </section>
         </section>
         <section anchor="server-client" title="Server-Client Model">

@@ -986,6 +986,86 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
                          HandshakeResponse Fields
 
+2.4.5.  SendChat
+
+   SendChat is a message format for general chat messages.
+
+   {"mtp": "SendChat", "data": {"message": "hi"}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 18]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+   +---------+---------+-----------------------------------------------+
+   | Field   | Data    |                  Description                  |
+   | Name    | Type    |                                               |
+   +---------+---------+-----------------------------------------------+
+   | mtp     | string  |  MessageType. All SendChat messages have this |
+   |         |         |            value set to "SendChat"            |
+   |         |         |                                               |
+   | message | string  |                Message content.               |
+   +---------+---------+-----------------------------------------------+
+
+                              SendChat Fields
+
+2.4.6.  Whisper
+
+   Whisper is a message format for private chat messages.
+
+   {"mtp": "Whisper", "data": {"message": "hi"}}
+
+   +---------+---------+-----------------------------------------------+
+   | Field   | Data    |                  Description                  |
+   | Name    | Type    |                                               |
+   +---------+---------+-----------------------------------------------+
+   | mtp     | string  |  MessageType. All Whisper messages have this  |
+   |         |         |             value set to "Whisper"            |
+   |         |         |                                               |
+   | message | string  |            Private message content.           |
+   +---------+---------+-----------------------------------------------+
+
+                              Whisper Fields
+
+2.4.7.  Disconnect
+
+   Peers send a Disconnect message to inform other peers on leaving the
+   network.
+
+   {"mtp": "Disconnect", "data": {}}
+
+   +---------+--------+------------------------------------------------+
+   | Field   | Data   |                  Description                   |
+   | Name    | Type   |                                                |
+   +---------+--------+------------------------------------------------+
+   | mtp     | string | MessageType. All Disconnect messages have this |
+   |         |        |           value set to "Disconnect"            |
+   +---------+--------+------------------------------------------------+
+
+                             Disconnect Fields
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 19]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
 3.  Server-Client Model
 
 3.1.  States / Phases
@@ -999,16 +1079,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 3.2.1.  SetUsername
 
    Placeholder
-
-
-
-
-
-
-Vargas                 Expires September 15, 2020              [Page 18]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
 
 3.2.2.  UserInfo
 
@@ -1042,6 +1112,16 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    Placeholder
 
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 20]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
 3.2.10.  UnmuteUser
 
    Placeholder
@@ -1057,14 +1137,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    [RFC3470]  Hollenbeck, S., Rose, M., and L. Masinter, "Guidelines for
               the Use of Extensible Markup Language (XML) within IETF
               Protocols", RFC 3470, May 2013.
-
-
-
-
-Vargas                 Expires September 15, 2020              [Page 19]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
 
               This is a primary reference work.
 
@@ -1101,20 +1173,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Vargas                 Expires September 15, 2020              [Page 20]
+Vargas                 Expires September 15, 2020              [Page 21]
