@@ -103,6 +103,32 @@
                         The server must send an AssignUsername message as a response to this message. This is
                         discussed in detail in <xref target="server-client-state-login"/>
                     </t>
+                </section>
+                <section anchor="SetUsername" title="SetUsername">
+                    <t>
+                        On the scenario that a client wishes to change usernames, this message will be sent. A
+                        sample message of this format is shown below:
+                    </t>
+                    <t>
+                        {"mtp": "SetUsername", "data": {"name": "new_name"}}
+                    </t>
+                    <texttable title="SetUsername Entries">
+                        <ttcol>Entry</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All Login messages have the value of mtp set to "Login"</c>
+        
+                        <c>name</c>
+                        <c>string</c>
+                        <c>Requested new name by the client.</c>
+                    </texttable>
+                    <t>
+                        The server must send a SetUsername message as a response to this message. This is
+                        discussed in detail in <xref target="server-client-behavior-changename"/>
+                    </t>
                 </section> 
             </section>
             <section anchor="clientbound" title="Clientbound Messages">
@@ -119,6 +145,13 @@
         <section anchor="server-client" title="Server-Client Model">
             <section anchor="server-client-state" title="States / Phases">
                 <section anchor="server-client-state-login" title="Login">
+                    <t>
+                        hi
+                    </t>
+                </section>
+            </section>
+            <section anchor="server-client-behavior" title="Request-Response Behavior">
+                <section anchor="server-client-behavior-changename" title="SetUsername">
                     <t>
                         hi
                     </t>

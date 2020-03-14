@@ -114,6 +114,29 @@ Vargas                 Expires September 15, 2020               [Page 2]
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
+2.2.2.  SetUsername
+
+   On the scenario that a client wishes to change usernames, this
+   message will be sent.  A sample message of this format is shown
+   below:
+
+   {"mtp": "SetUsername", "data": {"name": "new_name"}}
+
+   +-------+---------+-------------------------------------------------+
+   | Entry | Data    |                   Description                   |
+   |       | Type    |                                                 |
+   +-------+---------+-------------------------------------------------+
+   | mtp   | string  |  MessageType. All Login messages have the value |
+   |       |         |              of mtp set to "Login"              |
+   |       |         |                                                 |
+   | name  | string  |        Requested new name by the client.        |
+   +-------+---------+-------------------------------------------------+
+
+                            SetUsername Entries
+
+   The server must send a SetUsername message as a response to this
+   message.  This is discussed in detail in Section 3.2.1
+
 2.3.  Clientbound Messages
 
    message
@@ -129,6 +152,23 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 3.1.1.  Login
 
    hi
+
+3.2.  Request-Response Behavior
+
+3.2.1.  SetUsername
+
+   hi
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020               [Page 3]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
 
 4.  References
 
@@ -165,4 +205,20 @@ Author's Address
 
 
 
-Vargas                 Expires September 15, 2020               [Page 3]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020               [Page 4]

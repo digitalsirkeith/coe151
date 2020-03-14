@@ -13,9 +13,12 @@ If using the python module, simply run the following:
 xml2rfc coe-151-mp1-protocol.xml -o protocol/README.txt
 `
 
+# Protocol
+The following sections are no longer accurate, please see [RFC File](protocol/README.txt)
+
 ## Models
 ### Server-Client Model
-    Server
+    Servers
         Client
         Client
         Client
