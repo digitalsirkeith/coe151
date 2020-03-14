@@ -5,3 +5,4 @@ server.py
 serverUDP.py
 TCPClient.py
 test.py
+personal/
