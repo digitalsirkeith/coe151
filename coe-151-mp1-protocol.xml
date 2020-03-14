@@ -797,6 +797,64 @@
                 </section>
             </section>
             <section anchor="peer2peer" title="Peer-Peer Messages">
+                <section anchor="Discovery" title="Discovery">
+                    <t>
+                        Discovery message is sent to the broadcast network to ping the list of active peers.
+                        This queries the hostnames and usernames of these peers. This is not completely necessary 
+                        to implement if you will add a feature that will connect the peer to another by manually
+                        inputting the ip and port of the peer. However, it is strongly recommended you implement
+                        this message to ensure smooth testing.
+                    </t>
+                    <t>
+                        {"mtp": "Discovery", "data": {"ip": "192.168.1.1", "port": 15151}}
+                    </t>
+                    <texttable title="Discovery Fields">
+                        <ttcol>Field Name</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All Discovery messages have this value set to "Discovery"</c>
+        
+                        <c>ip</c>
+                        <c>string</c>
+                        <c>IP of the querying peer.</c>
+        
+                        <c>port</c>
+                        <c>integer</c>
+                        <c>Port of the querying peer.</c>
+                    </texttable>
+                </section>
+                <section anchor="DiscoveryResponse" title="DiscoveryResponse">
+                    <t>
+                        DiscoveryResponse is sent by peers who are active in the network.
+                    </t>
+                    <t>
+                        {"mtp": "DiscoveryResponse", "data": {"ip": "192.168.1.1", "port": 15151,"name": "username"}}
+                    </t>
+                    <texttable title="DiscoveryResponse Fields">
+                        <ttcol>Field Name</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All DiscoveryResponse messages have this value set to "DiscoveryResponse"</c>
+        
+                        <c>name</c>
+                        <c>string</c>
+                        <c>Username of the responding peer.</c>
+        
+                        <c>ip</c>
+                        <c>string</c>
+                        <c>IP of the responding peer.</c>
+        
+                        <c>port</c>
+                        <c>string</c>
+                        <c>Port of the responding peer.</c>
+                    </texttable>
+                </section>
                 <section anchor="Handshake" title="Handshake">
                     <t>
                         The handshake message is required to be sent for each scenario wherein a new peer-peer

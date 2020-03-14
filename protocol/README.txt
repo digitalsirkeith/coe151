@@ -856,7 +856,65 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 2.4.  Peer-Peer Messages
 
-2.4.1.  Handshake
+2.4.1.  Discovery
+
+   Discovery message is sent to the broadcast network to ping the list
+   of active peers.  This queries the hostnames and usernames of these
+   peers.  This is not completely necessary to implement if you will add
+   a feature that will connect the peer to another by manually inputting
+   the ip and port of the peer.  However, it is strongly recommended you
+   implement this message to ensure smooth testing.
+
+   {"mtp": "Discovery", "data": {"ip": "192.168.1.1", "port": 15151}}
+
+   +---------+---------+-----------------------------------------------+
+   | Field   | Data    |                  Description                  |
+   | Name    | Type    |                                               |
+   +---------+---------+-----------------------------------------------+
+   | mtp     | string  | MessageType. All Discovery messages have this |
+   |         |         |            value set to "Discovery"           |
+   |         |         |                                               |
+   | ip      | string  |            IP of the querying peer.           |
+   |         |         |                                               |
+   | port    | integer |           Port of the querying peer.          |
+   +---------+---------+-----------------------------------------------+
+
+                             Discovery Fields
+
+2.4.2.  DiscoveryResponse
+
+   DiscoveryResponse is sent by peers who are active in the network.
+
+   {"mtp": "DiscoveryResponse", "data": {"ip": "192.168.1.1", "port":
+   15151,"name": "username"}}
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 16]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+   +--------+--------+-------------------------------------------------+
+   | Field  | Data   |                   Description                   |
+   | Name   | Type   |                                                 |
+   +--------+--------+-------------------------------------------------+
+   | mtp    | string |   MessageType. All DiscoveryResponse messages   |
+   |        |        |    have this value set to "DiscoveryResponse"   |
+   |        |        |                                                 |
+   | name   | string |         Username of the responding peer.        |
+   |        |        |                                                 |
+   | ip     | string |            IP of the responding peer.           |
+   |        |        |                                                 |
+   | port   | string |           Port of the responding peer.          |
+   +--------+--------+-------------------------------------------------+
+
+                         DiscoveryResponse Fields
+
+2.4.3.  Handshake
 
    The handshake message is required to be sent for each scenario
    wherein a new peer-peer joins a network.  There may be peers active
@@ -884,20 +942,23 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
                              Handshake Fields
 
-2.4.2.  HandshakeResponse
-
-   The Handshake Response is sent back by peers active in the network to
-   the ip and port found in the Handshake message sent by new peers
-   attempting to join the network.  This message type can only be sent
 
 
 
 
-Vargas                 Expires September 15, 2020              [Page 16]
+
+
+
+Vargas                 Expires September 15, 2020              [Page 17]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
+2.4.4.  HandshakeResponse
+
+   The Handshake Response is sent back by peers active in the network to
+   the ip and port found in the Handshake message sent by new peers
+   attempting to join the network.  This message type can only be sent
    if the peer is considered as active in the network and the peer has a
    valid username.
 
@@ -939,20 +1000,19 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    Placeholder
 
-3.2.2.  UserInfo
-
-   Placeholder
 
 
 
 
 
-
-
-Vargas                 Expires September 15, 2020              [Page 17]
+Vargas                 Expires September 15, 2020              [Page 18]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
+
+3.2.2.  UserInfo
+
+   Placeholder
 
 3.2.3.  LocalTime
 
@@ -998,17 +1058,15 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
               the Use of Extensible Markup Language (XML) within IETF
               Protocols", RFC 3470, May 2013.
 
-              This is a primary reference work.
 
 
 
-
-
-
-Vargas                 Expires September 15, 2020              [Page 18]
+Vargas                 Expires September 15, 2020              [Page 19]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
+
+              This is a primary reference work.
 
 4.2.  Informative References
 
@@ -1059,6 +1117,4 @@ Author's Address
 
 
 
-
-
-Vargas                 Expires September 15, 2020              [Page 19]
+Vargas                 Expires September 15, 2020              [Page 20]
