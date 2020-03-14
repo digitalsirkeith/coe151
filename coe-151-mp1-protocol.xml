@@ -5,6 +5,7 @@
 
 <?xml-stylesheet type="text/xsl" href="rfc2629.xslt" ?>
 <?rfc strict="yes" ?>
+<?rfc toc="yes"?>
 
 <rfc 
     category="std" 
@@ -1009,7 +1010,22 @@
             <section anchor="server-client-state" title="States / Phases">
                 <section anchor="server-client-state-login" title="Login">
                     <t>
-                        Placeholder
+                        Description here
+                        <figure anchor="login-diagram">
+                            <artwork>
+    +----------+                             +----------+
+    |  Client  |>---------| Login |--------->|  Server  |
+    +----------+      username: "Daren"      +----------+
+
+    +----------+                             +----------+
+    |  Client  |&lt;&lt;---| AssignUsername |----&lt;&lt;|  Server  |
+    +----------+         status: "OK"        +----------+
+
+    +----------+                             +----------+
+    |  Client  |&lt;&lt;------------------------->>|  Server  |
+    +----------+          Connected          +----------+
+                            </artwork>
+                        </figure>
                     </t>
                 </section>
             </section>

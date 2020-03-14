@@ -1082,7 +1082,21 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 3.1.1.  Login
 
-   Placeholder
+   Description here
+
+       +----------+                             +----------+
+       |  Client  |>---------| Login |--------->|  Server  |
+       +----------+      username: "Daren"      +----------+
+
+       +----------+                             +----------+
+       |  Client  |<<---| AssignUsername |----<<|  Server  |
+       +----------+         status: "OK"        +----------+
+
+       +----------+                             +----------+
+       |  Client  |<<------------------------->>|  Server  |
+       +----------+          Connected          +----------+
+
+                                 Figure 1
 
 3.2.  Request-Response Behavior
 
@@ -1098,6 +1112,16 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    Placeholder
 
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 20]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
 3.2.4.  Whisper
 
    Placeholder
@@ -1109,18 +1133,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 3.2.6.  OnlineList
 
    Placeholder
-
-
-
-
-
-
-
-
-Vargas                 Expires September 15, 2020              [Page 20]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
 
 3.2.7.  Disconnect
 
@@ -1156,6 +1168,16 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    Placeholder
 
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 21]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
 5.  Security Considerations
 
 5.1.  Introduction
@@ -1168,15 +1190,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    There is no form of authentication in this protocol.  The chat system
    is not anonymous yet anyone can choose a name.
-
-
-
-
-
-Vargas                 Expires September 15, 2020              [Page 21]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
 
 5.3.  Encryption
 
@@ -1208,6 +1221,19 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 Author's Address
 
+
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 22]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
    Keith Vargas
    Electrical and Electronics Engineering Institute
    P. Velasquez St.
@@ -1229,4 +1255,34 @@ Author's Address
 
 
 
-Vargas                 Expires September 15, 2020              [Page 22]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 23]
