@@ -71,9 +71,9 @@
                 <t>
                     Messages sent by both server-client and peer-peer models shall be encoded in
                     JavaScript Object Notation (JSON). This is to simplify the parsing process in
-                    the individual implementations. There are several valid entries of the messages 
-                    for this protocol. Message formats are identified by the entry "mtp". The particular 
-                    information for the rest of the entries will be discussed in detail in their 
+                    the individual implementations. There are several valid fields of the messages 
+                    for this protocol. Message formats are identified by the field "mtp". The particular 
+                    information for the rest of the fields will be discussed in detail in their 
                     respective use cases in the message formats.
                 </t>
             </section>
@@ -86,8 +86,8 @@
                     <t>
                         {"mtp": "Login", "data": {"name": "username"}}
                     </t>
-                    <texttable title="Login Entries">
-                        <ttcol>Entry</ttcol>
+                    <texttable title="Login Fields">
+                        <ttcol>Field Name</ttcol>
                         <ttcol>Data Type</ttcol>
                         <ttcol align="center">Description</ttcol>
         
@@ -112,8 +112,8 @@
                     <t>
                         {"mtp": "SetUsername", "data": {"name": "new_name"}}
                     </t>
-                    <texttable title="SetUsername Entries">
-                        <ttcol>Entry</ttcol>
+                    <texttable title="SetUsername Fields">
+                        <ttcol>Field Name</ttcol>
                         <ttcol>Data Type</ttcol>
                         <ttcol align="center">Description</ttcol>
         
@@ -138,8 +138,8 @@
                     <t>
                         {"mtp": "RequestUserInfo", "data": {"name": "username"}}
                     </t>
-                    <texttable title="RequestUserInfo Entries">
-                        <ttcol>Entry</ttcol>
+                    <texttable title="RequestUserInfo Fields">
+                        <ttcol>Field Name</ttcol>
                         <ttcol>Data Type</ttcol>
                         <ttcol align="center">Description</ttcol>
         
@@ -164,8 +164,8 @@
                     <t>
                         {"mtp": "RequestLocalTime", "data": {}}
                     </t>
-                    <texttable title="RequestLocalTime Entries">
-                        <ttcol>Entry</ttcol>
+                    <texttable title="RequestLocalTime Fields">
+                        <ttcol>Field Name</ttcol>
                         <ttcol>Data Type</ttcol>
                         <ttcol align="center">Description</ttcol>
         
@@ -186,8 +186,8 @@
                     <t>
                         {"mtp": "WhisperToUser", "data": {"to": ["user1", "user2", "user3"], "message": "hi"}}
                     </t>
-                    <texttable title="WhisperToUser Entries">
-                        <ttcol>Entry</ttcol>
+                    <texttable title="WhisperToUser Fields">
+                        <ttcol>Field Name</ttcol>
                         <ttcol>Data Type</ttcol>
                         <ttcol align="center">Description</ttcol>
         
@@ -215,8 +215,8 @@
                     <t>
                         {"mtp": "SendChat", "data": {"message": "hi"}}
                     </t>
-                    <texttable title="SendChat Entries">
-                        <ttcol>Entry</ttcol>
+                    <texttable title="SendChat Fields">
+                        <ttcol>Field Name</ttcol>
                         <ttcol>Data Type</ttcol>
                         <ttcol align="center">Description</ttcol>
         
@@ -240,8 +240,8 @@
                     <t>
                         {"mtp": "RequestOnlineList", "data": {}}
                     </t>
-                    <texttable title="RequestOnlineList Entries">
-                        <ttcol>Entry</ttcol>
+                    <texttable title="RequestOnlineList Fields">
+                        <ttcol>Field Name</ttcol>
                         <ttcol>Data Type</ttcol>
                         <ttcol align="center">Description</ttcol>
         
@@ -261,8 +261,8 @@
                     <t>
                         {"mtp": "Disconnect", "data": {}}
                     </t>
-                    <texttable title="Disconnect Entries">
-                        <ttcol>Entry</ttcol>
+                    <texttable title="Disconnect Fields">
+                        <ttcol>Field Name</ttcol>
                         <ttcol>Data Type</ttcol>
                         <ttcol align="center">Description</ttcol>
         
@@ -282,8 +282,8 @@
                     <t>
                         {"mtp": "KickUser", "data": {"name": "username"}}
                     </t>
-                    <texttable title="KickUser Entries">
-                        <ttcol>Entry</ttcol>
+                    <texttable title="KickUser Fields">
+                        <ttcol>Field Name</ttcol>
                         <ttcol>Data Type</ttcol>
                         <ttcol align="center">Description</ttcol>
         
@@ -307,8 +307,8 @@
                     <t>
                         {"mtp": "MuteUser", "data": {"name": "username"}}
                     </t>
-                    <texttable title="MuteUser Entries">
-                        <ttcol>Entry</ttcol>
+                    <texttable title="MuteUser Fields">
+                        <ttcol>Field Name</ttcol>
                         <ttcol>Data Type</ttcol>
                         <ttcol align="center">Description</ttcol>
         
@@ -332,8 +332,8 @@
                     <t>
                         {"mtp": "UnmuteUser", "data": {"name": "username"}}
                     </t>
-                    <texttable title="UnmuteUser Entries">
-                        <ttcol>Entry</ttcol>
+                    <texttable title="UnmuteUser Fields">
+                        <ttcol>Field Name</ttcol>
                         <ttcol>Data Type</ttcol>
                         <ttcol align="center">Description</ttcol>
         
@@ -357,8 +357,8 @@
                     <t>
                         {"mtp": "SetAsAdmin", "data": {"name": "username"}}
                     </t>
-                    <texttable title="SetAsAdmin Entries">
-                        <ttcol>Entry</ttcol>
+                    <texttable title="SetAsAdmin Fields">
+                        <ttcol>Field Name</ttcol>
                         <ttcol>Data Type</ttcol>
                         <ttcol align="center">Description</ttcol>
         
@@ -381,9 +381,74 @@
                 </t>
             </section>
             <section anchor="peer2peer" title="Peer-Peer Messages">
-                <t>
-                    message
-                </t>
+                <section anchor="Handshake" title="Handshake">
+                    <t>
+                        The handshake message is required to be sent for each scenario wherein a new peer-peer
+                        joins a network. There may be peers active in the network or not but this message type 
+                        attempts to ensure that the username to be used by the entering peer is not a duplicate
+                        of another user existing in the network.
+                    </t>
+                    <t>
+                        {"mtp": "Handshake", "data": {"ip": "192.168.0.1", "port": 15151, "name": "new_peer"}}
+                    </t>
+                    <texttable title="Handshake Fields">
+                        <ttcol>Field Name</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All Handshake messages have this value set to "Handshake"</c>
+        
+                        <c>ip</c>
+                        <c>string</c>
+                        <c>IP of the peer broadcasting the Handshake</c>
+        
+                        <c>port</c>
+                        <c>int</c>
+                        <c>Port of the peer broadcasting the Handshake.</c>
+        
+                        <c>name</c>
+                        <c>string</c>
+                        <c>Username that is being broadcasted to all the other peers in the network for validation.</c>
+                    </texttable>
+                </section>
+                <section anchor="HandshakeResponse" title="HandshakeResponse">
+                    <t>
+                        The Handshake Response is sent back by peers active in the network to the ip and port 
+                        found in the Handshake message sent by new peers attempting to join the network. This 
+                        message type can only be sent if the peer is considered as active in the network and 
+                        the peer has a valid username.
+                    </t>
+                    <t>
+                        If the username contained in the Handshake is not equal to the username held by the 
+                        responding peer:
+                        {"mtp": "HandshakeResponse", "data": {"name": "username"}, "status": "OK"}
+                    </t>
+                    <t>
+                        If the username contained in the Handshake is equal to the username held by the 
+                        responding peer:
+                        {"mtp": "HandshakeResponse", "data": {"name": "username"}, "status": "DuplicateError"}
+                    </t>
+                    <texttable title="HandshakeResponse Fields">
+                        <ttcol>Field Name</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All HandshakeResponse messages have this value set to "HandshakeResponse"</c>
+        
+                        <c>name</c>
+                        <c>string</c>
+                        <c>Accepted/Rejected username.</c>
+        
+                        <c>status</c>
+                        <c>Enum: String</c>
+                        <c>Possible values: "OK", "DuplicateError". Validation status of the Handshake message
+                            received prior to sending this message.</c>
+                    </texttable>
+                </section>
             </section>
         </section>
         <section anchor="server-client" title="Server-Client Model">

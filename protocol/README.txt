@@ -76,10 +76,10 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    Messages sent by both server-client and peer-peer models shall be
    encoded in JavaScript Object Notation (JSON).  This is to simplify
    the parsing process in the individual implementations.  There are
-   several valid entries of the messages for this protocol.  Message
-   formats are identified by the entry "mtp".  The particular
-   information for the rest of the entries will be discussed in detail
-   in their respective use cases in the message formats.
+   several valid fields of the messages for this protocol.  Message
+   formats are identified by the field "mtp".  The particular
+   information for the rest of the fields will be discussed in detail in
+   their respective use cases in the message formats.
 
 2.2.  Serverbound Messages
 
@@ -90,18 +90,18 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    {"mtp": "Login", "data": {"name": "username"}}
 
-   +-------+--------+--------------------------------------------------+
-   | Entry | Data   |                   Description                    |
-   |       | Type   |                                                  |
-   +-------+--------+--------------------------------------------------+
-   | mtp   | string | MessageType. All Login messages have this value  |
-   |       |        |                  set to "Login"                  |
-   |       |        |                                                  |
-   | name  | string |    Client Name. The username that the client     |
-   |       |        |       requests to use to join the server.        |
-   +-------+--------+--------------------------------------------------+
+   +---------+--------+------------------------------------------------+
+   | Field   | Data   |                  Description                   |
+   | Name    | Type   |                                                |
+   +---------+--------+------------------------------------------------+
+   | mtp     | string |   MessageType. All Login messages have this    |
+   |         |        |              value set to "Login"              |
+   |         |        |                                                |
+   | name    | string |   Client Name. The username that the client    |
+   |         |        |      requests to use to join the server.       |
+   +---------+--------+------------------------------------------------+
 
-                               Login Entries
+                               Login Fields
 
    The server must send an AssignUsername message as a response to this
    message.  This is discussed in detail in Section 3.1.1
@@ -122,17 +122,17 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    {"mtp": "SetUsername", "data": {"name": "new_name"}}
 
-   +-------+--------+--------------------------------------------------+
-   | Entry | Data   |                   Description                    |
-   |       | Type   |                                                  |
-   +-------+--------+--------------------------------------------------+
-   | mtp   | string | MessageType. All SetUsername messages have this  |
-   |       |        |            value set to "SetUsername"            |
-   |       |        |                                                  |
-   | name  | string |        Requested new name by the client.         |
-   +-------+--------+--------------------------------------------------+
+   +---------+--------+------------------------------------------------+
+   | Field   | Data   |                  Description                   |
+   | Name    | Type   |                                                |
+   +---------+--------+------------------------------------------------+
+   | mtp     | string |   MessageType. All SetUsername messages have   |
+   |         |        |        this value set to "SetUsername"         |
+   |         |        |                                                |
+   | name    | string |       Requested new name by the client.        |
+   +---------+--------+------------------------------------------------+
 
-                            SetUsername Entries
+                            SetUsername Fields
 
    The server must send a SetUsername message as a response to this
    message.  This is discussed in detail in Section 3.2.1
@@ -145,18 +145,18 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    {"mtp": "RequestUserInfo", "data": {"name": "username"}}
 
-   +-------+--------+--------------------------------------------------+
-   | Entry | Data   |                   Description                    |
-   |       | Type   |                                                  |
-   +-------+--------+--------------------------------------------------+
-   | mtp   | string |  MessageType. All RequestUserInfo messages have  |
-   |       |        |       this value set to "RequestUserInfo"        |
-   |       |        |                                                  |
-   | name  | string |   Name of the user whose information is being    |
-   |       |        |                    requested.                    |
-   +-------+--------+--------------------------------------------------+
+   +--------+--------+-------------------------------------------------+
+   | Field  | Data   |                   Description                   |
+   | Name   | Type   |                                                 |
+   +--------+--------+-------------------------------------------------+
+   | mtp    | string |  MessageType. All RequestUserInfo messages have |
+   |        |        |       this value set to "RequestUserInfo"       |
+   |        |        |                                                 |
+   | name   | string |   Name of the user whose information is being   |
+   |        |        |                    requested.                   |
+   +--------+--------+-------------------------------------------------+
 
-                          RequestUserInfo Entries
+                          RequestUserInfo Fields
 
    The server must send a ProvideUserInfo message as a response to this
    message.  This is discussed in detail in Section 3.2.2
@@ -178,15 +178,15 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    {"mtp": "RequestLocalTime", "data": {}}
 
-   +-------+--------+--------------------------------------------------+
-   | Entry | Data   |                   Description                    |
-   |       | Type   |                                                  |
-   +-------+--------+--------------------------------------------------+
-   | mtp   | string | MessageType. All RequestLocalTime messages have  |
-   |       |        |       this value set to "RequestLocalTime"       |
-   +-------+--------+--------------------------------------------------+
+   +--------+--------+-------------------------------------------------+
+   | Field  | Data   |                   Description                   |
+   | Name   | Type   |                                                 |
+   +--------+--------+-------------------------------------------------+
+   | mtp    | string | MessageType. All RequestLocalTime messages have |
+   |        |        |       this value set to "RequestLocalTime"      |
+   +--------+--------+-------------------------------------------------+
 
-                         RequestLocalTime Entries
+                          RequestLocalTime Fields
 
    The server must send a SendLocalTime message as a response to this
    message.  This is discussed in detail in Section 3.2.3
@@ -200,22 +200,22 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    {"mtp": "WhisperToUser", "data": {"to": ["user1", "user2", "user3"],
    "message": "hi"}}
 
-   +---------+-----------+---------------------------------------------+
-   | Entry   | Data Type |                 Description                 |
-   +---------+-----------+---------------------------------------------+
-   | mtp     | string    |   MessageType. All WhisperToUser messages   |
-   |         |           |    have this value set to "WhisperToUser"   |
-   |         |           |                                             |
-   | to      | array of  |     List of users the private message is    |
-   |         | strings   |                addressed to.                |
-   |         |           |                                             |
-   | message | string    |       The private message to be sent.       |
-   +---------+-----------+---------------------------------------------+
+   +---------+------------+--------------------------------------------+
+   | Field   | Data Type  |                Description                 |
+   | Name    |            |                                            |
+   +---------+------------+--------------------------------------------+
+   | mtp     | string     |  MessageType. All WhisperToUser messages   |
+   |         |            |   have this value set to "WhisperToUser"   |
+   |         |            |                                            |
+   | to      | array of   |    List of users the private message is    |
+   |         | strings    |               addressed to.                |
+   |         |            |                                            |
+   | message | string     |      The private message to be sent.       |
+   +---------+------------+--------------------------------------------+
 
-                           WhisperToUser Entries
+                           WhisperToUser Fields
 
    Behavior is discussed in detail in Section 3.2.4
-
 
 
 
@@ -235,8 +235,8 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    {"mtp": "SendChat", "data": {"message": "hi"}}
 
    +---------+---------+-----------------------------------------------+
-   | Entry   | Data    |                  Description                  |
-   |         | Type    |                                               |
+   | Field   | Data    |                  Description                  |
+   | Name    | Type    |                                               |
    +---------+---------+-----------------------------------------------+
    | mtp     | string  |  MessageType. All SendChat messages have this |
    |         |         |            value set to "SendChat"            |
@@ -244,7 +244,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    | message | string  |            The message to be sent.            |
    +---------+---------+-----------------------------------------------+
 
-                             SendChat Entries
+                              SendChat Fields
 
    Behavior is discussed in detail in Section 3.2.5
 
@@ -256,15 +256,15 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    {"mtp": "RequestOnlineList", "data": {}}
 
-   +-------+--------+--------------------------------------------------+
-   | Entry | Data   |                   Description                    |
-   |       | Type   |                                                  |
-   +-------+--------+--------------------------------------------------+
-   | mtp   | string | MessageType. All RequestOnlineList messages have |
-   |       |        |      this value set to "RequestOnlineList"       |
-   +-------+--------+--------------------------------------------------+
+   +--------+--------+-------------------------------------------------+
+   | Field  | Data   |                   Description                   |
+   | Name   | Type   |                                                 |
+   +--------+--------+-------------------------------------------------+
+   | mtp    | string |   MessageType. All RequestOnlineList messages   |
+   |        |        |    have this value set to "RequestOnlineList"   |
+   +--------+--------+-------------------------------------------------+
 
-                         RequestOnlineList Entries
+                         RequestOnlineList Fields
 
    Behavior is discussed in detail in Section 3.2.6
 
@@ -284,15 +284,15 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    {"mtp": "Disconnect", "data": {}}
 
-   +-------+---------+-------------------------------------------------+
-   | Entry | Data    |                   Description                   |
-   |       | Type    |                                                 |
-   +-------+---------+-------------------------------------------------+
-   | mtp   | string  |  MessageType. All Disconnect messages have this |
-   |       |         |            value set to "Disconnect"            |
-   +-------+---------+-------------------------------------------------+
+   +---------+--------+------------------------------------------------+
+   | Field   | Data   |                  Description                   |
+   | Name    | Type   |                                                |
+   +---------+--------+------------------------------------------------+
+   | mtp     | string | MessageType. All Disconnect messages have this |
+   |         |        |           value set to "Disconnect"            |
+   +---------+--------+------------------------------------------------+
 
-                            Disconnect Entries
+                             Disconnect Fields
 
    Behavior is discussed in detail in Section 3.2.7
 
@@ -304,17 +304,18 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    {"mtp": "KickUser", "data": {"name": "username"}}
 
-   +-------+---------+-------------------------------------------------+
-   | Entry | Data    |                   Description                   |
-   |       | Type    |                                                 |
-   +-------+---------+-------------------------------------------------+
-   | mtp   | string  |   MessageType. All KickUser messages have this  |
-   |       |         |             value set to "KickUser"             |
-   |       |         |                                                 |
-   | name  | string  | Name of the user to be kicked out of the server |
-   +-------+---------+-------------------------------------------------+
+   +---------+---------+-----------------------------------------------+
+   | Field   | Data    |                  Description                  |
+   | Name    | Type    |                                               |
+   +---------+---------+-----------------------------------------------+
+   | mtp     | string  |  MessageType. All KickUser messages have this |
+   |         |         |            value set to "KickUser"            |
+   |         |         |                                               |
+   | name    | string  |    Name of the user to be kicked out of the   |
+   |         |         |                     server                    |
+   +---------+---------+-----------------------------------------------+
 
-                             KickUser Entries
+                              KickUser Fields
 
    Behavior is discussed in detail in Section 3.2.8
 
@@ -332,23 +333,22 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-
 Vargas                 Expires September 15, 2020               [Page 6]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
-   +-------+---------+-------------------------------------------------+
-   | Entry | Data    |                   Description                   |
-   |       | Type    |                                                 |
-   +-------+---------+-------------------------------------------------+
-   | mtp   | string  |   MessageType. All MuteUser messages have this  |
-   |       |         |             value set to "MuteUser"             |
-   |       |         |                                                 |
-   | name  | string  |    Name of the user to be muted in the server   |
-   +-------+---------+-------------------------------------------------+
+   +---------+---------+-----------------------------------------------+
+   | Field   | Data    |                  Description                  |
+   | Name    | Type    |                                               |
+   +---------+---------+-----------------------------------------------+
+   | mtp     | string  |  MessageType. All MuteUser messages have this |
+   |         |         |            value set to "MuteUser"            |
+   |         |         |                                               |
+   | name    | string  |   Name of the user to be muted in the server  |
+   +---------+---------+-----------------------------------------------+
 
-                             MuteUser Entries
+                              MuteUser Fields
 
    Behavior is discussed in detail in Section 3.2.9
 
@@ -360,17 +360,17 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    {"mtp": "UnmuteUser", "data": {"name": "username"}}
 
-   +-------+---------+-------------------------------------------------+
-   | Entry | Data    |                   Description                   |
-   |       | Type    |                                                 |
-   +-------+---------+-------------------------------------------------+
-   | mtp   | string  |  MessageType. All UnmuteUser messages have this |
-   |       |         |            value set to "UnmuteUser"            |
-   |       |         |                                                 |
-   | name  | string  |   Name of the user to be unmuted in the server  |
-   +-------+---------+-------------------------------------------------+
+   +---------+--------+------------------------------------------------+
+   | Field   | Data   |                  Description                   |
+   | Name    | Type   |                                                |
+   +---------+--------+------------------------------------------------+
+   | mtp     | string | MessageType. All UnmuteUser messages have this |
+   |         |        |           value set to "UnmuteUser"            |
+   |         |        |                                                |
+   | name    | string |  Name of the user to be unmuted in the server  |
+   +---------+--------+------------------------------------------------+
 
-                            UnmuteUser Entries
+                             UnmuteUser Fields
 
    Behavior is discussed in detail in Section 3.2.10
 
@@ -394,18 +394,18 @@ Vargas                 Expires September 15, 2020               [Page 7]
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
-   +-------+---------+-------------------------------------------------+
-   | Entry | Data    |                   Description                   |
-   |       | Type    |                                                 |
-   +-------+---------+-------------------------------------------------+
-   | mtp   | string  |  MessageType. All SetAsAdmin messages have this |
-   |       |         |            value set to "SetAsAdmin"            |
-   |       |         |                                                 |
-   | name  | string  |  Name of the user to be set as the new admin in |
-   |       |         |                    the server                   |
-   +-------+---------+-------------------------------------------------+
+   +---------+--------+------------------------------------------------+
+   | Field   | Data   |                  Description                   |
+   | Name    | Type   |                                                |
+   +---------+--------+------------------------------------------------+
+   | mtp     | string | MessageType. All SetAsAdmin messages have this |
+   |         |        |           value set to "SetAsAdmin"            |
+   |         |        |                                                |
+   | name    | string | Name of the user to be set as the new admin in |
+   |         |        |                   the server                   |
+   +---------+--------+------------------------------------------------+
 
-                            SetAsAdmin Entries
+                             SetAsAdmin Fields
 
    Behavior is discussed in detail in Section 3.2.11
 
@@ -414,62 +414,74 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    message
 
 2.4.  Peer-Peer Messages
-	A different set of message types are used for the peer-peer model. However,
-	these messages are still encoded in JavaScript Object Notation (JSON). 
-	
-2.4.1 Handshake
 
-   The handshake message is required to be sent for each scenario wherein a new peer-peer
-   joins a network. There may be peers active in the network or not but this message type 
-   attempts to ensure that the username to be used by the entering peer is not a duplicate
-   of another user existing in the network.
-   
-   {"mtp": "Handshake", "data": {"ip": "192.168.0.1", "port": 15151, "name": "new_peer"}}
-   
-   +-------+---------+-------------------------------------------------+
-   | Entry | Data    |                   Description                   |
-   |       | Type    |                                                 |
-   +-------+---------+-------------------------------------------------+
-   | mtp   | string  |  MessageType. All Handshake messages have this  |
-   |       |         |            value set to "Handshake"             |
-   |       |         |                                                 |
-   | ip    | string  |  IP of the peer broadcasting the Handshake      |
-   |       |         |                                                 |
-   |	   |         |                                                 |
-   | port  |  int    |  port of the peer broadcasting the Handshake    |
-   |	   |         |                                                 |
-   |	   |         |                                                 |
-   | name  | string  |  username that is being broadcasted to all      |
-   |	   |         |    the other peers in the network               |
-   |	   |         |             for validation.                     |
-   +-------+---------+-------------------------------------------------+
-  
-2.4.2 Handshake Response
+2.4.1.  Handshake
 
-	The Handshake Response is sent back by peers active in the network to the ip and port 
-	found in the Handshake message sent by new peers attempting to join the network. This 
-	message type can only be sent if the peer is considered as active in the network and 
-	the peer has a valid username.
-	
-	If the username contained in the Handshake is not equal to the username held by the 
-	responding peer:
-	{"mtp": "HandshakeResponse", "data": {}, "status": "OK"}
-	
-	If the username contained in the Handshake is equal to the username held by the 
-	responding peer:
-	{"mtp": "HandshakeResponse", "data": {}, "status": "DuplicateError"}
-	
-   +-------+---------+-------------------------------------------------+
-   | Entry | Data    |                   Description                   |
-   |       | Type    |                                                 |
-   +-------+---------+-------------------------------------------------+
-   | mtp   | string  |  MessageType. All HandshakeResponse messages    |
-   |       |         |    have this value set to "SetAsAdmin"          |
-   |       |         |                                                 |
-   |status | string  |  Validation status of the Handshake message     |
-   |       |         |    received prior to sending this message       |
-   +-------+---------+-------------------------------------------------+
-   
+   The handshake message is required to be sent for each scenario
+   wherein a new peer-peer joins a network.  There may be peers active
+   in the network or not but this message type attempts to ensure that
+   the username to be used by the entering peer is not a duplicate of
+   another user existing in the network.
+
+   {"mtp": "Handshake", "data": {"ip": "192.168.0.1", "port": 15151,
+   "name": "new_peer"}}
+
+   +--------+--------+-------------------------------------------------+
+   | Field  | Data   |                   Description                   |
+   | Name   | Type   |                                                 |
+   +--------+--------+-------------------------------------------------+
+   | mtp    | string |  MessageType. All Handshake messages have this  |
+   |        |        |             value set to "Handshake"            |
+   |        |        |                                                 |
+   | ip     | string |    IP of the peer broadcasting the Handshake    |
+   |        |        |                                                 |
+   | port   | int    |   Port of the peer broadcasting the Handshake.  |
+   |        |        |                                                 |
+   | name   | string |  Username that is being broadcasted to all the  |
+   |        |        |    other peers in the network for validation.   |
+   +--------+--------+-------------------------------------------------+
+
+                             Handshake Fields
+
+
+
+Vargas                 Expires September 15, 2020               [Page 8]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+2.4.2.  HandshakeResponse
+
+   The Handshake Response is sent back by peers active in the network to
+   the ip and port found in the Handshake message sent by new peers
+   attempting to join the network.  This message type can only be sent
+   if the peer is considered as active in the network and the peer has a
+   valid username.
+
+   If the username contained in the Handshake is not equal to the
+   username held by the responding peer: {"mtp": "HandshakeResponse",
+   "data": {"name": "username"}, "status": "OK"}
+
+   If the username contained in the Handshake is equal to the username
+   held by the responding peer: {"mtp": "HandshakeResponse", "data":
+   {"name": "username"}, "status": "DuplicateError"}
+
+   +--------+--------+-------------------------------------------------+
+   | Field  | Data   |                   Description                   |
+   | Name   | Type   |                                                 |
+   +--------+--------+-------------------------------------------------+
+   | mtp    | string |   MessageType. All HandshakeResponse messages   |
+   |        |        |    have this value set to "HandshakeResponse"   |
+   |        |        |                                                 |
+   | name   | string |           Accepted/Rejected username.           |
+   |        |        |                                                 |
+   | status | Enum:  |     Possible values: "OK", "DuplicateError".    |
+   |        | String |    Validation status of the Handshake message   |
+   |        |        |     received prior to sending this message.     |
+   +--------+--------+-------------------------------------------------+
+
+                         HandshakeResponse Fields
+
 3.  Server-Client Model
 
 3.1.  States / Phases
@@ -484,6 +496,16 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    Placeholder
 
+
+
+
+
+
+Vargas                 Expires September 15, 2020               [Page 9]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
 3.2.2.  UserInfo
 
    Placeholder
@@ -491,17 +513,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 3.2.3.  LocalTime
 
    Placeholder
-
-
-
-
-
-
-
-Vargas                 Expires September 15, 2020               [Page 8]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
 
 3.2.4.  Whisper
 
@@ -543,6 +554,14 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
               the Use of Extensible Markup Language (XML) within IETF
               Protocols", RFC 3470, May 2013.
 
+
+
+
+Vargas                 Expires September 15, 2020              [Page 10]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
               This is a primary reference work.
 
 4.2.  Informative References
@@ -551,13 +570,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
               Requirements and Future Development", RFC 6949, May 2013.
 
               This is a primary reference work.
-
-
-
-Vargas                 Expires September 15, 2020               [Page 9]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
 
 Author's Address
 
@@ -601,13 +613,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-Vargas                 Expires September 15, 2020              [Page 10]
+Vargas                 Expires September 15, 2020              [Page 11]
