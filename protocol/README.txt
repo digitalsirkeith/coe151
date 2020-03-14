@@ -4,9 +4,9 @@
 
 CoE 151                                                        K. Vargas
 Internet-Draft                                                      EEEI
-Updates: 5 (if approved)                                  March 14, 2020
+Updates: 5 (if approved)                                  March 15, 2020
 Intended status: Standards Track
-Expires: September 15, 2020
+Expires: September 16, 2020
 
 
            Server-Client and Peer-Peer Communication Protocol
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 15, 2020.
+   This Internet-Draft will expire on September 16, 2020.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Vargas                 Expires September 15, 2020               [Page 1]
+Vargas                 Expires September 16, 2020               [Page 1]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -62,6 +62,83 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
    to this document.
+
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
+   2.  Message Formats . . . . . . . . . . . . . . . . . . . . . . .   3
+     2.1.  Introduction  . . . . . . . . . . . . . . . . . . . . . .   3
+     2.2.  Serverbound Messages  . . . . . . . . . . . . . . . . . .   4
+       2.2.1.  Login . . . . . . . . . . . . . . . . . . . . . . . .   4
+       2.2.2.  SetUsername . . . . . . . . . . . . . . . . . . . . .   4
+       2.2.3.  RequestUserInfo . . . . . . . . . . . . . . . . . . .   5
+       2.2.4.  RequestLocalTime  . . . . . . . . . . . . . . . . . .   5
+       2.2.5.  WhisperToUser . . . . . . . . . . . . . . . . . . . .   6
+       2.2.6.  SendChat  . . . . . . . . . . . . . . . . . . . . . .   6
+       2.2.7.  RequestOnlineList . . . . . . . . . . . . . . . . . .   7
+       2.2.8.  Disconnect  . . . . . . . . . . . . . . . . . . . . .   7
+       2.2.9.  KickUser  . . . . . . . . . . . . . . . . . . . . . .   7
+       2.2.10. MuteUser  . . . . . . . . . . . . . . . . . . . . . .   8
+       2.2.11. UnmuteUser  . . . . . . . . . . . . . . . . . . . . .   8
+       2.2.12. SetAsAdmin  . . . . . . . . . . . . . . . . . . . . .   9
+     2.3.  Clientbound Messages  . . . . . . . . . . . . . . . . . .   9
+       2.3.1.  AssignUsername  . . . . . . . . . . . . . . . . . . .   9
+       2.3.2.  SetUsername . . . . . . . . . . . . . . . . . . . . .  10
+       2.3.3.  ProvideUserInfo . . . . . . . . . . . . . . . . . . .  11
+       2.3.4.  SendLocalTime . . . . . . . . . . . . . . . . . . . .  12
+       2.3.5.  WhisperFromUser . . . . . . . . . . . . . . . . . . .  12
+       2.3.6.  SendChatFromUser  . . . . . . . . . . . . . . . . . .  13
+       2.3.7.  SendOnlineList  . . . . . . . . . . . . . . . . . . .  13
+       2.3.8.  KickUser  . . . . . . . . . . . . . . . . . . . . . .  14
+       2.3.9.  MuteUser  . . . . . . . . . . . . . . . . . . . . . .  15
+       2.3.10. UnmuteUser  . . . . . . . . . . . . . . . . . . . . .  15
+       2.3.11. SetAsAdmin  . . . . . . . . . . . . . . . . . . . . .  16
+       2.3.12. ServerMessage . . . . . . . . . . . . . . . . . . . .  17
+       2.3.13. Disconnect  . . . . . . . . . . . . . . . . . . . . .  17
+     2.4.  Peer-Peer Messages  . . . . . . . . . . . . . . . . . . .  18
+       2.4.1.  Discovery . . . . . . . . . . . . . . . . . . . . . .  18
+       2.4.2.  DiscoveryResponse . . . . . . . . . . . . . . . . . .  18
+       2.4.3.  Handshake . . . . . . . . . . . . . . . . . . . . . .  19
+       2.4.4.  HandshakeResponse . . . . . . . . . . . . . . . . . .  20
+       2.4.5.  SendChat  . . . . . . . . . . . . . . . . . . . . . .  20
+       2.4.6.  Whisper . . . . . . . . . . . . . . . . . . . . . . .  21
+       2.4.7.  Disconnect  . . . . . . . . . . . . . . . . . . . . .  21
+   3.  Server-Client Model . . . . . . . . . . . . . . . . . . . . .  22
+     3.1.  States / Phases . . . . . . . . . . . . . . . . . . . . .  22
+       3.1.1.  Login . . . . . . . . . . . . . . . . . . . . . . . .  22
+
+
+
+Vargas                 Expires September 16, 2020               [Page 2]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+     3.2.  Request-Response Behavior . . . . . . . . . . . . . . . .  22
+       3.2.1.  SetUsername . . . . . . . . . . . . . . . . . . . . .  22
+       3.2.2.  UserInfo  . . . . . . . . . . . . . . . . . . . . . .  23
+       3.2.3.  LocalTime . . . . . . . . . . . . . . . . . . . . . .  23
+       3.2.4.  Whisper . . . . . . . . . . . . . . . . . . . . . . .  24
+       3.2.5.  SendChat  . . . . . . . . . . . . . . . . . . . . . .  24
+       3.2.6.  OnlineList  . . . . . . . . . . . . . . . . . . . . .  25
+       3.2.7.  Disconnect  . . . . . . . . . . . . . . . . . . . . .  25
+       3.2.8.  KickUser  . . . . . . . . . . . . . . . . . . . . . .  26
+       3.2.9.  MuteUser  . . . . . . . . . . . . . . . . . . . . . .  26
+       3.2.10. UnmuteUser  . . . . . . . . . . . . . . . . . . . . .  26
+       3.2.11. SetAsAdmin  . . . . . . . . . . . . . . . . . . . . .  27
+   4.  Peer-Peer Model . . . . . . . . . . . . . . . . . . . . . . .  27
+     4.1.  Discovery . . . . . . . . . . . . . . . . . . . . . . . .  27
+     4.2.  Handshake . . . . . . . . . . . . . . . . . . . . . . . .  27
+     4.3.  Disconnect  . . . . . . . . . . . . . . . . . . . . . . .  27
+   5.  Security Considerations . . . . . . . . . . . . . . . . . . .  27
+     5.1.  Introduction  . . . . . . . . . . . . . . . . . . . . . .  27
+     5.2.  Authentication  . . . . . . . . . . . . . . . . . . . . .  27
+     5.3.  Encryption  . . . . . . . . . . . . . . . . . . . . . . .  27
+     5.4.  Authenticity  . . . . . . . . . . . . . . . . . . . . . .  27
+   6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  27
+     6.1.  Normative References  . . . . . . . . . . . . . . . . . .  28
+     6.2.  Informative References  . . . . . . . . . . . . . . . . .  28
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  28
 
 1.  Introduction
 
@@ -80,6 +157,18 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    formats are identified by the field "mtp".  The particular
    information for the rest of the fields will be discussed in detail in
    their respective use cases in the message formats.
+
+
+
+
+
+
+
+
+Vargas                 Expires September 16, 2020               [Page 3]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
 
 2.2.  Serverbound Messages
 
@@ -106,14 +195,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    The server must send an AssignUsername message as a response to this
    message.  This is discussed in detail in Section 3.1.1
 
-
-
-
-Vargas                 Expires September 15, 2020               [Page 2]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
-
 2.2.2.  SetUsername
 
    On the scenario that a client wishes to change usernames, this
@@ -136,6 +217,14 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    The server must send a SetUsername message as a response to this
    message.  This is discussed in detail in Section 3.2.1
+
+
+
+
+Vargas                 Expires September 16, 2020               [Page 4]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
 
 2.2.3.  RequestUserInfo
 
@@ -161,15 +250,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    The server must send a ProvideUserInfo message as a response to this
    message.  This is discussed in detail in Section 3.2.2
 
-
-
-
-
-Vargas                 Expires September 15, 2020               [Page 3]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
-
 2.2.4.  RequestLocalTime
 
    On the scenario that a client wishes to change usernames, this
@@ -190,6 +270,17 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    The server must send a SendLocalTime message as a response to this
    message.  This is discussed in detail in Section 3.2.3
+
+
+
+
+
+
+
+Vargas                 Expires September 16, 2020               [Page 5]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
 
 2.2.5.  WhisperToUser
 
@@ -217,15 +308,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    Behavior is discussed in detail in Section 3.2.4
 
-
-
-
-
-Vargas                 Expires September 15, 2020               [Page 4]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
-
 2.2.6.  SendChat
 
    On the scenario that a client wishes to send a message to everyone
@@ -247,6 +329,14 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
                               SendChat Fields
 
    Behavior is discussed in detail in Section 3.2.5
+
+
+
+
+Vargas                 Expires September 16, 2020               [Page 6]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
 
 2.2.7.  RequestOnlineList
 
@@ -274,14 +364,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    be sent to the server.  A sample message of this format is shown
    below:
 
-
-
-
-Vargas                 Expires September 15, 2020               [Page 5]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
-
    {"mtp": "Disconnect", "data": {}}
 
    +---------+--------+------------------------------------------------+
@@ -303,6 +385,14 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    this format is shown below:
 
    {"mtp": "KickUser", "data": {"name": "username"}}
+
+
+
+
+Vargas                 Expires September 16, 2020               [Page 7]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
 
    +---------+---------+-----------------------------------------------+
    | Field   | Data    |                  Description                  |
@@ -327,17 +417,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    {"mtp": "MuteUser", "data": {"name": "username"}}
 
-
-
-
-
-
-
-Vargas                 Expires September 15, 2020               [Page 6]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
-
    +---------+---------+-----------------------------------------------+
    | Field   | Data    |                  Description                  |
    | Name    | Type    |                                               |
@@ -360,6 +439,17 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    {"mtp": "UnmuteUser", "data": {"name": "username"}}
 
+
+
+
+
+
+
+Vargas                 Expires September 16, 2020               [Page 8]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
    +---------+--------+------------------------------------------------+
    | Field   | Data   |                  Description                   |
    | Name    | Type   |                                                |
@@ -381,18 +471,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    this format is shown below:
 
    {"mtp": "SetAsAdmin", "data": {"name": "username"}}
-
-
-
-
-
-
-
-
-Vargas                 Expires September 15, 2020               [Page 7]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
 
    +---------+--------+------------------------------------------------+
    | Field   | Data   |                  Description                   |
@@ -421,6 +499,13 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    {"mtp": "AssignUsername", "data": {"name": "username"}, "status":
    "OK"}
 
+
+
+Vargas                 Expires September 16, 2020               [Page 9]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
    If the requested username has a duplicate:
 
    {"mtp": "AssignUsername", "data": {"name": "username"}, "status":
@@ -441,15 +526,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
                            AssignUsername Fields
 
-
-
-
-
-Vargas                 Expires September 15, 2020               [Page 8]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
-
 2.3.2.  SetUsername
 
    This is the message sent by the server to the client after receiving
@@ -463,6 +539,28 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    {"mtp": "SetUsername", "data": {"name": "username"}, "status":
    "DuplicateError"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Vargas                 Expires September 16, 2020              [Page 10]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
 
    +--------+--------+-------------------------------------------------+
    | Field  | Data   |                   Description                   |
@@ -501,7 +599,21 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 15, 2020               [Page 9]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Vargas                 Expires September 16, 2020              [Page 11]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -557,7 +669,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 15, 2020              [Page 10]
+Vargas                 Expires September 16, 2020              [Page 12]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -613,7 +725,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 15, 2020              [Page 11]
+Vargas                 Expires September 16, 2020              [Page 13]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -669,7 +781,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 15, 2020              [Page 12]
+Vargas                 Expires September 16, 2020              [Page 14]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -725,7 +837,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 15, 2020              [Page 13]
+Vargas                 Expires September 16, 2020              [Page 15]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -781,7 +893,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 15, 2020              [Page 14]
+Vargas                 Expires September 16, 2020              [Page 16]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -837,7 +949,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 15, 2020              [Page 15]
+Vargas                 Expires September 16, 2020              [Page 17]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -893,7 +1005,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 15, 2020              [Page 16]
+Vargas                 Expires September 16, 2020              [Page 18]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -949,7 +1061,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 15, 2020              [Page 17]
+Vargas                 Expires September 16, 2020              [Page 19]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1005,7 +1117,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 15, 2020              [Page 18]
+Vargas                 Expires September 16, 2020              [Page 20]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1061,7 +1173,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 15, 2020              [Page 19]
+Vargas                 Expires September 16, 2020              [Page 21]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1102,45 +1214,231 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 3.2.1.  SetUsername
 
-   Placeholder
-
-3.2.2.  UserInfo
-
-   Placeholder
-
-3.2.3.  LocalTime
-
-   Placeholder
+   Description here
 
 
 
 
 
 
-Vargas                 Expires September 15, 2020              [Page 20]
+
+
+
+
+
+
+
+
+Vargas                 Expires September 16, 2020              [Page 22]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
+       +----------+                             +----------+
+       |  Client  |>------| SetUsername |------>|  Server  |
+       +----------+      SetUsername: "Daren"   +----------+
+
+       +----------+                             +----------+
+       |  Client  |<<-----| SetUsername |-----<<|  Server  |
+       +----------+         status: "OK"        +----------+
+
+       +----------+                             +----------+
+       |  Client  |<<-----| SetUsername |-----<<|  Server  |
+       +----------+     status: "DuplicateError"+----------+
+
+                                 Figure 2
+
+3.2.2.  UserInfo
+
+   Description here
+
+       +----------+                             +----------+
+       |  Client  |>----| RequestUserInfo |---->|  Server  |
+       +----------+      SetUsername: "Daren"   +----------+
+
+       +----------+                             +----------+
+       |  Client  |<<---| ProvideUserInfo |---<<|  Server  |
+       +----------+         status: "OK"        +----------+
+
+        +----------+                             +----------+
+       |  Client  |<<---| ProvideUserInfo |---<<|  Server  |
+       +----------+   status: "UserDoesNotExist" +----------+
+
+
+                                 Figure 3
+
+3.2.3.  LocalTime
+
+   Description here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Vargas                 Expires September 16, 2020              [Page 23]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+       +----------+                             +----------+
+       |  Client  |>----| RequestLocalTime |--->|  Server  |
+       +----------+                             +----------+
+
+       +----------+                             +----------+
+       |  Client  |<<---| SendLocalTime |---<<|  Server  |
+       +----------+       time: "00:00:00"      +----------+
+
+
+
+
+                                 Figure 4
+
 3.2.4.  Whisper
 
-   Placeholder
+   Description here
+
+    +----------+                           +----------+    +----------+
+    |  Client  |>----| WhisperToUser |---->|  Server  |    | Client_B |
+    +----------+        To: "Client_B"     +----------+    +----------+
+
+    +----------+                           +----------+ msg +----------+
+    |  Client  |                           |  Server  |---->| Client_B |
+    +----------+                           +----------+     +----------+
+
+    +----------+                           +----------+     +----------+
+    |  Client  |<<---| ServerMessage |---<<|  Server  |     | Client_B |
+    +----------+ message:"UserDoesNotExist"+----------+     +----------+
+
+
+
+
+                                 Figure 5
 
 3.2.5.  SendChat
 
-   Placeholder
+   Description here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Vargas                 Expires September 16, 2020              [Page 24]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+   +----------+          +---------+
+   |          | SendChat |         |
+   |  Client1 +--------->+ Server  |
+   |          |   msg    |         |
+   +----------+          +----+----+
+                              |
+                              |
+                +----------------------------+
+                |             |              |
+                |             |              |
+                |msg          |msg           |msg
+                |             v              v
+          +-----v-----+ +-----+-----+  +-----+-----+
+          |           | |           |  |           |
+          |  Client2  | |  Client3  |  |  Client4  |
+          |           | |           |  |           |
+          +-----------+ +-----------+  +-----------+
+
+
+
+                                 Figure 6
 
 3.2.6.  OnlineList
 
-   Placeholder
+   Description here
+
+       +----------+                             +----------+
+       |  Client  |>---| RequestOnlineList |--->|  Server  |
+       +----------+                             +----------+
+
+       +----------+                            +----------+
+       |  Client  |<<---| SendOnlineList |---<<|  Server  |
+       +----------+                            +----------+
+
+
+
+
+                                 Figure 7
 
 3.2.7.  Disconnect
 
-   Placeholder
+   Description here
+
+
+
+
+
+
+
+
+
+Vargas                 Expires September 16, 2020              [Page 25]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+       +----------+                             +----------+
+       |  Client  |>-------| Disconnect |------>|  Server  |
+       +----------+                             +----------+
+
+                                                +----------+
+                                                |  Server  |
+                                                +----------+
+
+
+
+
+                                 Figure 8
 
 3.2.8.  KickUser
 
-   Placeholder
+   Description here
+
+       +----------+                             +----------+
+       |  Client  |>--------| KickUser |------->|  Server  |
+       +----------+      name : "Client2"       +----------+
+
+       +----------+                            +----------+
+       |  Client  |<<------| KickUser |------<<|  Server  |
+       +----------+      status : "OK"         +----------+
+
+       +----------+                            +----------+
+       |  Client  |<<------| KickUser |------<<|  Server  |
+       +----------+  status : "NotAdminError"  +----------+
+
+       +----------+                            +----------+
+       |  Client  |<<------| KickUser |------<<|  Server  |
+       +----------+ status : "UserDoesNotExist"+----------+
+
+
+
+
+                                 Figure 9
 
 3.2.9.  MuteUser
 
@@ -1149,6 +1447,16 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 3.2.10.  UnmuteUser
 
    Placeholder
+
+
+
+
+
+
+Vargas                 Expires September 16, 2020              [Page 26]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
 
 3.2.11.  SetAsAdmin
 
@@ -1167,16 +1475,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 4.3.  Disconnect
 
    Placeholder
-
-
-
-
-
-
-Vargas                 Expires September 15, 2020              [Page 21]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
 
 5.  Security Considerations
 
@@ -1204,6 +1502,18 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 6.  References
 
+
+
+
+
+
+
+
+Vargas                 Expires September 16, 2020              [Page 27]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
 6.1.  Normative References
 
    [RFC3470]  Hollenbeck, S., Rose, M., and L. Masinter, "Guidelines for
@@ -1220,19 +1530,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
               This is a primary reference work.
 
 Author's Address
-
-
-
-
-
-
-
-
-
-Vargas                 Expires September 15, 2020              [Page 22]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
 
    Keith Vargas
    Electrical and Electronics Engineering Institute
@@ -1268,21 +1565,4 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Vargas                 Expires September 15, 2020              [Page 23]
+Vargas                 Expires September 16, 2020              [Page 28]

@@ -1032,42 +1032,178 @@
             <section anchor="server-client-behavior" title="Request-Response Behavior">
                 <section anchor="server-client-behavior-changename" title="SetUsername">
                     <t>
-                        Placeholder
+                        Description here
+                        <figure anchor="SetUsername-diagram">
+                            <artwork>
+    +----------+                             +----------+
+    |  Client  |>------| SetUsername |------>|  Server  |
+    +----------+      SetUsername: "Daren"   +----------+
+
+    +----------+                             +----------+
+    |  Client  |&lt;&lt;-----| SetUsername |-----&lt;&lt;|  Server  |
+    +----------+         status: "OK"        +----------+
+
+    +----------+                             +----------+
+    |  Client  |&lt;&lt;-----| SetUsername |-----&lt;&lt;|  Server  |
+    +----------+     status: "DuplicateError"+----------+
+                            </artwork>
+                        </figure>
                     </t>
                 </section>
                 <section anchor="server-client-behavior-userinfo" title="UserInfo">
                     <t>
-                        Placeholder
+                        Description here
+                        <figure anchor="Userinfo-diagram">
+                            <artwork>
+    +----------+                             +----------+
+    |  Client  |>----| RequestUserInfo |---->|  Server  |
+    +----------+      SetUsername: "Daren"   +----------+
+
+    +----------+                             +----------+
+    |  Client  |&lt;&lt;---| ProvideUserInfo |---&lt;&lt;|  Server  |
+    +----------+         status: "OK"        +----------+
+
+     +----------+                             +----------+
+    |  Client  |&lt;&lt;---| ProvideUserInfo |---&lt;&lt;|  Server  |
+    +----------+   status: "UserDoesNotExist" +----------+
+
+                            </artwork>
+                        </figure>
                     </t>
                 </section>
                 <section anchor="server-client-behavior-localtime" title="LocalTime">
                     <t>
-                        Placeholder
+                        Description here
+                        <figure anchor="Localtime-diagram">
+                            <artwork>
+    +----------+                             +----------+
+    |  Client  |>----| RequestLocalTime |--->|  Server  |
+    +----------+                             +----------+
+
+    +----------+                             +----------+
+    |  Client  |&lt;&lt;---| SendLocalTime |---&lt;&lt;|  Server  |
+    +----------+       time: "00:00:00"      +----------+
+
+
+
+                            </artwork>
+                        </figure>
                     </t>
                 </section>
                 <section anchor="server-client-behavior-whisper" title="Whisper">
                     <t>
-                        Placeholder
+                        Description here
+                        <figure anchor="Whisper-diagram">
+                            <artwork>
+    +----------+                           +----------+    +----------+
+    |  Client  |>----| WhisperToUser |---->|  Server  |    | Client_B |
+    +----------+        To: "Client_B"     +----------+    +----------+
+
+    +----------+                           +----------+ msg +----------+
+    |  Client  |                           |  Server  |---->| Client_B |
+    +----------+                           +----------+     +----------+
+
+    +----------+                           +----------+     +----------+
+    |  Client  |&lt;&lt;---| ServerMessage |---&lt;&lt;|  Server  |     | Client_B |
+    +----------+ message:"UserDoesNotExist"+----------+     +----------+
+
+
+
+                            </artwork>
+                        </figure>
                     </t>
                 </section>
                 <section anchor="server-client-behavior-sendchat" title="SendChat">
                     <t>
-                        Placeholder
+                        Description here
+                        <figure anchor="SendChat-diagram">
+                            <artwork>
++----------+          +---------+
+|          | SendChat |         |
+|  Client1 +--------->+ Server  |
+|          |   msg    |         |
++----------+          +----+----+
+                           |
+                           |
+             +----------------------------+
+             |             |              |
+             |             |              |
+             |msg          |msg           |msg
+             |             v              v
+       +-----v-----+ +-----+-----+  +-----+-----+
+       |           | |           |  |           |
+       |  Client2  | |  Client3  |  |  Client4  |
+       |           | |           |  |           |
+       +-----------+ +-----------+  +-----------+
+
+
+                            </artwork>
+                        </figure>
                     </t>
                 </section>
                 <section anchor="server-client-behavior-onlinelist" title="OnlineList">
                     <t>
-                        Placeholder
+                        Description here
+                        <figure anchor="OnlineList-diagram">
+                            <artwork>
+    +----------+                             +----------+
+    |  Client  |>---| RequestOnlineList |--->|  Server  |
+    +----------+                             +----------+
+
+    +----------+                            +----------+
+    |  Client  |&lt;&lt;---| SendOnlineList |---&lt;&lt;|  Server  |
+    +----------+                            +----------+
+
+
+
+                            </artwork>
+                        </figure>
                     </t>
                 </section>
                 <section anchor="server-client-behavior-disconnect" title="Disconnect">
                     <t>
-                        Placeholder
+                        Description here
+                        <figure anchor="Disconnect-diagram">
+                            <artwork>
+    +----------+                             +----------+
+    |  Client  |>-------| Disconnect |------>|  Server  |
+    +----------+                             +----------+
+
+                                             +----------+
+                                             |  Server  |
+                                             +----------+
+
+
+
+                            </artwork>
+                        </figure>
                     </t>
                 </section>
                 <section anchor="server-client-behavior-kickuser" title="KickUser">
                     <t>
-                        Placeholder
+                        Description here
+                        <figure anchor="KickUser-diagram">
+                            <artwork>
+    +----------+                             +----------+
+    |  Client  |>--------| KickUser |------->|  Server  |
+    +----------+      name : "Client2"       +----------+
+
+    +----------+                            +----------+
+    |  Client  |&lt;&lt;------| KickUser |------&lt;&lt;|  Server  |
+    +----------+      status : "OK"         +----------+
+    
+    +----------+                            +----------+
+    |  Client  |&lt;&lt;------| KickUser |------&lt;&lt;|  Server  |
+    +----------+  status : "NotAdminError"  +----------+
+
+    +----------+                            +----------+
+    |  Client  |&lt;&lt;------| KickUser |------&lt;&lt;|  Server  |
+    +----------+ status : "UserDoesNotExist"+----------+
+
+
+
+                            </artwork>
+                        </figure>
                     </t>
                 </section>
                 <section anchor="server-client-behavior-muteuser" title="MuteUser">
