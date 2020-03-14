@@ -8,11 +8,11 @@
 
 <rfc 
     category="std" 
-    docName="coe-151-mp1-protocol-03" 
+    docName="coe-151-mp1-protocol-05" 
     ipr="trust200902" 
     consensus="no" 
     submissionType="independent" 
-    updates="3" 
+    updates="5" 
     xml:lang="en"
 >
     <front>
@@ -130,6 +130,32 @@
                         discussed in detail in <xref target="server-client-behavior-changename"/>
                     </t>
                 </section> 
+                <section anchor="RequestUserInfo" title="RequestUserInfo">
+                    <t>
+                        On the scenario that a client wishes to change usernames, this message will be sent. A
+                        sample message of this format is shown below:
+                    </t>
+                    <t>
+                        {"mtp": "RequestUserInfo", "data": {"name": "username"}}
+                    </t>
+                    <texttable title="RequestUserInfo Entries">
+                        <ttcol>Entry</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All Login messages have the value of mtp set to "Login"</c>
+        
+                        <c>name</c>
+                        <c>string</c>
+                        <c>Name of the user whose information is being requested.</c>
+                    </texttable>
+                    <t>
+                        The server must send a ProvideUserInfo message as a response to this message. This is
+                        discussed in detail in <xref target="server-client-behavior-userinfo"/>
+                    </t>
+                </section>
             </section>
             <section anchor="clientbound" title="Clientbound Messages">
                 <t>
@@ -152,6 +178,11 @@
             </section>
             <section anchor="server-client-behavior" title="Request-Response Behavior">
                 <section anchor="server-client-behavior-changename" title="SetUsername">
+                    <t>
+                        hi
+                    </t>
+                </section>
+                <section anchor="server-client-behavior-userinfo" title="UserInfo">
                     <t>
                         hi
                     </t>
