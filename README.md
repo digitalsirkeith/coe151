@@ -10,7 +10,7 @@ pip install -r requirements.txt
 If using the python module, simply run the following:
 
 `
-xml2rfc coe-151-mp1-protocol.xml
+xml2rfc coe-151-mp1-protocol.xml -o protocol/README.txt
 `
 
 ## Models
