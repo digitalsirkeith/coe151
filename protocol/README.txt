@@ -226,6 +226,189 @@ Vargas                 Expires September 15, 2020               [Page 4]
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
+2.2.6.  SendChat
+
+   On the scenario that a client wishes to send a message to everyone
+   online, this message will be sent to the server.  A sample message of
+   this format is shown below:
+
+   {"mtp": "SendChat", "data": {"message": "hi"}}
+
+   +---------+---------+-----------------------------------------------+
+   | Entry   | Data    |                  Description                  |
+   |         | Type    |                                               |
+   +---------+---------+-----------------------------------------------+
+   | mtp     | string  |  MessageType. All SendChat messages have this |
+   |         |         |            value set to "SendChat"            |
+   |         |         |                                               |
+   | message | string  |            The message to be sent.            |
+   +---------+---------+-----------------------------------------------+
+
+                             SendChat Entries
+
+   Behavior is discussed in detail in Section 3.2.5
+
+2.2.7.  RequestOnlineList
+
+   On the scenario that a client wishes to know all online users in the
+   server, this message will be sent to the server.  A sample message of
+   this format is shown below:
+
+   {"mtp": "RequestOnlineList", "data": {}}
+
+   +-------+--------+--------------------------------------------------+
+   | Entry | Data   |                   Description                    |
+   |       | Type   |                                                  |
+   +-------+--------+--------------------------------------------------+
+   | mtp   | string | MessageType. All RequestOnlineList messages have |
+   |       |        |      this value set to "RequestOnlineList"       |
+   +-------+--------+--------------------------------------------------+
+
+                         RequestOnlineList Entries
+
+   Behavior is discussed in detail in Section 3.2.6
+
+2.2.8.  Disconnect
+
+   On the scenario that a client wishes to disconnect, this message will
+   be sent to the server.  A sample message of this format is shown
+   below:
+
+
+
+
+Vargas                 Expires September 15, 2020               [Page 5]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+   {"mtp": "Disconnect", "data": {}}
+
+   +-------+---------+-------------------------------------------------+
+   | Entry | Data    |                   Description                   |
+   |       | Type    |                                                 |
+   +-------+---------+-------------------------------------------------+
+   | mtp   | string  |  MessageType. All Disconnect messages have this |
+   |       |         |            value set to "Disconnect"            |
+   +-------+---------+-------------------------------------------------+
+
+                            Disconnect Entries
+
+   Behavior is discussed in detail in Section 3.2.7
+
+2.2.9.  KickUser
+
+   On the scenario that an admin wishes to remove a user from the
+   server, this message will be sent to the server.  A sample message of
+   this format is shown below:
+
+   {"mtp": "KickUser", "data": {"name": "username"}}
+
+   +-------+---------+-------------------------------------------------+
+   | Entry | Data    |                   Description                   |
+   |       | Type    |                                                 |
+   +-------+---------+-------------------------------------------------+
+   | mtp   | string  |   MessageType. All KickUser messages have this  |
+   |       |         |             value set to "KickUser"             |
+   |       |         |                                                 |
+   | name  | string  | Name of the user to be kicked out of the server |
+   +-------+---------+-------------------------------------------------+
+
+                             KickUser Entries
+
+   Behavior is discussed in detail in Section 3.2.8
+
+2.2.10.  MuteUser
+
+   On the scenario that an admin wishes to mute a user in the server,
+   this message will be sent to the server.  A sample message of this
+   format is shown below:
+
+   {"mtp": "MuteUser", "data": {"name": "username"}}
+
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020               [Page 6]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+   +-------+---------+-------------------------------------------------+
+   | Entry | Data    |                   Description                   |
+   |       | Type    |                                                 |
+   +-------+---------+-------------------------------------------------+
+   | mtp   | string  |   MessageType. All MuteUser messages have this  |
+   |       |         |             value set to "MuteUser"             |
+   |       |         |                                                 |
+   | name  | string  |    Name of the user to be muted in the server   |
+   +-------+---------+-------------------------------------------------+
+
+                             MuteUser Entries
+
+   Behavior is discussed in detail in Section 3.2.9
+
+2.2.11.  UnmuteUser
+
+   On the scenario that an admin wishes to unmute a user in the server,
+   this message will be sent to the server.  A sample message of this
+   format is shown below:
+
+   {"mtp": "UnmuteUser", "data": {"name": "username"}}
+
+   +-------+---------+-------------------------------------------------+
+   | Entry | Data    |                   Description                   |
+   |       | Type    |                                                 |
+   +-------+---------+-------------------------------------------------+
+   | mtp   | string  |  MessageType. All UnmuteUser messages have this |
+   |       |         |            value set to "UnmuteUser"            |
+   |       |         |                                                 |
+   | name  | string  |   Name of the user to be unmuted in the server  |
+   +-------+---------+-------------------------------------------------+
+
+                            UnmuteUser Entries
+
+   Behavior is discussed in detail in Section 3.2.10
+
+2.2.12.  SetAsAdmin
+
+   On the scenario that an admin wishes to set another user as the
+   admin, this message will be sent to the server.  A sample message of
+   this format is shown below:
+
+   {"mtp": "SetAsAdmin", "data": {"name": "username"}}
+
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020               [Page 7]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+   +-------+---------+-------------------------------------------------+
+   | Entry | Data    |                   Description                   |
+   |       | Type    |                                                 |
+   +-------+---------+-------------------------------------------------+
+   | mtp   | string  |  MessageType. All SetAsAdmin messages have this |
+   |       |         |            value set to "SetAsAdmin"            |
+   |       |         |                                                 |
+   | name  | string  |  Name of the user to be set as the new admin in |
+   |       |         |                    the server                   |
+   +-------+---------+-------------------------------------------------+
+
+                            SetAsAdmin Entries
+
+   Behavior is discussed in detail in Section 3.2.11
+
 2.3.  Clientbound Messages
 
    message
@@ -240,25 +423,64 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 3.1.1.  Login
 
-   hi
+   Placeholder
 
 3.2.  Request-Response Behavior
 
 3.2.1.  SetUsername
 
-   hi
+   Placeholder
 
 3.2.2.  UserInfo
 
-   hi
+   Placeholder
 
 3.2.3.  LocalTime
 
-   hi
+   Placeholder
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020               [Page 8]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
 
 3.2.4.  Whisper
 
-   hi
+   Placeholder
+
+3.2.5.  SendChat
+
+   Placeholder
+
+3.2.6.  OnlineList
+
+   Placeholder
+
+3.2.7.  Disconnect
+
+   Placeholder
+
+3.2.8.  KickUser
+
+   Placeholder
+
+3.2.9.  MuteUser
+
+   Placeholder
+
+3.2.10.  UnmuteUser
+
+   Placeholder
+
+3.2.11.  SetAsAdmin
+
+   Placeholder
 
 4.  References
 
@@ -270,24 +492,19 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
               This is a primary reference work.
 
-
-
-
-
-
-
-
-Vargas                 Expires September 15, 2020               [Page 5]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
-
 4.2.  Informative References
 
    [RFC6949]  Flanagan, H. and N. Brownlee, "RFC Series Format
               Requirements and Future Development", RFC 6949, May 2013.
 
               This is a primary reference work.
+
+
+
+Vargas                 Expires September 15, 2020               [Page 9]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
 
 Author's Address
 
@@ -333,4 +550,11 @@ Author's Address
 
 
 
-Vargas                 Expires September 15, 2020               [Page 6]
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 10]

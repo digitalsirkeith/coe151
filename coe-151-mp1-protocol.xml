@@ -207,6 +207,173 @@
                         Behavior is discussed in detail in <xref target="server-client-behavior-whisper"/>
                     </t>
                 </section>
+                <section anchor="SendChat" title="SendChat">
+                    <t>
+                        On the scenario that a client wishes to send a message to everyone online, this 
+                        message will be sent to the server. A sample message of this format is shown below:
+                    </t>
+                    <t>
+                        {"mtp": "SendChat", "data": {"message": "hi"}}
+                    </t>
+                    <texttable title="SendChat Entries">
+                        <ttcol>Entry</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All SendChat messages have this value set to "SendChat"</c>
+        
+                        <c>message</c>
+                        <c>string</c>
+                        <c>The message to be sent.</c>
+                    </texttable>
+                    <t>
+                        Behavior is discussed in detail in <xref target="server-client-behavior-sendchat"/>
+                    </t>
+                </section>
+                <section anchor="RequestOnlineList" title="RequestOnlineList">
+                    <t>
+                        On the scenario that a client wishes to know all online users in the server, this 
+                        message will be sent to the server. A sample message of this format is shown below:
+                    </t>
+                    <t>
+                        {"mtp": "RequestOnlineList", "data": {}}
+                    </t>
+                    <texttable title="RequestOnlineList Entries">
+                        <ttcol>Entry</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All RequestOnlineList messages have this value set to "RequestOnlineList"</c>
+                    </texttable>
+                    <t>
+                        Behavior is discussed in detail in <xref target="server-client-behavior-onlinelist"/>
+                    </t>
+                </section>
+                <section anchor="Disconnect" title="Disconnect">
+                    <t>
+                        On the scenario that a client wishes to disconnect, this message will be sent to the 
+                        server. A sample message of this format is shown below:
+                    </t>
+                    <t>
+                        {"mtp": "Disconnect", "data": {}}
+                    </t>
+                    <texttable title="Disconnect Entries">
+                        <ttcol>Entry</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All Disconnect messages have this value set to "Disconnect"</c>
+                    </texttable>
+                    <t>
+                        Behavior is discussed in detail in <xref target="server-client-behavior-disconnect"/>
+                    </t>
+                </section>
+                <section anchor="KickUser" title="KickUser">
+                    <t>
+                        On the scenario that an admin wishes to remove a user from the server, this message 
+                        will be sent to the server. A sample message of this format is shown below:
+                    </t>
+                    <t>
+                        {"mtp": "KickUser", "data": {"name": "username"}}
+                    </t>
+                    <texttable title="KickUser Entries">
+                        <ttcol>Entry</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All KickUser messages have this value set to "KickUser"</c>
+        
+                        <c>name</c>
+                        <c>string</c>
+                        <c>Name of the user to be kicked out of the server</c>
+                    </texttable>
+                    <t>
+                        Behavior is discussed in detail in <xref target="server-client-behavior-kickuser"/>
+                    </t>
+                </section>
+                <section anchor="MuteUser" title="MuteUser">
+                    <t>
+                        On the scenario that an admin wishes to mute a user in the server, this message 
+                        will be sent to the server. A sample message of this format is shown below:
+                    </t>
+                    <t>
+                        {"mtp": "MuteUser", "data": {"name": "username"}}
+                    </t>
+                    <texttable title="MuteUser Entries">
+                        <ttcol>Entry</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All MuteUser messages have this value set to "MuteUser"</c>
+        
+                        <c>name</c>
+                        <c>string</c>
+                        <c>Name of the user to be muted in the server</c>
+                    </texttable>
+                    <t>
+                        Behavior is discussed in detail in <xref target="server-client-behavior-muteuser"/>
+                    </t>
+                </section>
+                <section anchor="UnmuteUser" title="UnmuteUser">
+                    <t>
+                        On the scenario that an admin wishes to unmute a user in the server, this message 
+                        will be sent to the server. A sample message of this format is shown below:
+                    </t>
+                    <t>
+                        {"mtp": "UnmuteUser", "data": {"name": "username"}}
+                    </t>
+                    <texttable title="UnmuteUser Entries">
+                        <ttcol>Entry</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All UnmuteUser messages have this value set to "UnmuteUser"</c>
+        
+                        <c>name</c>
+                        <c>string</c>
+                        <c>Name of the user to be unmuted in the server</c>
+                    </texttable>
+                    <t>
+                        Behavior is discussed in detail in <xref target="server-client-behavior-unmuteuser"/>
+                    </t>
+                </section>
+                <section anchor="SetAsAdmin" title="SetAsAdmin">
+                    <t>
+                        On the scenario that an admin wishes to set another user as the admin, this message 
+                        will be sent to the server. A sample message of this format is shown below:
+                    </t>
+                    <t>
+                        {"mtp": "SetAsAdmin", "data": {"name": "username"}}
+                    </t>
+                    <texttable title="SetAsAdmin Entries">
+                        <ttcol>Entry</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All SetAsAdmin messages have this value set to "SetAsAdmin"</c>
+        
+                        <c>name</c>
+                        <c>string</c>
+                        <c>Name of the user to be set as the new admin in the server</c>
+                    </texttable>
+                    <t>
+                        Behavior is discussed in detail in <xref target="server-client-behavior-setasadmin"/>
+                    </t>
+                </section>
             </section>
             <section anchor="clientbound" title="Clientbound Messages">
                 <t>
@@ -223,29 +390,64 @@
             <section anchor="server-client-state" title="States / Phases">
                 <section anchor="server-client-state-login" title="Login">
                     <t>
-                        hi
+                        Placeholder
                     </t>
                 </section>
             </section>
             <section anchor="server-client-behavior" title="Request-Response Behavior">
                 <section anchor="server-client-behavior-changename" title="SetUsername">
                     <t>
-                        hi
+                        Placeholder
                     </t>
                 </section>
                 <section anchor="server-client-behavior-userinfo" title="UserInfo">
                     <t>
-                        hi
+                        Placeholder
                     </t>
                 </section>
                 <section anchor="server-client-behavior-localtime" title="LocalTime">
                     <t>
-                        hi
+                        Placeholder
                     </t>
                 </section>
                 <section anchor="server-client-behavior-whisper" title="Whisper">
                     <t>
-                        hi
+                        Placeholder
+                    </t>
+                </section>
+                <section anchor="server-client-behavior-sendchat" title="SendChat">
+                    <t>
+                        Placeholder
+                    </t>
+                </section>
+                <section anchor="server-client-behavior-onlinelist" title="OnlineList">
+                    <t>
+                        Placeholder
+                    </t>
+                </section>
+                <section anchor="server-client-behavior-disconnect" title="Disconnect">
+                    <t>
+                        Placeholder
+                    </t>
+                </section>
+                <section anchor="server-client-behavior-kickuser" title="KickUser">
+                    <t>
+                        Placeholder
+                    </t>
+                </section>
+                <section anchor="server-client-behavior-muteuser" title="MuteUser">
+                    <t>
+                        Placeholder
+                    </t>
+                </section>
+                <section anchor="server-client-behavior-unmuteuser" title="UnmuteUser">
+                    <t>
+                        Placeholder
+                    </t>
+                </section>
+                <section anchor="server-client-behavior-setasadmin" title="SetAsAdmin">
+                    <t>
+                        Placeholder
                     </t>
                 </section>
             </section>
