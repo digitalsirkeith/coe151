@@ -411,7 +411,120 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 2.3.  Clientbound Messages
 
-   message
+2.3.1.  AssignUsername
+
+   This is the message sent by the server to the client after receiving
+   a Login message.
+
+   If the requested username is valid:
+
+   {"mtp": "AssignUsername", "data": {"name": "username"}, "status":
+   "OK"}
+
+   If the requested username has a duplicate:
+
+   {"mtp": "AssignUsername", "data": {"name": "username"}, "status":
+   "DuplicateError"}
+
+   +--------+---------+------------------------------------------------+
+   | Field  | Data    |                  Description                   |
+   | Name   | Type    |                                                |
+   +--------+---------+------------------------------------------------+
+   | mtp    | string  | MessageType. All AssignUsername messages have  |
+   |        |         |       this value set to "AssignUsername"       |
+   |        |         |                                                |
+   | name   | string  |         Accepted / Rejected username.          |
+   |        |         |                                                |
+   | status | Enum:   |    Possible values: "OK", "DuplicateError".    |
+   |        | String  |  Status of the Login message previously sent.  |
+   +--------+---------+------------------------------------------------+
+
+                           AssignUsername Fields
+
+
+
+
+
+Vargas                 Expires September 15, 2020               [Page 8]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+2.3.2.  SetUsername
+
+   This is the message sent by the server to the client after receiving
+   a SetUsername message.
+
+   If the requested username is valid:
+
+   {"mtp": "SetUsername", "data": {"name": "username"}, "status": "OK"}
+
+   If the requested username has a duplicate:
+
+   {"mtp": "SetUsername", "data": {"name": "username"}, "status":
+   "DuplicateError"}
+
+   +--------+--------+-------------------------------------------------+
+   | Field  | Data   |                   Description                   |
+   | Name   | Type   |                                                 |
+   +--------+--------+-------------------------------------------------+
+   | mtp    | string | MessageType. All SetUsername messages have this |
+   |        |        |            value set to "SetUsername"           |
+   |        |        |                                                 |
+   | name   | string |          Accepted / Rejected username.          |
+   |        |        |                                                 |
+   | status | Enum:  | Possible values: "OK", "DuplicateError". Status |
+   |        | String |  of the SetUsername message previously sent by  |
+   |        |        |                   the client.                   |
+   +--------+--------+-------------------------------------------------+
+
+                            SetUsername Fields
+
+2.3.3.  ProvideUserInfo
+
+   This is the message sent by the server to the client after receiving
+   a RequestUserInfo message.
+
+   If the requested user is online the server:
+
+   {"mtp": "ProvideUserInfo", "data": {"name": "username", "ip":
+   "192.168.1.1", "port": 15151}, "status": "OK"}
+
+   If the requested user does not exist:
+
+   {"mtp": "ProvideUserInfo", "data": {"name": "username", "ip":
+   "192.168.1.1", "port": 15151}, "status": "UserDoesNotExist"}
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020               [Page 9]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+   +--------+---------+------------------------------------------------+
+   | Field  | Data    |                  Description                   |
+   | Name   | Type    |                                                |
+   +--------+---------+------------------------------------------------+
+   | mtp    | string  | MessageType. All ProvideUserInfo messages have |
+   |        |         |      this value set to "ProvideUserInfo"       |
+   |        |         |                                                |
+   | name   | string  |          Name of the requested user.           |
+   |        |         |                                                |
+   | ip     | string  |           IP of the requested user.            |
+   |        |         |                                                |
+   | port   | integer |          Port of the requested user.           |
+   |        |         |                                                |
+   | status | Enum:   |   Possible values: "OK", "UserDoesNotExist".   |
+   |        | String  |     Status of the RequestUserInfo message      |
+   |        |         |         previously sent by the client.         |
+   +--------+---------+------------------------------------------------+
+
+                          ProvideUserInfo Fields
 
 2.4.  Peer-Peer Messages
 
@@ -426,29 +539,45 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    {"mtp": "Handshake", "data": {"ip": "192.168.0.1", "port": 15151,
    "name": "new_peer"}}
 
-   +--------+--------+-------------------------------------------------+
-   | Field  | Data   |                   Description                   |
-   | Name   | Type   |                                                 |
-   +--------+--------+-------------------------------------------------+
-   | mtp    | string |  MessageType. All Handshake messages have this  |
-   |        |        |             value set to "Handshake"            |
-   |        |        |                                                 |
-   | ip     | string |    IP of the peer broadcasting the Handshake    |
-   |        |        |                                                 |
-   | port   | int    |   Port of the peer broadcasting the Handshake.  |
-   |        |        |                                                 |
-   | name   | string |  Username that is being broadcasted to all the  |
-   |        |        |    other peers in the network for validation.   |
-   +--------+--------+-------------------------------------------------+
-
-                             Handshake Fields
 
 
 
-Vargas                 Expires September 15, 2020               [Page 8]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 10]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
+
+   +--------+---------+------------------------------------------------+
+   | Field  | Data    |                  Description                   |
+   | Name   | Type    |                                                |
+   +--------+---------+------------------------------------------------+
+   | mtp    | string  | MessageType. All Handshake messages have this  |
+   |        |         |            value set to "Handshake"            |
+   |        |         |                                                |
+   | ip     | string  |   IP of the peer broadcasting the Handshake    |
+   |        |         |                                                |
+   | port   | integer |  Port of the peer broadcasting the Handshake.  |
+   |        |         |                                                |
+   | name   | string  | Username that is being broadcasted to all the  |
+   |        |         |   other peers in the network for validation.   |
+   +--------+---------+------------------------------------------------+
+
+                             Handshake Fields
 
 2.4.2.  HandshakeResponse
 
@@ -482,6 +611,13 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
                          HandshakeResponse Fields
 
+
+
+Vargas                 Expires September 15, 2020              [Page 11]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
 3.  Server-Client Model
 
 3.1.  States / Phases
@@ -495,16 +631,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 3.2.1.  SetUsername
 
    Placeholder
-
-
-
-
-
-
-Vargas                 Expires September 15, 2020               [Page 9]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
 
 3.2.2.  UserInfo
 
@@ -538,6 +664,16 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    Placeholder
 
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 12]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
 3.2.10.  UnmuteUser
 
    Placeholder
@@ -553,14 +689,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    [RFC3470]  Hollenbeck, S., Rose, M., and L. Masinter, "Guidelines for
               the Use of Extensible Markup Language (XML) within IETF
               Protocols", RFC 3470, May 2013.
-
-
-
-
-Vargas                 Expires September 15, 2020              [Page 10]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
 
               This is a primary reference work.
 
@@ -597,20 +725,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Vargas                 Expires September 15, 2020              [Page 11]
+Vargas                 Expires September 15, 2020              [Page 13]

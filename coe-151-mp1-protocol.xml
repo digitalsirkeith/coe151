@@ -376,9 +376,121 @@
                 </section>
             </section>
             <section anchor="clientbound" title="Clientbound Messages">
-                <t>
-                    message
-                </t>
+                <section anchor="AssignUsername" title="AssignUsername">
+                    <t>
+                        This is the message sent by the server to the client after receiving a Login message.
+                    </t>
+                    <t>
+                        If the requested username is valid:
+                    </t>
+                    <t>
+                        {"mtp": "AssignUsername", "data": {"name": "username"}, "status": "OK"}
+                    </t>
+                    <t>
+                        If the requested username has a duplicate:
+                    </t>
+                    <t>
+                        {"mtp": "AssignUsername", "data": {"name": "username"}, "status": "DuplicateError"}
+                    </t>
+                    <texttable title="AssignUsername Fields">
+                        <ttcol>Field Name</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All AssignUsername messages have this value set to "AssignUsername"</c>
+        
+                        <c>name</c>
+                        <c>string</c>
+                        <c>Accepted / Rejected username.</c>
+
+                        <c>status</c>
+                        <c>Enum: String</c>
+                        <c>Possible values: "OK", "DuplicateError". Status of the Login message previously sent.</c>
+                    </texttable>
+                </section>
+                <section anchor="ServerSetUsername" title="SetUsername">
+                    <t>
+                        This is the message sent by the server to the client after receiving a SetUsername message.
+                    </t>
+                    <t>
+                        If the requested username is valid:
+                    </t>
+                    <t>
+                        {"mtp": "SetUsername", "data": {"name": "username"}, "status": "OK"}
+                    </t>
+                    <t>
+                        If the requested username has a duplicate:
+                    </t>
+                    <t>
+                        {"mtp": "SetUsername", "data": {"name": "username"}, "status": "DuplicateError"}
+                    </t>
+                    <texttable title="SetUsername Fields">
+                        <ttcol>Field Name</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All SetUsername messages have this value set to "SetUsername"</c>
+        
+                        <c>name</c>
+                        <c>string</c>
+                        <c>Accepted / Rejected username.</c>
+
+                        <c>status</c>
+                        <c>Enum: String</c>
+                        <c>Possible values: "OK", "DuplicateError". Status of the SetUsername message 
+                            previously sent by the client.</c>
+                    </texttable>
+                </section>
+                <section anchor="ProvideUserInfo" title="ProvideUserInfo">
+                    <t>
+                        This is the message sent by the server to the client after receiving a 
+                        RequestUserInfo message.
+                    </t>
+                    <t>
+                        If the requested user is online the server:
+                    </t>
+                    <t>
+                        {"mtp": "ProvideUserInfo", "data": {"name": "username", 
+                        "ip": "192.168.1.1", "port": 15151}, "status": "OK"}
+                    </t>
+                    <t>
+                        If the requested user does not exist:
+                    </t>
+                    <t>
+                        {"mtp": "ProvideUserInfo", "data": {"name": "username", 
+                        "ip": "192.168.1.1", "port": 15151}, "status": "UserDoesNotExist"}
+                    </t>
+                    <texttable title="ProvideUserInfo Fields">
+                        <ttcol>Field Name</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All ProvideUserInfo messages have this value set to "ProvideUserInfo"</c>
+        
+                        <c>name</c>
+                        <c>string</c>
+                        <c>Name of the requested user.</c>
+        
+                        <c>ip</c>
+                        <c>string</c>
+                        <c>IP of the requested user.</c>
+        
+                        <c>port</c>
+                        <c>integer</c>
+                        <c>Port of the requested user.</c>
+
+                        <c>status</c>
+                        <c>Enum: String</c>
+                        <c>Possible values: "OK", "UserDoesNotExist". Status of the RequestUserInfo message 
+                            previously sent by the client.</c>
+                    </texttable>
+                </section>
             </section>
             <section anchor="peer2peer" title="Peer-Peer Messages">
                 <section anchor="Handshake" title="Handshake">
@@ -405,7 +517,7 @@
                         <c>IP of the peer broadcasting the Handshake</c>
         
                         <c>port</c>
-                        <c>int</c>
+                        <c>integer</c>
                         <c>Port of the peer broadcasting the Handshake.</c>
         
                         <c>name</c>
