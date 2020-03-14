@@ -4,13 +4,13 @@
 
 CoE 151                                                        K. Vargas
 Internet-Draft                                                      EEEI
-Updates: 1 (if approved)                                  March 14, 2020
+Updates: 3 (if approved)                                  March 14, 2020
 Intended status: Standards Track
 Expires: September 15, 2020
 
 
            Server-Client and Peer-Peer Communication Protocol
-                          coe-151-mp1-protocol
+                        coe-151-mp1-protocol-03
 
 Abstract
 
@@ -23,8 +23,8 @@ Abstract
 
 Disclaimer
 
-   This only covers the communication protocol.  Implementations of
-   control logic may vary.
+   The template used is from [RFC3470].  The document attempts to follow
+   guidelines set in [RFC6949].
 
 Status of This Memo
 
@@ -69,9 +69,70 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    The lack of implementation rules adds complexity on ensuring that two
    applications communicate with each other properly.
 
-2.  References
+2.  Message Formats
 
-2.1.  Normative References
+2.1.  Introduction
+
+   Messages sent by both server-client and peer-peer models shall be
+   encoded in JavaScript Object Notation (JSON).  This is to simplify
+   the parsing process in the individual implementations.  There are
+   several valid entries of the messages for this protocol.  Message
+   formats are identified by the entry "mtp".  The particular
+   information for the rest of the entries will be discussed in detail
+   in their respective use cases in the message formats.
+
+2.2.  Serverbound Messages
+
+2.2.1.  Login
+
+   This is the first packet a client should send to the server.  A
+   sample message of this format is shown below:
+
+   {"mtp": "Login", "data": {"name": "username"}}
+
+   +-------+--------+--------------------------------------------------+
+   | Entry | Data   |                   Description                    |
+   |       | Type   |                                                  |
+   +-------+--------+--------------------------------------------------+
+   | mtp   | string |  MessageType. All Login messages have the value  |
+   |       |        |              of mtp set to "Login"               |
+   |       |        |                                                  |
+   | name  | string |    Client Name. The username that the client     |
+   |       |        |       requests to use to join the server.        |
+   +-------+--------+--------------------------------------------------+
+
+                               Login Entries
+
+   The server must send an AssignUsername message as a response to this
+   message.  This is discussed in detail in Section 3.1.1
+
+
+
+
+Vargas                 Expires September 15, 2020               [Page 2]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+2.3.  Clientbound Messages
+
+   message
+
+2.4.  Peer-Peer Messages
+
+   message
+
+3.  Server-Client Model
+
+3.1.  States / Phases
+
+3.1.1.  Login
+
+   hi
+
+4.  References
+
+4.1.  Normative References
 
    [RFC3470]  Hollenbeck, S., Rose, M., and L. Masinter, "Guidelines for
               the Use of Extensible Markup Language (XML) within IETF
@@ -79,7 +140,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
               This is a primary reference work.
 
-2.2.  Informative References
+4.2.  Informative References
 
    [RFC6949]  Flanagan, H. and N. Brownlee, "RFC Series Format
               Requirements and Future Development", RFC 6949, May 2013.
@@ -104,9 +165,4 @@ Author's Address
 
 
 
-
-
-
-
-
-Vargas                 Expires September 15, 2020               [Page 2]
+Vargas                 Expires September 15, 2020               [Page 3]

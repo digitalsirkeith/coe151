@@ -8,11 +8,11 @@
 
 <rfc 
     category="std" 
-    docName="coe-151-mp1-protocol" 
+    docName="coe-151-mp1-protocol-03" 
     ipr="trust200902" 
     consensus="no" 
     submissionType="independent" 
-    updates="1" 
+    updates="3" 
     xml:lang="en"
 >
     <front>
@@ -53,7 +53,8 @@
 
         <note title="Disclaimer">
             <t>
-                This only covers the communication protocol. Implementations of control logic may vary.
+                The template used is from <xref target="RFC3470"/>. The document attempts to follow
+                guidelines set in <xref target="RFC6949"/>.
             </t>
         </note>
     </front>
@@ -64,6 +65,65 @@
                 implementation rules adds complexity on ensuring that two applications communicate
                 with each other properly. 
             </t>
+        </section>
+        <section anchor="mtypes" title="Message Formats">
+            <section anchor="mintro" title="Introduction">
+                <t>
+                    Messages sent by both server-client and peer-peer models shall be encoded in
+                    JavaScript Object Notation (JSON). This is to simplify the parsing process in
+                    the individual implementations. There are several valid entries of the messages 
+                    for this protocol. Message formats are identified by the entry "mtp". The particular 
+                    information for the rest of the entries will be discussed in detail in their 
+                    respective use cases in the message formats.
+                </t>
+            </section>
+            <section anchor="serverbound" title="Serverbound Messages">
+                <section anchor="Login" title="Login">
+                    <t>
+                        This is the first packet a client should send to the server. A sample message of
+                        this format is shown below:
+                    </t>
+                    <t>
+                        {"mtp": "Login", "data": {"name": "username"}}
+                    </t>
+                    <texttable title="Login Entries">
+                        <ttcol>Entry</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All Login messages have the value of mtp set to "Login"</c>
+        
+                        <c>name</c>
+                        <c>string</c>
+                        <c>Client Name. The username that the client requests to use to join the server.</c>
+                    </texttable>
+                    <t>
+                        The server must send an AssignUsername message as a response to this message. This is
+                        discussed in detail in <xref target="server-client-state-login"/>
+                    </t>
+                </section> 
+            </section>
+            <section anchor="clientbound" title="Clientbound Messages">
+                <t>
+                    message
+                </t>
+            </section>
+            <section anchor="peer2peer" title="Peer-Peer Messages">
+                <t>
+                    message
+                </t>
+            </section>
+        </section>
+        <section anchor="server-client" title="Server-Client Model">
+            <section anchor="server-client-state" title="States / Phases">
+                <section anchor="server-client-state-login" title="Login">
+                    <t>
+                        hi
+                    </t>
+                </section>
+            </section>
         </section>
     </middle>
 
