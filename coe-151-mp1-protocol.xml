@@ -11,11 +11,10 @@
     docName="coe-151-mp1-protocol" 
     ipr="trust200902" 
     consensus="no" 
-    submissionType="IETF" 
+    submissionType="independent" 
     updates="1" 
     xml:lang="en"
 >
-
     <front>
         <title abbrev="CoE 151 MP Protocol">
             Server-Client and Peer-Peer Communication Protocol
@@ -42,7 +41,6 @@
         <workgroup>CoE 151</workgroup>
         <keyword>MP1</keyword>
 
-
         <abstract>
             <t>
                 This document describes the communication protocol of the server-client model and
@@ -68,10 +66,27 @@
             </t>
         </section>
     </middle>
-    <back>
 
+    <back>
         <references title="Normative References">
-            &RFC2119;
+            <reference anchor="RFC3470">
+                <front>
+                    <title>Guidelines for the Use of Extensible Markup Language (XML)
+                        within IETF Protocols</title>
+                    <author initials="S." surname="Hollenbeck" fullname="Scott Hollenbeck">
+                        <organization abbrev="VeriSign, Inc.">VeriSign, Incorporated</organization>
+                    </author>
+                    <author initials="M." surname="Rose" fullname="Marshall T. Rose">
+                        <organization abbrev="Dover Beach Consulting, Inc.">Dover Beach Consulting, Incorporated</organization>
+                    </author>
+                    <author initials="L." surname="Masinter" fullname="Larry Masinter">
+                        <organization abbrev="Adobe Systems Inc.">Adobe Systems Incorporated</organization>
+                    </author>
+                    <date year="2013" month="May" />
+                </front>
+                <seriesInfo name="RFC" value="3470" />
+                <annotation>This is a primary reference work.</annotation>
+            </reference>
         </references>
 
         <references title="Informative References">
@@ -88,21 +103,6 @@
                 </front>
                 <seriesInfo name="RFC" value="6949" />
                 <annotation>This is a primary reference work.</annotation>
-            </reference>
-
-            <reference anchor="RED" target="http://www.aciri.org/floyd/papers/early.pdf">
-                <front>
-                    <title>Random Early Detection (RED) gateways for Congestion Avoidance</title>
-                    <author fullname="Sally Floyd" initials="S" surname="Floyd">
-                        <organization>LBL</organization>
-                    </author>
-                    <author fullname="Van Jacobson" initials="V" surname="Jacobson">
-                        <organization>LBL</organization>
-                    </author>
-                    <date month="August" year="1993" />
-                </front>
-                <seriesInfo name="IEEE/ACM Transactions on Networking" value="1(4) 397--413" />
-                <format target="http://www.aciri.org/floyd/papers/early.pdf" octets="318703" type="PDF" />
             </reference>
         </references>
     </back>

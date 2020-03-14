@@ -61,10 +61,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    (https://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
-   to this document.  Code Components extracted from this document must
-   include Simplified BSD License text as described in Section 4.e of
-   the Trust Legal Provisions and are provided without warranty as
-   described in the Simplified BSD License.
+   to this document.
 
 1.  Introduction
 
@@ -76,17 +73,13 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 2.1.  Normative References
 
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/info/rfc2119>.
+   [RFC3470]  Hollenbeck, S., Rose, M., and L. Masinter, "Guidelines for
+              the Use of Extensible Markup Language (XML) within IETF
+              Protocols", RFC 3470, May 2013.
+
+              This is a primary reference work.
 
 2.2.  Informative References
-
-   [RED]      Floyd, S. and V. Jacobson, "Random Early Detection (RED)
-              gateways for Congestion Avoidance", IEEE/ACM Transactions
-              on Networking 1(4) 397--413, August 1993,
-              <http://www.aciri.org/floyd/papers/early.pdf>.
 
    [RFC6949]  Flanagan, H. and N. Brownlee, "RFC Series Format
               Requirements and Future Development", RFC 6949, May 2013.
@@ -102,6 +95,13 @@ Author's Address
    Philippines
 
    Email: keith.vargas@eee.upd.edu.ph
+
+
+
+
+
+
+
 
 
 
