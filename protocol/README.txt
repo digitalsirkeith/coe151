@@ -4,13 +4,13 @@
 
 CoE 151                                                        K. Vargas
 Internet-Draft                                                      EEEI
-Updates: 3 (if approved)                                  March 14, 2020
+Updates: 5 (if approved)                                  March 14, 2020
 Intended status: Standards Track
 Expires: September 15, 2020
 
 
            Server-Client and Peer-Peer Communication Protocol
-                        coe-151-mp1-protocol-03
+                        coe-151-mp1-protocol-05
 
 Abstract
 
@@ -94,8 +94,8 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    | Entry | Data   |                   Description                    |
    |       | Type   |                                                  |
    +-------+--------+--------------------------------------------------+
-   | mtp   | string |  MessageType. All Login messages have the value  |
-   |       |        |              of mtp set to "Login"               |
+   | mtp   | string | MessageType. All Login messages have this value  |
+   |       |        |                  set to "Login"                  |
    |       |        |                                                  |
    | name  | string |    Client Name. The username that the client     |
    |       |        |       requests to use to join the server.        |
@@ -117,20 +117,20 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 2.2.2.  SetUsername
 
    On the scenario that a client wishes to change usernames, this
-   message will be sent.  A sample message of this format is shown
-   below:
+   message will be sent to the server.  A sample message of this format
+   is shown below:
 
    {"mtp": "SetUsername", "data": {"name": "new_name"}}
 
-   +-------+---------+-------------------------------------------------+
-   | Entry | Data    |                   Description                   |
-   |       | Type    |                                                 |
-   +-------+---------+-------------------------------------------------+
-   | mtp   | string  |  MessageType. All Login messages have the value |
-   |       |         |              of mtp set to "Login"              |
-   |       |         |                                                 |
-   | name  | string  |        Requested new name by the client.        |
-   +-------+---------+-------------------------------------------------+
+   +-------+--------+--------------------------------------------------+
+   | Entry | Data   |                   Description                    |
+   |       | Type   |                                                  |
+   +-------+--------+--------------------------------------------------+
+   | mtp   | string | MessageType. All SetUsername messages have this  |
+   |       |        |            value set to "SetUsername"            |
+   |       |        |                                                  |
+   | name  | string |        Requested new name by the client.         |
+   +-------+--------+--------------------------------------------------+
 
                             SetUsername Entries
 
@@ -139,26 +139,26 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 2.2.3.  RequestUserInfo
 
-   On the scenario that a client wishes to change usernames, this
-   message will be sent.  A sample message of this format is shown
-   below:
+   On the scenario that a client wishes to view a user's network
+   information, this message will be sent to the server.  A sample
+   message of this format is shown below:
 
    {"mtp": "RequestUserInfo", "data": {"name": "username"}}
 
-   +-------+---------+-------------------------------------------------+
-   | Entry | Data    |                   Description                   |
-   |       | Type    |                                                 |
-   +-------+---------+-------------------------------------------------+
-   | mtp   | string  |  MessageType. All Login messages have the value |
-   |       |         |              of mtp set to "Login"              |
-   |       |         |                                                 |
-   | name  | string  |   Name of the user whose information is being   |
-   |       |         |                    requested.                   |
-   +-------+---------+-------------------------------------------------+
+   +-------+--------+--------------------------------------------------+
+   | Entry | Data   |                   Description                    |
+   |       | Type   |                                                  |
+   +-------+--------+--------------------------------------------------+
+   | mtp   | string |  MessageType. All RequestUserInfo messages have  |
+   |       |        |       this value set to "RequestUserInfo"        |
+   |       |        |                                                  |
+   | name  | string |   Name of the user whose information is being    |
+   |       |        |                    requested.                    |
+   +-------+--------+--------------------------------------------------+
 
                           RequestUserInfo Entries
 
-   The server must send a SetUsername message as a response to this
+   The server must send a ProvideUserInfo message as a response to this
    message.  This is discussed in detail in Section 3.2.2
 
 
@@ -166,6 +166,62 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 Vargas                 Expires September 15, 2020               [Page 3]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+2.2.4.  RequestLocalTime
+
+   On the scenario that a client wishes to change usernames, this
+   message will be sent to the server.  A sample message of this format
+   is shown below:
+
+   {"mtp": "RequestLocalTime", "data": {}}
+
+   +-------+--------+--------------------------------------------------+
+   | Entry | Data   |                   Description                    |
+   |       | Type   |                                                  |
+   +-------+--------+--------------------------------------------------+
+   | mtp   | string | MessageType. All RequestLocalTime messages have  |
+   |       |        |       this value set to "RequestLocalTime"       |
+   +-------+--------+--------------------------------------------------+
+
+                         RequestLocalTime Entries
+
+   The server must send a SendLocalTime message as a response to this
+   message.  This is discussed in detail in Section 3.2.3
+
+2.2.5.  WhisperToUser
+
+   On the scenario that a client wishes to send a private message to
+   another user, this message will be sent to the server.  A sample
+   message of this format is shown below:
+
+   {"mtp": "WhisperToUser", "data": {"to": ["user1", "user2", "user3"],
+   "message": "hi"}}
+
+   +---------+-----------+---------------------------------------------+
+   | Entry   | Data Type |                 Description                 |
+   +---------+-----------+---------------------------------------------+
+   | mtp     | string    |   MessageType. All WhisperToUser messages   |
+   |         |           |    have this value set to "WhisperToUser"   |
+   |         |           |                                             |
+   | to      | array of  |     List of users the private message is    |
+   |         | strings   |                addressed to.                |
+   |         |           |                                             |
+   | message | string    |       The private message to be sent.       |
+   +---------+-----------+---------------------------------------------+
+
+                           WhisperToUser Entries
+
+   Behavior is discussed in detail in Section 3.2.4
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020               [Page 4]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -196,6 +252,14 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    hi
 
+3.2.3.  LocalTime
+
+   hi
+
+3.2.4.  Whisper
+
+   hi
+
 4.  References
 
 4.1.  Normative References
@@ -206,6 +270,18 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
               This is a primary reference work.
 
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020               [Page 5]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
 4.2.  Informative References
 
    [RFC6949]  Flanagan, H. and N. Brownlee, "RFC Series Format
@@ -214,17 +290,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
               This is a primary reference work.
 
 Author's Address
-
-
-
-
-
-
-
-Vargas                 Expires September 15, 2020               [Page 4]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
 
    Keith Vargas
    Electrical and Electronics Engineering Institute
@@ -268,13 +333,4 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-
-
-
-
-
-
-
-
-
-Vargas                 Expires September 15, 2020               [Page 5]
+Vargas                 Expires September 15, 2020               [Page 6]

@@ -93,7 +93,7 @@
         
                         <c>mtp</c>
                         <c>string</c>
-                        <c>MessageType. All Login messages have the value of mtp set to "Login"</c>
+                        <c>MessageType. All Login messages have this value set to "Login"</c>
         
                         <c>name</c>
                         <c>string</c>
@@ -106,8 +106,8 @@
                 </section>
                 <section anchor="SetUsername" title="SetUsername">
                     <t>
-                        On the scenario that a client wishes to change usernames, this message will be sent. A
-                        sample message of this format is shown below:
+                        On the scenario that a client wishes to change usernames, this message will be sent to
+                        the server. A sample message of this format is shown below:
                     </t>
                     <t>
                         {"mtp": "SetUsername", "data": {"name": "new_name"}}
@@ -119,7 +119,7 @@
         
                         <c>mtp</c>
                         <c>string</c>
-                        <c>MessageType. All Login messages have the value of mtp set to "Login"</c>
+                        <c>MessageType. All SetUsername messages have this value set to "SetUsername"</c>
         
                         <c>name</c>
                         <c>string</c>
@@ -132,8 +132,8 @@
                 </section> 
                 <section anchor="RequestUserInfo" title="RequestUserInfo">
                     <t>
-                        On the scenario that a client wishes to change usernames, this message will be sent. A
-                        sample message of this format is shown below:
+                        On the scenario that a client wishes to view a user's network information, this message will be 
+                        sent to the server. A sample message of this format is shown below:
                     </t>
                     <t>
                         {"mtp": "RequestUserInfo", "data": {"name": "username"}}
@@ -145,7 +145,7 @@
         
                         <c>mtp</c>
                         <c>string</c>
-                        <c>MessageType. All Login messages have the value of mtp set to "Login"</c>
+                        <c>MessageType. All RequestUserInfo messages have this value set to "RequestUserInfo"</c>
         
                         <c>name</c>
                         <c>string</c>
@@ -154,6 +154,57 @@
                     <t>
                         The server must send a ProvideUserInfo message as a response to this message. This is
                         discussed in detail in <xref target="server-client-behavior-userinfo"/>
+                    </t>
+                </section>
+                <section anchor="RequestLocalTime" title="RequestLocalTime">
+                    <t>
+                        On the scenario that a client wishes to change usernames, this message will be sent
+                        to the server. A sample message of this format is shown below:
+                    </t>
+                    <t>
+                        {"mtp": "RequestLocalTime", "data": {}}
+                    </t>
+                    <texttable title="RequestLocalTime Entries">
+                        <ttcol>Entry</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All RequestLocalTime messages have this value set to "RequestLocalTime"</c>
+                    </texttable>
+                    <t>
+                        The server must send a SendLocalTime message as a response to this message. This is
+                        discussed in detail in <xref target="server-client-behavior-localtime"/>
+                    </t>
+                </section>
+                <section anchor="WhisperToUser" title="WhisperToUser">
+                    <t>
+                        On the scenario that a client wishes to send a private message to another user, this 
+                        message will be sent to the server. A sample message of this format is shown below:
+                    </t>
+                    <t>
+                        {"mtp": "WhisperToUser", "data": {"to": ["user1", "user2", "user3"], "message": "hi"}}
+                    </t>
+                    <texttable title="WhisperToUser Entries">
+                        <ttcol>Entry</ttcol>
+                        <ttcol>Data Type</ttcol>
+                        <ttcol align="center">Description</ttcol>
+        
+                        <c>mtp</c>
+                        <c>string</c>
+                        <c>MessageType. All WhisperToUser messages have this value set to "WhisperToUser"</c>
+        
+                        <c>to</c>
+                        <c>array of strings</c>
+                        <c>List of users the private message is addressed to.</c>
+        
+                        <c>message</c>
+                        <c>string</c>
+                        <c>The private message to be sent.</c>
+                    </texttable>
+                    <t>
+                        Behavior is discussed in detail in <xref target="server-client-behavior-whisper"/>
                     </t>
                 </section>
             </section>
@@ -183,6 +234,16 @@
                     </t>
                 </section>
                 <section anchor="server-client-behavior-userinfo" title="UserInfo">
+                    <t>
+                        hi
+                    </t>
+                </section>
+                <section anchor="server-client-behavior-localtime" title="LocalTime">
+                    <t>
+                        hi
+                    </t>
+                </section>
+                <section anchor="server-client-behavior-whisper" title="Whisper">
                     <t>
                         hi
                     </t>
