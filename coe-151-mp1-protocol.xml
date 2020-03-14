@@ -799,6 +799,9 @@
             <section anchor="peer2peer" title="Peer-Peer Messages">
                 <section anchor="Discovery" title="Discovery">
                     <t>
+                        Type: Broadcasted
+                    </t>
+                    <t>
                         Discovery message is sent to the broadcast network to ping the list of active peers.
                         This queries the hostnames and usernames of these peers. This is not completely necessary 
                         to implement if you will add a feature that will connect the peer to another by manually
@@ -828,6 +831,9 @@
                 </section>
                 <section anchor="DiscoveryResponse" title="DiscoveryResponse">
                     <t>
+                        Type: Direct / Single
+                    </t>
+                    <t>
                         DiscoveryResponse is sent by peers who are active in the network.
                     </t>
                     <t>
@@ -856,6 +862,9 @@
                     </texttable>
                 </section>
                 <section anchor="Handshake" title="Handshake">
+                    <t>
+                        Type: Broadcasted
+                    </t>
                     <t>
                         The handshake message is required to be sent for each scenario wherein a new peer-peer
                         joins a network. There may be peers active in the network or not but this message type 
@@ -888,6 +897,9 @@
                     </texttable>
                 </section>
                 <section anchor="HandshakeResponse" title="HandshakeResponse">
+                    <t>
+                        Type: Direct / Single
+                    </t>
                     <t>
                         The Handshake Response is sent back by peers active in the network to the ip and port 
                         found in the Handshake message sent by new peers attempting to join the network. This 
@@ -925,6 +937,9 @@
                 </section>
                 <section anchor="PeerSendChat" title="SendChat">
                     <t>
+                        Type: Broadcasted
+                    </t>
+                    <t>
                         SendChat is a message format for general chat messages.
                     </t>
                     <t>
@@ -946,6 +961,9 @@
                 </section>
                 <section anchor="Whisper" title="Whisper">
                     <t>
+                        Type: Direct / Single
+                    </t>
+                    <t>
                         Whisper is a message format for private chat messages.
                     </t>
                     <t>
@@ -966,6 +984,9 @@
                     </texttable>
                 </section>
                 <section anchor="PeerDisconnect" title="Disconnect">
+                    <t>
+                        Type: Broadcasted
+                    </t>
                     <t>
                         Peers send a Disconnect message to inform other peers on leaving the network.
                     </t>
@@ -1048,6 +1069,50 @@
                         Placeholder
                     </t>
                 </section>
+            </section>
+        </section>
+        <section anchor="peer-peer" title="Peer-Peer Model">
+            <section anchor="peer-peer-discovery" title="Discovery">
+                <t>
+                    Placeholder
+                </t>
+            </section>
+            <section anchor="peer-peer-handshake" title="Handshake">
+                <t>
+                    Placeholder
+                </t>
+            </section>
+            <section anchor="peer-peer-disconnect" title="Disconnect">
+                <t>
+                    Placeholder
+                </t>
+            </section>
+        </section>
+        <section anchor="security" title="Security Considerations">
+            <section anchor="security-intro" title="Introduction">
+                <t>
+                    This protocol will raise plenty of security vulnerabilities. This is
+                    expected as security was never considered in designing this protocol.
+                    This section will simply discuss some of possible vulnerabilities.
+                </t>
+            </section>
+            <section anchor="security-authentication" title="Authentication">
+                <t>
+                    There is no form of authentication in this protocol. The chat system is
+                    not anonymous yet anyone can choose a name.
+                </t>
+            </section>
+            <section anchor="security-encryption" title="Encryption">
+                <t>
+                    Private messages are easily sniffed by a packet sniffer like Wireshark. 
+                    The private messages are sent in plaintext and are therefore not secure.
+                </t>
+            </section>
+            <section anchor="security-authenticity" title="Authenticity">
+                <t>
+                    There is no method to ensure that the data has not been tampered with. There
+                    is no form of encrypted checksum encoded in the message.
+                </t>
             </section>
         </section>
     </middle>

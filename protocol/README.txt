@@ -858,6 +858,8 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 2.4.1.  Discovery
 
+   Type: Broadcasted
+
    Discovery message is sent to the broadcast network to ping the list
    of active peers.  This queries the hostnames and usernames of these
    peers.  This is not completely necessary to implement if you will add
@@ -883,11 +885,9 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 2.4.2.  DiscoveryResponse
 
+   Type: Direct / Single
+
    DiscoveryResponse is sent by peers who are active in the network.
-
-   {"mtp": "DiscoveryResponse", "data": {"ip": "192.168.1.1", "port":
-   15151,"name": "username"}}
-
 
 
 
@@ -897,6 +897,9 @@ Vargas                 Expires September 15, 2020              [Page 16]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
+
+   {"mtp": "DiscoveryResponse", "data": {"ip": "192.168.1.1", "port":
+   15151,"name": "username"}}
 
    +--------+--------+-------------------------------------------------+
    | Field  | Data   |                   Description                   |
@@ -915,6 +918,8 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
                          DiscoveryResponse Fields
 
 2.4.3.  Handshake
+
+   Type: Broadcasted
 
    The handshake message is required to be sent for each scenario
    wherein a new peer-peer joins a network.  There may be peers active
@@ -944,17 +949,14 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-
-
-
-
-
 Vargas                 Expires September 15, 2020              [Page 17]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 2.4.4.  HandshakeResponse
+
+   Type: Direct / Single
 
    The Handshake Response is sent back by peers active in the network to
    the ip and port found in the Handshake message sent by new peers
@@ -988,13 +990,11 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 2.4.5.  SendChat
 
+   Type: Broadcasted
+
    SendChat is a message format for general chat messages.
 
    {"mtp": "SendChat", "data": {"message": "hi"}}
-
-
-
-
 
 
 
@@ -1024,6 +1024,8 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 2.4.6.  Whisper
 
+   Type: Direct / Single
+
    Whisper is a message format for private chat messages.
 
    {"mtp": "Whisper", "data": {"message": "hi"}}
@@ -1042,10 +1044,27 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 2.4.7.  Disconnect
 
+   Type: Broadcasted
+
    Peers send a Disconnect message to inform other peers on leaving the
    network.
 
    {"mtp": "Disconnect", "data": {}}
+
+
+
+
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 19]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
 
    +---------+--------+------------------------------------------------+
    | Field   | Data   |                  Description                   |
@@ -1056,15 +1075,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    +---------+--------+------------------------------------------------+
 
                              Disconnect Fields
-
-
-
-
-
-Vargas                 Expires September 15, 2020              [Page 19]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
 
 3.  Server-Client Model
 
@@ -1100,6 +1110,18 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    Placeholder
 
+
+
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 20]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
 3.2.7.  Disconnect
 
    Placeholder
@@ -1112,16 +1134,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    Placeholder
 
-
-
-
-
-
-Vargas                 Expires September 15, 2020              [Page 20]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
-
 3.2.10.  UnmuteUser
 
    Placeholder
@@ -1130,9 +1142,56 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
    Placeholder
 
-4.  References
+4.  Peer-Peer Model
 
-4.1.  Normative References
+4.1.  Discovery
+
+   Placeholder
+
+4.2.  Handshake
+
+   Placeholder
+
+4.3.  Disconnect
+
+   Placeholder
+
+5.  Security Considerations
+
+5.1.  Introduction
+
+   This protocol will raise plenty of security vulnerabilities.  This is
+   expected as security was never considered in designing this protocol.
+   This section will simply discuss some of possible vulnerabilities.
+
+5.2.  Authentication
+
+   There is no form of authentication in this protocol.  The chat system
+   is not anonymous yet anyone can choose a name.
+
+
+
+
+
+Vargas                 Expires September 15, 2020              [Page 21]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+5.3.  Encryption
+
+   Private messages are easily sniffed by a packet sniffer like
+   Wireshark.  The private messages are sent in plaintext and are
+   therefore not secure.
+
+5.4.  Authenticity
+
+   There is no method to ensure that the data has not been tampered
+   with.  There is no form of encrypted checksum encoded in the message.
+
+6.  References
+
+6.1.  Normative References
 
    [RFC3470]  Hollenbeck, S., Rose, M., and L. Masinter, "Guidelines for
               the Use of Extensible Markup Language (XML) within IETF
@@ -1140,7 +1199,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
               This is a primary reference work.
 
-4.2.  Informative References
+6.2.  Informative References
 
    [RFC6949]  Flanagan, H. and N. Brownlee, "RFC Series Format
               Requirements and Future Development", RFC 6949, May 2013.
@@ -1170,7 +1229,4 @@ Author's Address
 
 
 
-
-
-
-Vargas                 Expires September 15, 2020              [Page 21]
+Vargas                 Expires September 15, 2020              [Page 22]
