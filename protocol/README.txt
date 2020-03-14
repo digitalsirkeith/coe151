@@ -414,9 +414,62 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    message
 
 2.4.  Peer-Peer Messages
+	A different set of message types are used for the peer-peer model. However,
+	these messages are still encoded in JavaScript Object Notation (JSON). 
+	
+2.4.1 Handshake
 
-   message
+   The handshake message is required to be sent for each scenario wherein a new peer-peer
+   joins a network. There may be peers active in the network or not but this message type 
+   attempts to ensure that the username to be used by the entering peer is not a duplicate
+   of another user existing in the network.
+   
+   {"mtp": "Handshake", "data": {"ip": "192.168.0.1", "port": 15151, "name": "new_peer"}}
+   
+   +-------+---------+-------------------------------------------------+
+   | Entry | Data    |                   Description                   |
+   |       | Type    |                                                 |
+   +-------+---------+-------------------------------------------------+
+   | mtp   | string  |  MessageType. All Handshake messages have this  |
+   |       |         |            value set to "Handshake"             |
+   |       |         |                                                 |
+   | ip    | string  |  IP of the peer broadcasting the Handshake      |
+   |       |         |                                                 |
+   |	   |         |                                                 |
+   | port  |  int    |  port of the peer broadcasting the Handshake    |
+   |	   |         |                                                 |
+   |	   |         |                                                 |
+   | name  | string  |  username that is being broadcasted to all      |
+   |	   |         |    the other peers in the network               |
+   |	   |         |             for validation.                     |
+   +-------+---------+-------------------------------------------------+
+  
+2.4.2 Handshake Response
 
+	The Handshake Response is sent back by peers active in the network to the ip and port 
+	found in the Handshake message sent by new peers attempting to join the network. This 
+	message type can only be sent if the peer is considered as active in the network and 
+	the peer has a valid username.
+	
+	If the username contained in the Handshake is not equal to the username held by the 
+	responding peer:
+	{"mtp": "HandshakeResponse", "data": {}, "status": "OK"}
+	
+	If the username contained in the Handshake is equal to the username held by the 
+	responding peer:
+	{"mtp": "HandshakeResponse", "data": {}, "status": "DuplicateError"}
+	
+   +-------+---------+-------------------------------------------------+
+   | Entry | Data    |                   Description                   |
+   |       | Type    |                                                 |
+   +-------+---------+-------------------------------------------------+
+   | mtp   | string  |  MessageType. All HandshakeResponse messages    |
+   |       |         |    have this value set to "SetAsAdmin"          |
+   |       |         |                                                 |
+   |status | string  |  Validation status of the Handshake message     |
+   |       |         |    received prior to sending this message       |
+   +-------+---------+-------------------------------------------------+
+   
 3.  Server-Client Model
 
 3.1.  States / Phases
