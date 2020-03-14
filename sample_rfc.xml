@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="US-ASCII" ?>
-<!DOCTYPE rfc SYSTEM 'rfc2629.dtd'>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
+    <!ENTITY RFC2119 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
+]>
 
+<?xml-stylesheet type="text/xsl" href="rfc2629.xslt" ?>
+<?rfc strict="yes" ?>
 
-<rfc ipr="trust200902" consensus="false" submissionType="IETF" updates="1234, 5678" xml:lang="en" xmlns:xi="http://www.w3.org/2001/XInclude">
+<rfc category="std" docName="draft-example-of-xml-00" ipr="trust200902" consensus="no" submissionType="IETF" updates="1234, 5678" xml:lang="en">
 
     <front>
-        <seriesInfo name="Internet-Draft" value="draft-example-of-xml-00" />
-        <seriesInfo name="std" value="" />
         <title abbrev="XML Example">
 An Example of Using XML for an Internet Draft
 </title>
@@ -22,6 +24,7 @@ An Example of Using XML for an Internet Draft
                     <country>US</country>
                 </postal>
                 <phone>+1 123-456-7890</phone>
+                <facsimile>+1 123-456-7890</facsimile>
                 <email>chrissmith@example.com</email>
                 <uri>http://www.example.com/corporate/</uri>
             </address>
@@ -50,7 +53,7 @@ reader determine whether or not they are interested in reading
 further.</t>
         </abstract>
 
-        <note tile="Disclaimer">
+        <note title="Disclaimer">
             <t>This isn't a real RFC, just an example.</t>
         </note>
 
@@ -58,8 +61,7 @@ further.</t>
 
     <middle>
 
-        <section anchor="intro">
-            <name>Introduction</name>
+        <section anchor="intro" title="Introduction">
 
             <t>This is the first paragraph of the introduction to this
 document. This introduction is probably much shorter than it would
@@ -80,8 +82,7 @@ document.
             <!-- This is a comment. Comments in the XML do not appear in the
 output formats. -->
 
-            <section>
-                <name>Terminology</name>
+            <section title="Terminology">
 
                 <t>
                     The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
@@ -95,8 +96,7 @@ in this document are to be interpreted as described in
 
         </section>
 
-        <section anchor="protocol">
-            <name>The Protocol Being Described</name>
+        <section anchor="protocol" title="The Protocol Being Described">
 
             <t>
                 This is a reference to
@@ -112,111 +112,99 @@ for RFC 6949 is done directly in the references section.
                 The
                 <eref target="http://www.ietf.org">IETF web site</eref>
                 is
-                <em>quite</em>
-                <strong>nice</strong>
+                <spanx style="emph">quite</spanx>
+                <spanx style="strong">nice</spanx>
                 ,
-                <tt>isn't it</tt>
+                <spanx style="verb">isn't it</spanx>
                 ?
 Unlike other web sites, it doesn't use
-gratuitous vertical space.
+                <vspace blankLines="2" />
+                gratuitous vertical space.
             </t>
 
         </section>
 
-        <section>
-            <name>Basic Lists</name>
+        <section title="Basic Lists">
 
-            <t>Bulleted lists are good for items that
+            <t>
+                Bulleted lists are good for items that
 are not ordered:
+                <list style="symbols">
 
-</t>
-            <ul>
+                    <t>This is the first item.</t>
 
-                <li>This is the first item.</li>
+                    <t>
+                        This is the second item. Here comes a sub-list:
+                        <list style="symbols">
 
-                <li>
-                    This is the second item. Here comes a sub-list:
-                    </t>
-                    <ul>
+                            <t>This is the first sub-item.</t>
 
-                        <li>This is the first sub-item.</li>
-
-                        <li>
-                            <t>This is the second sub-item</t>
                             <t>
-and some more detail on the second sub-item.</t>
-                        </li>
+                                This is the second sub-item
+                                <vspace />
+                                and some more detail on the second sub-item.
+                            </t>
 
-                    </ul>
-                    <t>
-                </li>
-
-                <li>This is the item after the sub-list.</li>
-
-            </ul>
-            <t></t>
-
-            <t>Numbered lists are good for items that are ordered:
-
-</t>
-            <ol style="1">
-
-                <li>This is the first item.</li>
-
-                <li>
-                    This is the second item. Here comes a sub-list, but
-with letters:
+                        </list>
                     </t>
-                    <ol style="a">
 
-                        <li>This is the first sub-item.</li>
+                    <t>This is the item after the sub-list.</t>
 
-                        <li>This is the second sub-item</li>
+                </list>
+            </t>
 
-                    </ol>
+            <t>
+                Numbered lists are good for items that are ordered:
+                <list style="numbers">
+
+                    <t>This is the first item.</t>
+
                     <t>
-                </li>
+                        This is the second item. Here comes a sub-list, but
+with letters:
+                        <list style="letters">
 
-                <li>This is the item after the sub-list.</li>
+                            <t>This is the first sub-item.</t>
 
-            </ol>
-            <t></t>
+                            <t>This is the second sub-item</t>
 
-            <t>And an example of hanging indent.
+                        </list>
+                    </t>
 
-</t>
-            <dl hanging="true">
+                    <t>This is the item after the sub-list.</t>
 
-                <dt>Trees</dt>
-                <dd>These are bigger plants</dd>
+                </list>
+            </t>
 
-                <dt>Lichen</dt>
-                <dd>These are smaller plants</dd>
+            <t>
+                And an example of hanging indent.
+                <list style="hanging" hangIndent="15">
 
-            </dl>
-            <t></t>
+                    <t hangText="Trees">These are bigger plants</t>
 
-            <t>And the always-interesting "format" for lists.
+                    <t hangText="Lichen">These are smaller plants</t>
 
-</t>
-            <ol style="--%d--">
+                </list>
+            </t>
 
-                <li>An element that gets a funny bullet.</li>
+            <t>
+                And the always-interesting "format" for lists.
+                <list style="format --%d--">
 
-            </ol>
-            <t></t>
+                    <t>An element that gets a funny bullet.</t>
+
+                </list>
+            </t>
 
         </section>
 
-        <section>
-            <name>Figures</name>
+        <section title="Figures">
 
             <t>The following is a figure with a caption.
 Also, it uses the ampersand (&amp;) and less than
 (&lt;) characters in the example text.</t>
 
-            <figure anchor="haiku">
-                <name>This could be haiku</name>
+            <figure title="This could be haiku" anchor="haiku">
                 <artwork type="haiku" align="left">
    The ampersand (&amp;) and
    less than (&lt;) are two characters
@@ -246,111 +234,82 @@ Remember to check whether that file still exists.</cref>
             </t>
 
             <figure>
-                <artwork src="http://www.example.com/~employees/chrissmith/artwork.txt"></artwork>
+                <artwork src="http://www.example.com/~employees/chrissmith/artwork.txt" />
             </figure>
 
         </section>
 
-        <section>
-            <name>Tables</name>
+        <section title="Tables">
 
             <t>The following is a table example.</t>
 
-            <t keepWithNext="true">These are sometimes called "inert" 
-gasses.</t>
-            <table title="The Noble Gases">
+            <texttable title="The Noble Gases">
+                <preamble>These are sometimes called "inert" gasses.</preamble>
+                <ttcol>Name</ttcol>
+                <ttcol align="center" width="50%">Symbol</ttcol>
+                <ttcol align="center">Atomic Number</ttcol>
 
-                <tr>
-                    <th>Name</th>
-                    <th align="center">Symbol</th>
-                    <th align="center">Atomic Number</th>
-                </tr>
+                <c>Helium</c>
+                <c>He</c>
+                <c>2</c>
 
-                <tr>
-                    <td>Helium</td>
-                    <td align="center">He</td>
-                    <td align="center">2</td>
-                </tr>
+                <c>Neon</c>
+                <c>Ne</c>
+                <c>10</c>
 
-                <tr>
-                    <td>Neon</td>
-                    <td align="center">Ne</td>
-                    <td align="center">10</td>
-                </tr>
+                <c>Argon</c>
+                <c>Ar</c>
+                <c>18</c>
 
-                <tr>
-                    <td>Argon</td>
-                    <td align="center">Ar</td>
-                    <td align="center">18</td>
-                </tr>
+                <c>Krypton</c>
+                <c>Kr</c>
+                <c>36</c>
 
-                <tr>
-                    <td>Krypton</td>
-                    <td align="center">Kr</td>
-                    <td align="center">36</td>
-                </tr>
+                <c>Xenon</c>
+                <c>Xe</c>
+                <c>54</c>
 
-                <tr>
-                    <td>Xenon</td>
-                    <td align="center">Xe</td>
-                    <td align="center">54</td>
-                </tr>
+                <c>Radon</c>
+                <c>Rn</c>
+                <c>86</c>
 
-                <tr>
-                    <td>Radon</td>
-                    <td align="center">Rn</td>
-                    <td align="center">86</td>
-                </tr>
+                <postamble>Source: Chemistry 101</postamble>
+            </texttable>
 
-            </table>
-            <t keepWithPrevious="true">Source: Chemistry 101</t>
+            <t>The following is a right-aligned table with "full" (but not "all")
+lines between cells.</t>
 
+            <texttable align="right" style="full">
+                <ttcol>Time</ttcol>
+                <ttcol align="right">Mood</ttcol>
 
-            <t>The following is a right-aligned table with "full"
-(but not "all") lines between cells.</t>
+                <c>Morning</c>
+                <c>Happy!</c>
 
-            <table align="right" style="full">
-                <tr>
-                    <th>Time</th>
-                    <th align="right">Mood</th>
-                </tr>
+                <c>Afternoon</c>
+                <c>Happy!</c>
 
-                <tr>
-                    <td>Morning</td>
-                    <td align="right">Happy!</td>
-                </tr>
+                <c>Evening</c>
+                <c>Somber</c>
 
-                <tr>
-                    <td>Afternoon</td>
-                    <td align="right">Happy!</td>
-                </tr>
-
-                <tr>
-                    <td>Evening</td>
-                    <td align="right">Somber</td>
-                </tr>
-
-            </table>
+            </texttable>
 
         </section>
 
-        <section anchor="IANA">
-            <name>IANA Considerations</name>
+        <section anchor="IANA" title="IANA Considerations">
 
             <t>None.</t>
 
         </section>
 
-        <section anchor="Security">
-            <name>Security Considerations</name>
+        <section anchor="Security" title="Security Considerations">
 
             <t>There are no security considerations for an imaginary
 Internet Draft.</t>
 
         </section>
 
-        <section anchor="Acknowledgements">
-            <name>Acknowledgements</name>
+        <section anchor="Acknowledgements" title="Acknowledgements">
 
             <t>Some of the things included in this draft came from
 Elwyn Davies' templates.</t>
@@ -361,15 +320,13 @@ Elwyn Davies' templates.</t>
 
     <back>
 
-        <references>
-            <name>Normative References</name>
+        <references title="Normative References">
 
-            <xi:include href="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml" />
+&RFC2119;
 
-        </references>
+</references>
 
-        <references>
-            <name>Informative References</name>
+        <references title="Informative References">
 
             <reference anchor="RFC6949">
                 <front>
@@ -399,7 +356,7 @@ Avoidance</title>
                     <date month="August" year="1993" />
                 </front>
                 <seriesInfo name="IEEE/ACM Transactions on Networking" value="1(4) 397--413" />
-
+                <format target="http://www.aciri.org/floyd/papers/early.pdf" octets="318703" type="PDF" />
             </reference>
 
         </references>

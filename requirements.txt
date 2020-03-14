@@ -1,0 +1,16 @@
+certifi==2019.11.28
+chardet==3.0.4
+google-i18n-address==2.3.5
+html5lib==1.0.1
+idna==2.9
+intervaltree==3.0.2
+kitchen==1.2.6
+lxml==4.5.0
+pycountry==19.8.18
+pyflakes==2.1.1
+requests==2.23.0
+six==1.14.0
+sortedcontainers==2.1.0
+urllib3==1.25.8
+webencodings==0.5.1
+xml2rfc==2.40.1
