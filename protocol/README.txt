@@ -128,17 +128,17 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
        3.2.11. SetAsAdmin  . . . . . . . . . . . . . . . . . . . . .  28
    4.  Peer-Peer Model . . . . . . . . . . . . . . . . . . . . . . .  29
      4.1.  Discovery . . . . . . . . . . . . . . . . . . . . . . . .  29
-     4.2.  Handshake . . . . . . . . . . . . . . . . . . . . . . . .  29
-     4.3.  Disconnect  . . . . . . . . . . . . . . . . . . . . . . .  29
-   5.  Security Considerations . . . . . . . . . . . . . . . . . . .  29
-     5.1.  Introduction  . . . . . . . . . . . . . . . . . . . . . .  29
-     5.2.  Authentication  . . . . . . . . . . . . . . . . . . . . .  30
-     5.3.  Encryption  . . . . . . . . . . . . . . . . . . . . . . .  30
-     5.4.  Authenticity  . . . . . . . . . . . . . . . . . . . . . .  30
-   6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  30
-     6.1.  Normative References  . . . . . . . . . . . . . . . . . .  30
-     6.2.  Informative References  . . . . . . . . . . . . . . . . .  30
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  30
+     4.2.  Handshake . . . . . . . . . . . . . . . . . . . . . . . .  31
+     4.3.  Disconnect  . . . . . . . . . . . . . . . . . . . . . . .  33
+   5.  Security Considerations . . . . . . . . . . . . . . . . . . .  33
+     5.1.  Introduction  . . . . . . . . . . . . . . . . . . . . . .  33
+     5.2.  Authentication  . . . . . . . . . . . . . . . . . . . . .  33
+     5.3.  Encryption  . . . . . . . . . . . . . . . . . . . . . . .  33
+     5.4.  Authenticity  . . . . . . . . . . . . . . . . . . . . . .  34
+   6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  34
+     6.1.  Normative References  . . . . . . . . . . . . . . . . . .  34
+     6.2.  Informative References  . . . . . . . . . . . . . . . . .  34
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  34
 
 1.  Introduction
 
@@ -1597,23 +1597,23 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 4.1.  Discovery
 
-   Placeholder
+   Description here
 
-4.2.  Handshake
 
-   Placeholder
 
-4.3.  Disconnect
 
-   Placeholder
 
-5.  Security Considerations
 
-5.1.  Introduction
 
-   This protocol will raise plenty of security vulnerabilities.  This is
-   expected as security was never considered in designing this protocol.
-   This section will simply discuss some of possible vulnerabilities.
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1626,6 +1626,208 @@ Vargas                 Expires September 16, 2020              [Page 29]
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
+                         +---------+
+                         |         |
+                         | NewPeer |
+                         |         |
+                         +----+----+
+                              |
+                              |
+                +----------------------------+
+                |             |              |
+                |             |              |
+                |Discovery    |Discovery     |Discovery
+                |             |              |
+          +-----v-----+ +-----v-----+  +-----v-----+
+          |           | |           |  |           |
+          |   Peer1   | |   Peer2   |  |   Peer3   |
+          |           | |           |  |           |
+          +-----------+ +-----------+  +-----------+
+
+
+                                 Figure 13
+
+   Description here
+
+
+                         +---------+
+                         |         |
+                |------->| NewPeer |<--------|
+                |        |         |         |
+                |        +----+----+         |
+                |             ^              |
+                |             |              |
+                |             |              |
+                |             |              |
+                |Discovery    |Discovery     |Discovery
+                |Response     |Response      |Response
+                |             |              |
+          +-----|-----+ +-----|-----+  +-----|-----+
+          |           | |           |  |           |
+          |   Peer1   | |   Peer2   |  |   Peer3   |
+          |           | |           |  |           |
+          +-----------+ +-----------+  +-----------+
+
+
+                                 Figure 14
+
+
+
+
+
+
+
+Vargas                 Expires September 16, 2020              [Page 30]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+4.2.  Handshake
+
+   Description here
+
+
+                         +---------+
+                         |         |
+                         |  Peer4  |
+                         |         |
+                         +----+----+
+                              |
+                              |
+                +----------------------------+
+                |             |              |
+                |             |              |
+                |Handshake    |Handshake     |Handshake
+                |             |              |
+          +-----v-----+ +-----v-----+  +-----v-----+
+          |           | |           |  |           |
+          |   Peer1   | |   Peer2   |  |   Peer3   |
+          |           | |           |  |           |
+          +-----------+ +-----------+  +-----------+
+
+
+                                 Figure 15
+
+   Description here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Vargas                 Expires September 16, 2020              [Page 31]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+                         +---------+
+                         |         |
+                |------->|  Peer4  |<--------|
+                |        |         |         |
+                |        +----+----+         |
+                |             ^              |
+                |             |              |
+                |             |              |
+                |Handshake    |Handshake     |Handshake
+                |Response     |Response      |Response
+                |status: "OK" |status: "OK"  |status: "OK"
+                |             |              |
+          +-----|-----+ +-----|-----+  +-----|-----+
+          |           | |           |  |           |
+          |   Peer1   | |   Peer2   |  |   Peer3   |
+          |           | |           |  |           |
+          +-----------+ +-----------+  +-----------+
+
+
+                                 Figure 16
+
+   Description here
+
+
+                           +----------+
+                           |          |
+                |--------->|  Peer1   |<-----------|
+                |          |          |            |
+                |          +----------+            |
+                |                ^                 |
+                |                |                 |
+                |                |                 |
+           Handshake         Handshake          Handshake
+           Response          Response           Response
+           status:           status:            status:
+        "DuplicateError"  "DuplicateError"   "DuplicateError"
+                |                |                 |
+          +-----|-----+    +-----|-----+     +-----|-----+
+          |           |    |           |     |           |
+          |   Peer1   |    |   Peer2   |     |   Peer3   |
+          |           |    |           |     |           |
+          +-----------+    +-----------+     +-----------+
+
+
+                                 Figure 17
+
+
+
+
+
+
+Vargas                 Expires September 16, 2020              [Page 32]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+4.3.  Disconnect
+
+   Description here
+
+
+                         +---------+
+                         |         |
+                         |  Peer4  |
+                         |         |
+                         +----+----+
+                              |
+                              |
+                +----------------------------+
+                |             |              |
+                |             |              |
+                |Disconnect   |Disconnect    |Disconnect
+                |             |              |
+          +-----v-----+ +-----v-----+  +-----v-----+
+          |           | |           |  |           |
+          |   Peer1   | |   Peer2   |  |   Peer3   |
+          |           | |           |  |           |
+          +-----------+ +-----------+  +-----------+
+
+
+                                 Figure 18
+
+5.  Security Considerations
+
+5.1.  Introduction
+
+   This protocol will raise plenty of security vulnerabilities.  This is
+   expected as security was never considered in designing this protocol.
+   This section will simply discuss some of possible vulnerabilities.
+
 5.2.  Authentication
 
    There is no form of authentication in this protocol.  The chat system
@@ -1636,6 +1838,17 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    Private messages are easily sniffed by a packet sniffer like
    Wireshark.  The private messages are sent in plaintext and are
    therefore not secure.
+
+
+
+
+
+
+
+Vargas                 Expires September 16, 2020              [Page 33]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
 
 5.4.  Authenticity
 
@@ -1677,4 +1890,15 @@ Author's Address
 
 
 
-Vargas                 Expires September 16, 2020              [Page 30]
+
+
+
+
+
+
+
+
+
+
+
+Vargas                 Expires September 16, 2020              [Page 34]

@@ -1298,17 +1298,168 @@
         <section anchor="peer-peer" title="Peer-Peer Model">
             <section anchor="peer-peer-discovery" title="Discovery">
                 <t>
-                    Placeholder
-                </t>
+                    Description here
+                        <figure anchor="Discovery-diagram">
+                            <artwork>
+
+                      +---------+
+                      |         |
+                      | NewPeer |
+                      |         |
+                      +----+----+
+                           |
+                           |
+             +----------------------------+
+             |             |              |
+             |             |              |
+             |Discovery    |Discovery     |Discovery
+             |             |              |
+       +-----v-----+ +-----v-----+  +-----v-----+
+       |           | |           |  |           |
+       |   Peer1   | |   Peer2   |  |   Peer3   |
+       |           | |           |  |           |
+       +-----------+ +-----------+  +-----------+
+
+                            </artwork>
+                        </figure>
+            </t>
+
+                <t>
+                    Description here
+                        <figure anchor="DiscoveryResponse-diagram">
+                            <artwork>
+
+                      +---------+
+                      |         |
+             |------->| NewPeer |&lt;--------|
+             |        |         |         |
+             |        +----+----+         |
+             |             ^              |
+             |             |              |
+             |             |              |
+             |             |              |
+             |Discovery    |Discovery     |Discovery
+             |Response     |Response      |Response 
+             |             |              |
+       +-----|-----+ +-----|-----+  +-----|-----+
+       |           | |           |  |           |
+       |   Peer1   | |   Peer2   |  |   Peer3   |
+       |           | |           |  |           |
+       +-----------+ +-----------+  +-----------+ 
+
+                            </artwork>
+                        </figure>
+            </t>
+
             </section>
             <section anchor="peer-peer-handshake" title="Handshake">
                 <t>
-                    Placeholder
+                    Description here
+                        <figure anchor="Handshake-diagram">
+                            <artwork>
+
+                      +---------+
+                      |         |
+                      |  Peer4  |
+                      |         |
+                      +----+----+
+                           |
+                           |
+             +----------------------------+
+             |             |              |
+             |             |              |
+             |Handshake    |Handshake     |Handshake
+             |             |              |
+       +-----v-----+ +-----v-----+  +-----v-----+
+       |           | |           |  |           |
+       |   Peer1   | |   Peer2   |  |   Peer3   |
+       |           | |           |  |           |
+       +-----------+ +-----------+  +-----------+
+
+                            </artwork>
+                        </figure>
                 </t>
+                <t>
+                    Description here
+                        <figure anchor="HandshakeResponse-diagram">
+                            <artwork>
+
+                      +---------+
+                      |         |
+             |------->|  Peer4  |&lt;--------|
+             |        |         |         |
+             |        +----+----+         |
+             |             ^              |
+             |             |              |
+             |             |              |
+             |Handshake    |Handshake     |Handshake
+             |Response     |Response      |Response
+             |status: "OK" |status: "OK"  |status: "OK"
+             |             |              |
+       +-----|-----+ +-----|-----+  +-----|-----+
+       |           | |           |  |           |
+       |   Peer1   | |   Peer2   |  |   Peer3   |
+       |           | |           |  |           |
+       +-----------+ +-----------+  +-----------+ 
+
+                            </artwork>
+                        </figure>
+            </t>
+            <t>
+                    Description here
+                        <figure anchor="HandshakeResponseError-diagram">
+                            <artwork>
+
+                        +----------+
+                        |          |
+             |--------->|  Peer1   |&lt;-----------|
+             |          |          |            |
+             |          +----------+            |
+             |                ^                 |
+             |                |                 |
+             |                |                 |
+        Handshake         Handshake          Handshake
+        Response          Response           Response
+        status:           status:            status:
+     "DuplicateError"  "DuplicateError"   "DuplicateError"
+             |                |                 |
+       +-----|-----+    +-----|-----+     +-----|-----+
+       |           |    |           |     |           |
+       |   Peer1   |    |   Peer2   |     |   Peer3   |
+       |           |    |           |     |           |
+       +-----------+    +-----------+     +-----------+ 
+
+                            </artwork>
+                        </figure>
+            </t>
+
             </section>
             <section anchor="peer-peer-disconnect" title="Disconnect">
                 <t>
-                    Placeholder
+                    Description here
+                        <figure anchor="DisconnectPeer-diagram">
+                            <artwork>
+
+                      +---------+
+                      |         |
+                      |  Peer4  |
+                      |         |
+                      +----+----+
+                           |
+                           |
+             +----------------------------+
+             |             |              |
+             |             |              |
+             |Disconnect   |Disconnect    |Disconnect
+             |             |              |
+       +-----v-----+ +-----v-----+  +-----v-----+
+       |           | |           |  |           |
+       |   Peer1   | |   Peer2   |  |   Peer3   |
+       |           | |           |  |           |
+       +-----------+ +-----------+  +-----------+
+
+                            </artwork>
+                        </figure>
                 </t>
             </section>
         </section>
