@@ -124,21 +124,21 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
        3.2.7.  Disconnect  . . . . . . . . . . . . . . . . . . . . .  25
        3.2.8.  KickUser  . . . . . . . . . . . . . . . . . . . . . .  26
        3.2.9.  MuteUser  . . . . . . . . . . . . . . . . . . . . . .  26
-       3.2.10. UnmuteUser  . . . . . . . . . . . . . . . . . . . . .  26
-       3.2.11. SetAsAdmin  . . . . . . . . . . . . . . . . . . . . .  27
-   4.  Peer-Peer Model . . . . . . . . . . . . . . . . . . . . . . .  27
-     4.1.  Discovery . . . . . . . . . . . . . . . . . . . . . . . .  27
-     4.2.  Handshake . . . . . . . . . . . . . . . . . . . . . . . .  27
-     4.3.  Disconnect  . . . . . . . . . . . . . . . . . . . . . . .  27
-   5.  Security Considerations . . . . . . . . . . . . . . . . . . .  27
-     5.1.  Introduction  . . . . . . . . . . . . . . . . . . . . . .  27
-     5.2.  Authentication  . . . . . . . . . . . . . . . . . . . . .  27
-     5.3.  Encryption  . . . . . . . . . . . . . . . . . . . . . . .  27
-     5.4.  Authenticity  . . . . . . . . . . . . . . . . . . . . . .  27
-   6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  27
-     6.1.  Normative References  . . . . . . . . . . . . . . . . . .  28
-     6.2.  Informative References  . . . . . . . . . . . . . . . . .  28
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  28
+       3.2.10. UnmuteUser  . . . . . . . . . . . . . . . . . . . . .  27
+       3.2.11. SetAsAdmin  . . . . . . . . . . . . . . . . . . . . .  28
+   4.  Peer-Peer Model . . . . . . . . . . . . . . . . . . . . . . .  29
+     4.1.  Discovery . . . . . . . . . . . . . . . . . . . . . . . .  29
+     4.2.  Handshake . . . . . . . . . . . . . . . . . . . . . . . .  29
+     4.3.  Disconnect  . . . . . . . . . . . . . . . . . . . . . . .  29
+   5.  Security Considerations . . . . . . . . . . . . . . . . . . .  29
+     5.1.  Introduction  . . . . . . . . . . . . . . . . . . . . . .  29
+     5.2.  Authentication  . . . . . . . . . . . . . . . . . . . . .  30
+     5.3.  Encryption  . . . . . . . . . . . . . . . . . . . . . . .  30
+     5.4.  Authenticity  . . . . . . . . . . . . . . . . . . . . . .  30
+   6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  30
+     6.1.  Normative References  . . . . . . . . . . . . . . . . . .  30
+     6.2.  Informative References  . . . . . . . . . . . . . . . . .  30
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  30
 
 1.  Introduction
 
@@ -1442,11 +1442,11 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 3.2.9.  MuteUser
 
-   Placeholder
+   Description here
 
-3.2.10.  UnmuteUser
 
-   Placeholder
+
+
 
 
 
@@ -1458,9 +1458,140 @@ Vargas                 Expires September 16, 2020              [Page 26]
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
+       +----------+                             +----------+
+       |  Client  |>--------| MuteUser |------->|  Server  |
+       +----------+      name : "Client2"       +----------+
+
+       +----------+                            +----------+
+       |  Client  |<<------| MuteUser |------<<|  Server  |
+       +----------+      status : "OK"         +----------+
+
+       +----------+                            +----------+
+       |  Client  |<<------| MuteUser |------<<|  Server  |
+       +----------+  status : "NotAdminError"  +----------+
+
+       +----------+                            +----------+
+       |  Client  |<<------| MuteUser |------<<|  Server  |
+       +----------+ status : "UserDoesNotExist"+----------+
+
+       +----------+                            +----------+
+       |  Client  |<<------| MuteUser |------<<|  Server  |
+       +----------+ status : "UserAlreadyMuted"+----------+
+
+
+                                 Figure 10
+
+3.2.10.  UnmuteUser
+
+   Description here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Vargas                 Expires September 16, 2020              [Page 27]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+       +----------+                               +----------+
+       |  Client  |>--------| UnmuteUser |------->|  Server  |
+       +----------+      name : "Client2"         +----------+
+
+       +----------+                              +----------+
+       |  Client  |<<------| UnmuteUser |------<<|  Server  |
+       +----------+      status : "OK"           +----------+
+
+       +----------+                              +----------+
+       |  Client  |<<------| UnmuteUser |------<<|  Server  |
+       +----------+  status : "NotAdminError"    +----------+
+
+       +----------+                              +----------+
+       |  Client  |<<------| UnmuteUser |------<<|  Server  |
+       +----------+ status : "UserDoesNotExist"  +----------+
+
+       +----------+                              +----------+
+       |  Client  |<<------| UnmuteUser |------<<|  Server  |
+       +----------+ status : "UserNotMuted"      +----------+
+
+
+                                 Figure 11
+
 3.2.11.  SetAsAdmin
 
-   Placeholder
+   Description here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Vargas                 Expires September 16, 2020              [Page 28]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+       +----------+                               +----------+
+       |  Client  |>--------| SetAsAdmin |------->|  Server  |
+       +----------+      name : "Client2"         +----------+
+
+       +----------+                              +----------+
+       |  Client  |<<------| SetAsAdmin |------<<|  Server  |
+       +----------+      status : "OK"           +----------+
+
+       +----------+                              +----------+
+       |  Client  |<<------| SetAsAdmin |------<<|  Server  |
+       +----------+  status : "NotAdminError"    +----------+
+
+       +----------+                              +----------+
+       |  Client  |<<------| SetAsAdmin |------<<|  Server  |
+       +----------+ status : "UserDoesNotExist"  +----------+
+
+       +----------+                              +----------+
+       |  Client  |<<------| SetAsAdmin|------<<|  Server  |
+       +----------+ status : "AlreadyAdmin"      +----------+
+
+
+                                 Figure 12
 
 4.  Peer-Peer Model
 
@@ -1484,6 +1615,17 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    expected as security was never considered in designing this protocol.
    This section will simply discuss some of possible vulnerabilities.
 
+
+
+
+
+
+
+Vargas                 Expires September 16, 2020              [Page 29]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
 5.2.  Authentication
 
    There is no form of authentication in this protocol.  The chat system
@@ -1501,18 +1643,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    with.  There is no form of encrypted checksum encoded in the message.
 
 6.  References
-
-
-
-
-
-
-
-
-Vargas                 Expires September 16, 2020              [Page 27]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
 
 6.1.  Normative References
 
@@ -1547,22 +1677,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Vargas                 Expires September 16, 2020              [Page 28]
+Vargas                 Expires September 16, 2020              [Page 30]

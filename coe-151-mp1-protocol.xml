@@ -1208,17 +1208,89 @@
                 </section>
                 <section anchor="server-client-behavior-muteuser" title="MuteUser">
                     <t>
-                        Placeholder
+                       Description here
+                        <figure anchor="MuteUser-diagram">
+                            <artwork>
+    +----------+                             +----------+
+    |  Client  |>--------| MuteUser |------->|  Server  |
+    +----------+      name : "Client2"       +----------+
+
+    +----------+                            +----------+
+    |  Client  |&lt;&lt;------| MuteUser |------&lt;&lt;|  Server  |
+    +----------+      status : "OK"         +----------+
+    
+    +----------+                            +----------+
+    |  Client  |&lt;&lt;------| MuteUser |------&lt;&lt;|  Server  |
+    +----------+  status : "NotAdminError"  +----------+
+
+    +----------+                            +----------+
+    |  Client  |&lt;&lt;------| MuteUser |------&lt;&lt;|  Server  |
+    +----------+ status : "UserDoesNotExist"+----------+
+	
+    +----------+                            +----------+
+    |  Client  |&lt;&lt;------| MuteUser |------&lt;&lt;|  Server  |
+    +----------+ status : "UserAlreadyMuted"+----------+
+
+                            </artwork>
+                        </figure>
                     </t>
                 </section>
                 <section anchor="server-client-behavior-unmuteuser" title="UnmuteUser">
                     <t>
-                        Placeholder
+                        Description here
+                        <figure anchor="UnmuteUser-diagram">
+                            <artwork>
+    +----------+                               +----------+
+    |  Client  |>--------| UnmuteUser |------->|  Server  |
+    +----------+      name : "Client2"         +----------+
+
+    +----------+                              +----------+
+    |  Client  |&lt;&lt;------| UnmuteUser |------&lt;&lt;|  Server  |
+    +----------+      status : "OK"           +----------+
+    
+    +----------+                              +----------+
+    |  Client  |&lt;&lt;------| UnmuteUser |------&lt;&lt;|  Server  |
+    +----------+  status : "NotAdminError"    +----------+
+
+    +----------+                              +----------+
+    |  Client  |&lt;&lt;------| UnmuteUser |------&lt;&lt;|  Server  |
+    +----------+ status : "UserDoesNotExist"  +----------+
+
+    +----------+                              +----------+
+    |  Client  |&lt;&lt;------| UnmuteUser |------&lt;&lt;|  Server  |
+    +----------+ status : "UserNotMuted"      +----------+
+
+                            </artwork>
+                        </figure>
                     </t>
                 </section>
                 <section anchor="server-client-behavior-setasadmin" title="SetAsAdmin">
                     <t>
-                        Placeholder
+                       Description here
+                        <figure anchor="SetAsAdmin-diagram">
+                            <artwork>
+    +----------+                               +----------+
+    |  Client  |>--------| SetAsAdmin |------->|  Server  |
+    +----------+      name : "Client2"         +----------+
+
+    +----------+                              +----------+
+    |  Client  |&lt;&lt;------| SetAsAdmin |------&lt;&lt;|  Server  |
+    +----------+      status : "OK"           +----------+
+    
+    +----------+                              +----------+
+    |  Client  |&lt;&lt;------| SetAsAdmin |------&lt;&lt;|  Server  |
+    +----------+  status : "NotAdminError"    +----------+
+
+    +----------+                              +----------+
+    |  Client  |&lt;&lt;------| SetAsAdmin |------&lt;&lt;|  Server  |
+    +----------+ status : "UserDoesNotExist"  +----------+
+
+    +----------+                              +----------+
+    |  Client  |&lt;&lt;------| SetAsAdmin|------&lt;&lt;|  Server  |
+    +----------+ status : "AlreadyAdmin"      +----------+
+
+                            </artwork>
+                        </figure>
                     </t>
                 </section>
             </section>
