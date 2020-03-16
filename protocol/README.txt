@@ -4,9 +4,9 @@
 
 CoE 151                                                        K. Vargas
 Internet-Draft                                                      EEEI
-Updates: 5 (if approved)                                  March 15, 2020
+Updates: 5 (if approved)                                  March 16, 2020
 Intended status: Standards Track
-Expires: September 16, 2020
+Expires: September 17, 2020
 
 
            Server-Client and Peer-Peer Communication Protocol
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 16, 2020.
+   This Internet-Draft will expire on September 17, 2020.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Vargas                 Expires September 16, 2020               [Page 1]
+Vargas                 Expires September 17, 2020               [Page 1]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Vargas                 Expires September 16, 2020               [Page 2]
+Vargas                 Expires September 17, 2020               [Page 2]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -165,7 +165,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020               [Page 3]
+Vargas                 Expires September 17, 2020               [Page 3]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -221,7 +221,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020               [Page 4]
+Vargas                 Expires September 17, 2020               [Page 4]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -277,7 +277,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020               [Page 5]
+Vargas                 Expires September 17, 2020               [Page 5]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -333,7 +333,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020               [Page 6]
+Vargas                 Expires September 17, 2020               [Page 6]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -389,7 +389,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020               [Page 7]
+Vargas                 Expires September 17, 2020               [Page 7]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -445,7 +445,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020               [Page 8]
+Vargas                 Expires September 17, 2020               [Page 8]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -501,7 +501,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020               [Page 9]
+Vargas                 Expires September 17, 2020               [Page 9]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -557,7 +557,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 10]
+Vargas                 Expires September 17, 2020              [Page 10]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -613,7 +613,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 11]
+Vargas                 Expires September 17, 2020              [Page 11]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -669,7 +669,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 12]
+Vargas                 Expires September 17, 2020              [Page 12]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -725,7 +725,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 13]
+Vargas                 Expires September 17, 2020              [Page 13]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -781,7 +781,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 14]
+Vargas                 Expires September 17, 2020              [Page 14]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -837,7 +837,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 15]
+Vargas                 Expires September 17, 2020              [Page 15]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -893,7 +893,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 16]
+Vargas                 Expires September 17, 2020              [Page 16]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -949,7 +949,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 17]
+Vargas                 Expires September 17, 2020              [Page 17]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1005,7 +1005,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 18]
+Vargas                 Expires September 17, 2020              [Page 18]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1061,7 +1061,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 19]
+Vargas                 Expires September 17, 2020              [Page 19]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1117,7 +1117,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 20]
+Vargas                 Expires September 17, 2020              [Page 20]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1173,7 +1173,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 21]
+Vargas                 Expires September 17, 2020              [Page 21]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1194,7 +1194,9 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 3.1.1.  Login
 
-   Description here
+   The Login States include sending username from client to server and
+   sending "OK" status from server to client to ensure both are
+   connected.
 
        +----------+                             +----------+
        |  Client  |>---------| Login |--------->|  Server  |
@@ -1214,7 +1216,9 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 3.2.1.  SetUsername
 
-   Description here
+   The SetUsername States include sending new username from client to
+   server and sending "OK" or "DuplicateError" status from server to
+   client to set client's new username.
 
 
 
@@ -1225,11 +1229,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-
-
-
-
-Vargas                 Expires September 16, 2020              [Page 22]
+Vargas                 Expires September 17, 2020              [Page 22]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1250,7 +1250,9 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 3.2.2.  UserInfo
 
-   Description here
+   The UserInfo States include sending username from client to server
+   and sending "OK" or "UserDoesNotExist" status from server to client
+   along with user information if it exists.
 
        +----------+                             +----------+
        |  Client  |>----| RequestUserInfo |---->|  Server  |
@@ -1269,7 +1271,8 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 3.2.3.  LocalTime
 
-   Description here
+   The LocalTime States include a request from client to server and the
+   local time response from server to client.
 
 
 
@@ -1282,10 +1285,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-
-
-
-Vargas                 Expires September 16, 2020              [Page 23]
+Vargas                 Expires September 17, 2020              [Page 23]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1341,7 +1341,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 24]
+Vargas                 Expires September 17, 2020              [Page 24]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1397,7 +1397,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 25]
+Vargas                 Expires September 17, 2020              [Page 25]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1453,7 +1453,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 26]
+Vargas                 Expires September 17, 2020              [Page 26]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1509,7 +1509,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 27]
+Vargas                 Expires September 17, 2020              [Page 27]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1565,7 +1565,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 28]
+Vargas                 Expires September 17, 2020              [Page 28]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1621,7 +1621,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 29]
+Vargas                 Expires September 17, 2020              [Page 29]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1677,7 +1677,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 30]
+Vargas                 Expires September 17, 2020              [Page 30]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1733,7 +1733,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 31]
+Vargas                 Expires September 17, 2020              [Page 31]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1789,7 +1789,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 32]
+Vargas                 Expires September 17, 2020              [Page 32]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1845,7 +1845,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 16, 2020              [Page 33]
+Vargas                 Expires September 17, 2020              [Page 33]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1901,4 +1901,4 @@ Author's Address
 
 
 
-Vargas                 Expires September 16, 2020              [Page 34]
+Vargas                 Expires September 17, 2020              [Page 34]

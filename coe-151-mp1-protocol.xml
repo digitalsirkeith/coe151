@@ -1102,7 +1102,10 @@
                 </section>
                 <section anchor="server-client-behavior-whisper" title="Whisper">
                     <t>
-                        Description here
+                        The Whisper States include the client sending a list of clients to be 
+                        sent a message and the message itself, and the server sending the message 
+                        only to the listed clients. If a user does not exist in the list of clients, 
+                        a UserDoesNotExist meessage will be returned to the client from the server. 
                         <figure anchor="Whisper-diagram">
                             <artwork>
     +----------+                           +----------+    +----------+
@@ -1125,7 +1128,9 @@
                 </section>
                 <section anchor="server-client-behavior-sendchat" title="SendChat">
                     <t>
-                        Description here
+                        The SendChat States include the client sending a message to the server and
+                        the server sending the message to all other clients connected except the 
+                        client that sent the message.
                         <figure anchor="SendChat-diagram">
                             <artwork>
 +----------+          +---------+
@@ -1153,7 +1158,9 @@
                 </section>
                 <section anchor="server-client-behavior-onlinelist" title="OnlineList">
                     <t>
-                        Description here
+                        The OnlineList States include the client requesting usernames currently connected 
+                        to server and the server sending the list of usernames to the client.
+
                         <figure anchor="OnlineList-diagram">
                             <artwork>
     +----------+                             +----------+
@@ -1172,7 +1179,8 @@
                 </section>
                 <section anchor="server-client-behavior-disconnect" title="Disconnect">
                     <t>
-                        Description here
+                        The Disconnect State includes the client sending a disconnect message to 
+                        the server. Client and server are disconnected. 
                         <figure anchor="Disconnect-diagram">
                             <artwork>
     +----------+                             +----------+
@@ -1191,7 +1199,11 @@
                 </section>
                 <section anchor="server-client-behavior-kickuser" title="KickUser">
                     <t>
-                        Description here
+                    The KickUser States include the client, as an admin user, requesting to kick 
+                    a client from the server and a status response from server to client. A client is 
+                    successfully kicked from the server when status "OK" is sent from server to client. 
+                    A request can be rejected with status "NotAdminError" if the requesting client is not 
+                    an admin user, or with status "UserDoesNotExist" if requested client does not exist.
                         <figure anchor="KickUser-diagram">
                             <artwork>
     +----------+                             +----------+
@@ -1218,7 +1230,12 @@
                 </section>
                 <section anchor="server-client-behavior-muteuser" title="MuteUser">
                     <t>
-                       Description here
+                    The MuteUser States include the client, as an admin user, requesting to mute a 
+                    client and a status response from server to client. A client's chat abilities are 
+                    successfully disabled when a status "OK" is sent from server to client. If the client 
+                    is already muted, status "UserAlreadyMuted" is sent. A request can be rejected with 
+                    status "NotAdminError" if the requesting client is not an admin user, or with status 
+                    "UserDoesNotExist" if requested client does not exist.
                         <figure anchor="MuteUser-diagram">
                             <artwork>
     +----------+                             +----------+
@@ -1247,7 +1264,13 @@
                 </section>
                 <section anchor="server-client-behavior-unmuteuser" title="UnmuteUser">
                     <t>
-                        Description here
+                    The UnmuteUser States include the client, as an admin user, requesting to mute a 
+                    client and a status response from server to client. A client's chat abilities are 
+                    successfully enabled when a status "OK" is sent from server to client. If the 
+                    client is not muted, status "UserNotMuted" is sent. A request can be rejected with 
+                    status "NotAdminError" if the requesting client is not an admin user, or with status 
+                    "UserDoesNotExist" if requested client does not exist.
+                    
                         <figure anchor="UnmuteUser-diagram">
                             <artwork>
     +----------+                               +----------+
@@ -1276,7 +1299,14 @@
                 </section>
                 <section anchor="server-client-behavior-setasadmin" title="SetAsAdmin">
                     <t>
-                       Description here
+                       The SetAsAdmin States include the client, as admin user, granting admin
+                       priveleges to another client and a status response from server to client. 
+                       Another client is successfully granted admin priveleges when status "OK" is sent from 
+                       server to admin user. If the client is already an admin user, status "AlreadyAdmin" is 
+                       sent. Granting admin privileges could be rejected with status "NotAdminError" if the 
+                       requesting client is not an admin user, or with status "UserDoesNotExist" if requested 
+                       client does not exist. 
+
                         <figure anchor="SetAsAdmin-diagram">
                             <artwork>
     +----------+                               +----------+
