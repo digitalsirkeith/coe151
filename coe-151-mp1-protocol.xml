@@ -1105,17 +1105,17 @@
                         Description here
                         <figure anchor="Whisper-diagram">
                             <artwork>
-    +----------+                           +----------+    +----------+
-    |  Client  |>----| WhisperToUser |---->|  Server  |    | Client_B |
-    +----------+        To: "Client_B"     +----------+    +----------+
++----------+                           +----------+     +----------+
+|  Client  |>----| WhisperToUser |---->|  Server  |     | Client_B |
++----------+        To: "Client_B"     +----------+     +----------+
 
-    +----------+                           +----------+ msg +----------+
-    |  Client  |                           |  Server  |---->| Client_B |
-    +----------+                           +----------+     +----------+
++----------+                           +----------+ msg +----------+
+|  Client  |                           |  Server  |---->| Client_B |
++----------+                           +----------+     +----------+
 
-    +----------+                           +----------+     +----------+
-    |  Client  |&lt;&lt;---| ServerMessage |---&lt;&lt;|  Server  |     | Client_B |
-    +----------+ message:"UserDoesNotExist"+----------+     +----------+
++----------+                           +----------+     +----------+
+|  Client  |&lt;&lt;---| ServerMessage |---&lt;&lt;|  Server  |     | Client_B |
++----------+ message:"UserDoesNotExist"+----------+     +----------+
 
 
 
@@ -1236,7 +1236,7 @@
     +----------+                            +----------+
     |  Client  |&lt;&lt;------| MuteUser |------&lt;&lt;|  Server  |
     +----------+ status : "UserDoesNotExist"+----------+
-	
+    
     +----------+                            +----------+
     |  Client  |&lt;&lt;------| MuteUser |------&lt;&lt;|  Server  |
     +----------+ status : "UserAlreadyMuted"+----------+
