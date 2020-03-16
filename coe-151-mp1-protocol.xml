@@ -1010,7 +1010,10 @@
             <section anchor="server-client-state" title="States / Phases">
                 <section anchor="server-client-state-login" title="Login">
                     <t>
-                        Description here
+                        The Login States include sending username from client to server and 
+                        sending "OK" status from server to client to ensure both are 
+                        connected.
+
                         <figure anchor="login-diagram">
                             <artwork>
     +----------+                             +----------+
@@ -1032,7 +1035,9 @@
             <section anchor="server-client-behavior" title="Request-Response Behavior">
                 <section anchor="server-client-behavior-changename" title="SetUsername">
                     <t>
-                        Description here
+                    The SetUsername States include sending new username from client
+                    to server and sending "OK" or "DuplicateError" status from 
+                    server to client to set client's new username.
                         <figure anchor="SetUsername-diagram">
                             <artwork>
     +----------+                             +----------+
@@ -1052,7 +1057,10 @@
                 </section>
                 <section anchor="server-client-behavior-userinfo" title="UserInfo">
                     <t>
-                        Description here
+                    The UserInfo States include sending username from client to 
+                    server and sending "OK" or "UserDoesNotExist" status from 
+                    server to client along with user information if it exists.
+   
                         <figure anchor="Userinfo-diagram">
                             <artwork>
     +----------+                             +----------+
@@ -1073,7 +1081,9 @@
                 </section>
                 <section anchor="server-client-behavior-localtime" title="LocalTime">
                     <t>
-                        Description here
+                    The LocalTime States include a request from client to server 
+                    and the local time response from server to client. 
+
                         <figure anchor="Localtime-diagram">
                             <artwork>
     +----------+                             +----------+
