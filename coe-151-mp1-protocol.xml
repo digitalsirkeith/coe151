@@ -35,6 +35,48 @@
             </address>
         </author>
 
+        <author fullname="Glorie Mae Mabanta" initials="G.M." surname="Mabanta">
+            <organization abbrev="EEEI">Electrical and Electronics Engineering Institute</organization>
+            <address>
+                <postal>
+                    <street>P. Velasquez St.</street>
+                    <city>Quezon City</city>
+                    <region>Metro Manila</region>
+                    <code>1101</code>
+                    <country>Philippines</country>
+                </postal>
+                <email>mae.mabanta@eee.upd.edu.ph</email>
+            </address>
+        </author>
+
+        <author fullname="Philippe Ivan Balucan" initials="P.I." surname="Balucan">
+            <organization abbrev="EEEI">Electrical and Electronics Engineering Institute</organization>
+            <address>
+                <postal>
+                    <street>P. Velasquez St.</street>
+                    <city>Quezon City</city>
+                    <region>Metro Manila</region>
+                    <code>1101</code>
+                    <country>Philippines</country>
+                </postal>
+                <email>philippe.ivan.balucan@eee.upd.edu.ph</email>
+            </address>
+        </author>
+
+        <author fullname="Claudyne Trixie Uy" initials="C.T." surname="Uy">
+            <organization abbrev="EEEI">Electrical and Electronics Engineering Institute</organization>
+            <address>
+                <postal>
+                    <street>P. Velasquez St.</street>
+                    <city>Quezon City</city>
+                    <region>Metro Manila</region>
+                    <code>1101</code>
+                    <country>Philippines</country>
+                </postal>
+                <email>claudyne.trixie.uy@eee.upd.edu.ph</email>
+            </address>
+        </author>
+
         <!-- Insert yourselves here using the author element similar to mine above -->
 
         <date year="2020" month="March" />

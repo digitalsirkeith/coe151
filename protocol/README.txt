@@ -3,10 +3,11 @@
 
 
 CoE 151                                                        K. Vargas
-Internet-Draft                                                      EEEI
-Updates: 5 (if approved)                                  March 16, 2020
-Intended status: Standards Track
-Expires: September 17, 2020
+Internet-Draft                                                G. Mabanta
+Updates: 5 (if approved)                                      P. Balucan
+Intended status: Standards Track                                   C. Uy
+Expires: September 18, 2020                                         EEEI
+                                                          March 17, 2020
 
 
            Server-Client and Peer-Peer Communication Protocol
@@ -41,23 +42,24 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 17, 2020.
+   This Internet-Draft will expire on September 18, 2020.
 
 Copyright Notice
 
    Copyright (c) 2020 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
-   This document is subject to BCP 78 and the IETF Trust's Legal
-   Provisions Relating to IETF Documents
 
 
 
-Vargas                 Expires September 17, 2020               [Page 1]
+
+Vargas, et al.         Expires September 18, 2020               [Page 1]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
    (https://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
@@ -104,16 +106,16 @@ Table of Contents
        2.4.6.  Whisper . . . . . . . . . . . . . . . . . . . . . . .  21
        2.4.7.  Disconnect  . . . . . . . . . . . . . . . . . . . . .  21
    3.  Server-Client Model . . . . . . . . . . . . . . . . . . . . .  22
-     3.1.  States / Phases . . . . . . . . . . . . . . . . . . . . .  22
-       3.1.1.  Login . . . . . . . . . . . . . . . . . . . . . . . .  22
 
 
 
-Vargas                 Expires September 17, 2020               [Page 2]
+Vargas, et al.         Expires September 18, 2020               [Page 2]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
+     3.1.  States / Phases . . . . . . . . . . . . . . . . . . . . .  22
+       3.1.1.  Login . . . . . . . . . . . . . . . . . . . . . . . .  22
      3.2.  Request-Response Behavior . . . . . . . . . . . . . . . .  22
        3.2.1.  SetUsername . . . . . . . . . . . . . . . . . . . . .  22
        3.2.2.  UserInfo  . . . . . . . . . . . . . . . . . . . . . .  23
@@ -138,7 +140,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
    6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  34
      6.1.  Normative References  . . . . . . . . . . . . . . . . . .  34
      6.2.  Informative References  . . . . . . . . . . . . . . . . .  34
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  34
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  34
 
 1.  Introduction
 
@@ -163,9 +165,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-
-
-Vargas                 Expires September 17, 2020               [Page 3]
+Vargas, et al.         Expires September 18, 2020               [Page 3]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -221,7 +221,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020               [Page 4]
+Vargas, et al.         Expires September 18, 2020               [Page 4]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -277,7 +277,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020               [Page 5]
+Vargas, et al.         Expires September 18, 2020               [Page 5]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -333,7 +333,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020               [Page 6]
+Vargas, et al.         Expires September 18, 2020               [Page 6]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -389,7 +389,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020               [Page 7]
+Vargas, et al.         Expires September 18, 2020               [Page 7]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -445,7 +445,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020               [Page 8]
+Vargas, et al.         Expires September 18, 2020               [Page 8]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -501,7 +501,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020               [Page 9]
+Vargas, et al.         Expires September 18, 2020               [Page 9]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -557,7 +557,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020              [Page 10]
+Vargas, et al.         Expires September 18, 2020              [Page 10]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -613,7 +613,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020              [Page 11]
+Vargas, et al.         Expires September 18, 2020              [Page 11]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -669,7 +669,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020              [Page 12]
+Vargas, et al.         Expires September 18, 2020              [Page 12]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -725,7 +725,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020              [Page 13]
+Vargas, et al.         Expires September 18, 2020              [Page 13]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -781,7 +781,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020              [Page 14]
+Vargas, et al.         Expires September 18, 2020              [Page 14]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -837,7 +837,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020              [Page 15]
+Vargas, et al.         Expires September 18, 2020              [Page 15]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -893,7 +893,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020              [Page 16]
+Vargas, et al.         Expires September 18, 2020              [Page 16]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -949,7 +949,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020              [Page 17]
+Vargas, et al.         Expires September 18, 2020              [Page 17]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1005,7 +1005,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020              [Page 18]
+Vargas, et al.         Expires September 18, 2020              [Page 18]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1061,7 +1061,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020              [Page 19]
+Vargas, et al.         Expires September 18, 2020              [Page 19]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1117,7 +1117,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020              [Page 20]
+Vargas, et al.         Expires September 18, 2020              [Page 20]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1173,7 +1173,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020              [Page 21]
+Vargas, et al.         Expires September 18, 2020              [Page 21]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1229,7 +1229,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020              [Page 22]
+Vargas, et al.         Expires September 18, 2020              [Page 22]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1285,7 +1285,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020              [Page 23]
+Vargas, et al.         Expires September 18, 2020              [Page 23]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1305,7 +1305,11 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 3.2.4.  Whisper
 
-   Description here
+   The Whisper States include the client sending a list of clients to be
+   sent a message and the message itself, and the server sending the
+   message only to the listed clients.  If a user does not exist in the
+   list of clients, a UserDoesNotExist meessage will be returned to the
+   client from the server.
 
    +----------+                           +----------+     +----------+
    |  Client  |>----| WhisperToUser |---->|  Server  |     | Client_B |
@@ -1326,7 +1330,9 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 3.2.5.  SendChat
 
-   Description here
+   The SendChat States include the client sending a message to the
+   server and the server sending the message to all other clients
+   connected except the client that sent the message.
 
 
 
@@ -1335,13 +1341,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-
-
-
-
-
-
-Vargas                 Expires September 17, 2020              [Page 24]
+Vargas, et al.         Expires September 18, 2020              [Page 24]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1370,7 +1370,9 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 3.2.6.  OnlineList
 
-   Description here
+   The OnlineList States include the client requesting usernames
+   currently connected to server and the server sending the list of
+   usernames to the client.
 
        +----------+                             +----------+
        |  Client  |>---| RequestOnlineList |--->|  Server  |
@@ -1387,17 +1389,15 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 3.2.7.  Disconnect
 
-   Description here
+   The Disconnect State includes the client sending a disconnect message
+   to the server.  Client and server are disconnected.
 
 
 
 
 
 
-
-
-
-Vargas                 Expires September 17, 2020              [Page 25]
+Vargas, et al.         Expires September 18, 2020              [Page 25]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1417,7 +1417,12 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 3.2.8.  KickUser
 
-   Description here
+   The KickUser States include the client, as an admin user, requesting
+   to kick a client from the server and a status response from server to
+   client.  A client is successfully kicked from the server when status
+   "OK" is sent from server to client.  A request can be rejected with
+   status "NotAdminError" if the requesting client is not an admin user,
+   or with status "UserDoesNotExist" if requested client does not exist.
 
        +----------+                             +----------+
        |  Client  |>--------| KickUser |------->|  Server  |
@@ -1442,21 +1447,21 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 3.2.9.  MuteUser
 
-   Description here
+   The MuteUser States include the client, as an admin user, requesting
+   to mute a client and a status response from server to client.  A
+   client's chat abilities are successfully disabled when a status "OK"
 
 
 
-
-
-
-
-
-
-
-Vargas                 Expires September 17, 2020              [Page 26]
+Vargas, et al.         Expires September 18, 2020              [Page 26]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
+
+   is sent from server to client.  If the client is already muted,
+   status "UserAlreadyMuted" is sent.  A request can be rejected with
+   status "NotAdminError" if the requesting client is not an admin user,
+   or with status "UserDoesNotExist" if requested client does not exist.
 
        +----------+                             +----------+
        |  Client  |>--------| MuteUser |------->|  Server  |
@@ -1483,7 +1488,13 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 3.2.10.  UnmuteUser
 
-   Description here
+   The UnmuteUser States include the client, as an admin user,
+   requesting to mute a client and a status response from server to
+   client.  A client's chat abilities are successfully enabled when a
+   status "OK" is sent from server to client.  If the client is not
+   muted, status "UserNotMuted" is sent.  A request can be rejected with
+   status "NotAdminError" if the requesting client is not an admin user,
+   or with status "UserDoesNotExist" if requested client does not exist.
 
 
 
@@ -1498,18 +1509,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-Vargas                 Expires September 17, 2020              [Page 27]
+Vargas, et al.         Expires September 18, 2020              [Page 27]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1539,7 +1539,14 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 3.2.11.  SetAsAdmin
 
-   Description here
+   The SetAsAdmin States include the client, as admin user, granting
+   admin priveleges to another client and a status response from server
+   to client.  Another client is successfully granted admin priveleges
+   when status "OK" is sent from server to admin user.  If the client is
+   already an admin user, status "AlreadyAdmin" is sent.  Granting admin
+   privileges could be rejected with status "NotAdminError" if the
+   requesting client is not an admin user, or with status
+   "UserDoesNotExist" if requested client does not exist.
 
 
 
@@ -1558,14 +1565,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-
-
-
-
-
-
-
-Vargas                 Expires September 17, 2020              [Page 28]
+Vargas, et al.         Expires September 18, 2020              [Page 28]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1621,7 +1621,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020              [Page 29]
+Vargas, et al.         Expires September 18, 2020              [Page 29]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1677,7 +1677,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020              [Page 30]
+Vargas, et al.         Expires September 18, 2020              [Page 30]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1733,7 +1733,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020              [Page 31]
+Vargas, et al.         Expires September 18, 2020              [Page 31]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1789,7 +1789,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020              [Page 32]
+Vargas, et al.         Expires September 18, 2020              [Page 32]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1845,7 +1845,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas                 Expires September 17, 2020              [Page 33]
+Vargas, et al.         Expires September 18, 2020              [Page 33]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1872,7 +1872,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
               This is a primary reference work.
 
-Author's Address
+Authors' Addresses
 
    Keith Vargas
    Electrical and Electronics Engineering Institute
@@ -1883,6 +1883,45 @@ Author's Address
    Email: keith.vargas@eee.upd.edu.ph
 
 
+   Glorie Mae Mabanta
+   Electrical and Electronics Engineering Institute
+   P. Velasquez St.
+   Quezon City, Metro Manila  1101
+   Philippines
+
+   Email: mae.mabanta@eee.upd.edu.ph
+
+
+
+
+
+
+
+
+
+
+
+Vargas, et al.         Expires September 18, 2020              [Page 34]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+   Philippe Ivan Balucan
+   Electrical and Electronics Engineering Institute
+   P. Velasquez St.
+   Quezon City, Metro Manila  1101
+   Philippines
+
+   Email: philippe.ivan.balucan@eee.upd.edu.ph
+
+
+   Claudyne Trixie Uy
+   Electrical and Electronics Engineering Institute
+   P. Velasquez St.
+   Quezon City, Metro Manila  1101
+   Philippines
+
+   Email: claudyne.trixie.uy@eee.upd.edu.ph
 
 
 
@@ -1901,4 +1940,21 @@ Author's Address
 
 
 
-Vargas                 Expires September 17, 2020              [Page 34]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Vargas, et al.         Expires September 18, 2020              [Page 35]
