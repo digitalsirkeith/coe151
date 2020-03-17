@@ -3,9 +3,9 @@
 
 
 CoE 151                                                        K. Vargas
-Internet-Draft                                                G. Mabanta
-Updates: 5 (if approved)                                      P. Balucan
-Intended status: Standards Track                                   C. Uy
+Internet-Draft                                                P. Balucan
+Updates: 5 (if approved)                                           C. Uy
+Intended status: Standards Track                              G. Mabanta
 Expires: September 18, 2020                                         EEEI
                                                           March 17, 2020
 
@@ -130,17 +130,17 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
        3.2.11. SetAsAdmin  . . . . . . . . . . . . . . . . . . . . .  28
    4.  Peer-Peer Model . . . . . . . . . . . . . . . . . . . . . . .  29
      4.1.  Discovery . . . . . . . . . . . . . . . . . . . . . . . .  29
-     4.2.  Handshake . . . . . . . . . . . . . . . . . . . . . . . .  31
-     4.3.  Disconnect  . . . . . . . . . . . . . . . . . . . . . . .  33
-   5.  Security Considerations . . . . . . . . . . . . . . . . . . .  33
-     5.1.  Introduction  . . . . . . . . . . . . . . . . . . . . . .  33
-     5.2.  Authentication  . . . . . . . . . . . . . . . . . . . . .  33
-     5.3.  Encryption  . . . . . . . . . . . . . . . . . . . . . . .  33
-     5.4.  Authenticity  . . . . . . . . . . . . . . . . . . . . . .  34
-   6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  34
-     6.1.  Normative References  . . . . . . . . . . . . . . . . . .  34
-     6.2.  Informative References  . . . . . . . . . . . . . . . . .  34
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  34
+     4.2.  Handshake . . . . . . . . . . . . . . . . . . . . . . . .  30
+     4.3.  Disconnect  . . . . . . . . . . . . . . . . . . . . . . .  32
+   5.  Security Considerations . . . . . . . . . . . . . . . . . . .  32
+     5.1.  Introduction  . . . . . . . . . . . . . . . . . . . . . .  32
+     5.2.  Authentication  . . . . . . . . . . . . . . . . . . . . .  32
+     5.3.  Encryption  . . . . . . . . . . . . . . . . . . . . . . .  32
+     5.4.  Authenticity  . . . . . . . . . . . . . . . . . . . . . .  33
+   6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  33
+     6.1.  Normative References  . . . . . . . . . . . . . . . . . .  33
+     6.2.  Informative References  . . . . . . . . . . . . . . . . .  33
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  33
 
 1.  Introduction
 
@@ -1156,7 +1156,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 2.4.7.  Disconnect
 
-   Type: Broadcasted
+   Type: Any
 
    Peers send a Disconnect message to inform other peers on leaving the
    network.
@@ -1597,25 +1597,25 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 4.1.  Discovery
 
-   Description here
+   Discovery is the message sent by a peer to the network.  This is a
+   broadcasted message, therefore all peers who wish to respond must be
+   listening to the same port set by the first peer.  This is only a
+   query message and not an attempt to connect with other peers.
 
+                         +---------+
+                         | NewPeer |
+                         +----+----+
+                              |
+                              |
+                +----------------------------+
+                |             |              |
+                |Discovery    |Discovery     |Discovery
+                |             |              |
+          +-----v-----+ +-----v-----+  +-----v-----+
+          |   Peer1   | |   Peer2   |  |   Peer3   |
+          +-----------+ +-----------+  +-----------+
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                 Figure 13
 
 
 
@@ -1626,29 +1626,10 @@ Vargas, et al.         Expires September 18, 2020              [Page 29]
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
-                         +---------+
-                         |         |
-                         | NewPeer |
-                         |         |
-                         +----+----+
-                              |
-                              |
-                +----------------------------+
-                |             |              |
-                |             |              |
-                |Discovery    |Discovery     |Discovery
-                |             |              |
-          +-----v-----+ +-----v-----+  +-----v-----+
-          |           | |           |  |           |
-          |   Peer1   | |   Peer2   |  |   Peer3   |
-          |           | |           |  |           |
-          +-----------+ +-----------+  +-----------+
-
-
-                                 Figure 13
-
-   Description here
-
+   Peers should respond to the Discovery message with a
+   DiscoveryResponse message.  The requesting peer should take note of
+   the usernames from the "name" field in the message for choosing a
+   valid username for the next phase/state.
 
                          +---------+
                          |         |
@@ -1657,10 +1638,10 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
                 |        +----+----+         |
                 |             ^              |
                 |             |              |
-                |             |              |
-                |             |              |
                 |Discovery    |Discovery     |Discovery
                 |Response     |Response      |Response
+                |             |              |
+                |name:"peer1" |name:"peer2"  |name:"peer3"
                 |             |              |
           +-----|-----+ +-----|-----+  +-----|-----+
           |           | |           |  |           |
@@ -1668,11 +1649,30 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
           |           | |           |  |           |
           +-----------+ +-----------+  +-----------+
 
-
                                  Figure 14
 
+4.2.  Handshake
 
+   Handshake message is the message sent by a peer that attempts to
+   connect to other peers.  This is a broadcasted message, meaning only
+   peers listening to the same port in the subnet will receive this.
+   Including in the message is the requested name, IP, and port.
 
+                         +---------+
+                         |  Peer4  |
+                         +----+----+
+                              |
+                +----------------------------+
+                |             |              |
+                |Handshake    |Handshake     |Handshake
+                |             |              |
+          +-----v-----+ +-----v-----+  +-----v-----+
+          |           | |           |  |           |
+          |   Peer1   | |   Peer2   |  |   Peer3   |
+          |           | |           |  |           |
+          +-----------+ +-----------+  +-----------+
+
+                                 Figure 15
 
 
 
@@ -1682,66 +1682,17 @@ Vargas, et al.         Expires September 18, 2020              [Page 30]
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
-4.2.  Handshake
+   HandshakeResponse is the message sent as a response to the Handshake
+   message sent by a peer.  The message includes the name, IP, and port
+   of the peer who sent the message.  The status code informs the peer
+   if a connection has been established.
 
-   Description here
-
-
-                         +---------+
-                         |         |
-                         |  Peer4  |
-                         |         |
-                         +----+----+
-                              |
-                              |
-                +----------------------------+
-                |             |              |
-                |             |              |
-                |Handshake    |Handshake     |Handshake
-                |             |              |
-          +-----v-----+ +-----v-----+  +-----v-----+
-          |           | |           |  |           |
-          |   Peer1   | |   Peer2   |  |   Peer3   |
-          |           | |           |  |           |
-          +-----------+ +-----------+  +-----------+
-
-
-                                 Figure 15
-
-   Description here
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Vargas, et al.         Expires September 18, 2020              [Page 31]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
+   In the scenario that the username was valid, the peer shall send a
+   HandshakeResponse with a status field value of "OK".
 
 
                          +---------+
-                         |         |
                 |------->|  Peer4  |<--------|
-                |        |         |         |
                 |        +----+----+         |
                 |             ^              |
                 |             |              |
@@ -1751,21 +1702,18 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
                 |status: "OK" |status: "OK"  |status: "OK"
                 |             |              |
           +-----|-----+ +-----|-----+  +-----|-----+
-          |           | |           |  |           |
           |   Peer1   | |   Peer2   |  |   Peer3   |
-          |           | |           |  |           |
           +-----------+ +-----------+  +-----------+
 
 
                                  Figure 16
 
-   Description here
-
+   In the scenario that the username was invalid of has a duplicate, the
+   peer shall send a HandshakeResponse with a status field value of
+   "DuplicateError".
 
                            +----------+
-                           |          |
                 |--------->|  Peer1   |<-----------|
-                |          |          |            |
                 |          +----------+            |
                 |                ^                 |
                 |                |                 |
@@ -1776,9 +1724,7 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
         "DuplicateError"  "DuplicateError"   "DuplicateError"
                 |                |                 |
           +-----|-----+    +-----|-----+     +-----|-----+
-          |           |    |           |     |           |
           |   Peer1   |    |   Peer2   |     |   Peer3   |
-          |           |    |           |     |           |
           +-----------+    +-----------+     +-----------+
 
 
@@ -1787,17 +1733,15 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-
-
-Vargas, et al.         Expires September 18, 2020              [Page 32]
+Vargas, et al.         Expires September 18, 2020              [Page 31]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 4.3.  Disconnect
 
-   Description here
-
+   A peer sends a Disconnect message before leaving the network.  This
+   can be either a Broadcast message or a Direct message to all peers.
 
                          +---------+
                          |         |
@@ -1816,7 +1760,6 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
           |   Peer1   | |   Peer2   |  |   Peer3   |
           |           | |           |  |           |
           +-----------+ +-----------+  +-----------+
-
 
                                  Figure 18
 
@@ -1845,7 +1788,8 @@ Internet-Draft             CoE 151 MP Protocol                March 2020
 
 
 
-Vargas, et al.         Expires September 18, 2020              [Page 33]
+
+Vargas, et al.         Expires September 18, 2020              [Page 32]
 
 Internet-Draft             CoE 151 MP Protocol                March 2020
 
@@ -1883,6 +1827,38 @@ Authors' Addresses
    Email: keith.vargas@eee.upd.edu.ph
 
 
+   Philippe Ivan Balucan
+   Electrical and Electronics Engineering Institute
+   P. Velasquez St.
+   Quezon City, Metro Manila  1101
+   Philippines
+
+   Email: philippe.ivan.balucan@eee.upd.edu.ph
+
+
+
+
+
+
+
+
+
+
+
+Vargas, et al.         Expires September 18, 2020              [Page 33]
+
+Internet-Draft             CoE 151 MP Protocol                March 2020
+
+
+   Claudyne Trixie Uy
+   Electrical and Electronics Engineering Institute
+   P. Velasquez St.
+   Quezon City, Metro Manila  1101
+   Philippines
+
+   Email: claudyne.trixie.uy@eee.upd.edu.ph
+
+
    Glorie Mae Mabanta
    Electrical and Electronics Engineering Institute
    P. Velasquez St.
@@ -1901,60 +1877,28 @@ Authors' Addresses
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Vargas, et al.         Expires September 18, 2020              [Page 34]
-
-Internet-Draft             CoE 151 MP Protocol                March 2020
-
-
-   Philippe Ivan Balucan
-   Electrical and Electronics Engineering Institute
-   P. Velasquez St.
-   Quezon City, Metro Manila  1101
-   Philippines
-
-   Email: philippe.ivan.balucan@eee.upd.edu.ph
-
-
-   Claudyne Trixie Uy
-   Electrical and Electronics Engineering Institute
-   P. Velasquez St.
-   Quezon City, Metro Manila  1101
-   Philippines
-
-   Email: claudyne.trixie.uy@eee.upd.edu.ph
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Vargas, et al.         Expires September 18, 2020              [Page 35]

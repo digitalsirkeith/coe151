@@ -35,20 +35,6 @@
             </address>
         </author>
 
-        <author fullname="Glorie Mae Mabanta" initials="G.M." surname="Mabanta">
-            <organization abbrev="EEEI">Electrical and Electronics Engineering Institute</organization>
-            <address>
-                <postal>
-                    <street>P. Velasquez St.</street>
-                    <city>Quezon City</city>
-                    <region>Metro Manila</region>
-                    <code>1101</code>
-                    <country>Philippines</country>
-                </postal>
-                <email>mae.mabanta@eee.upd.edu.ph</email>
-            </address>
-        </author>
-
         <author fullname="Philippe Ivan Balucan" initials="P.I." surname="Balucan">
             <organization abbrev="EEEI">Electrical and Electronics Engineering Institute</organization>
             <address>
@@ -74,6 +60,20 @@
                     <country>Philippines</country>
                 </postal>
                 <email>claudyne.trixie.uy@eee.upd.edu.ph</email>
+            </address>
+        </author>
+
+        <author fullname="Glorie Mae Mabanta" initials="G.M." surname="Mabanta">
+            <organization abbrev="EEEI">Electrical and Electronics Engineering Institute</organization>
+            <address>
+                <postal>
+                    <street>P. Velasquez St.</street>
+                    <city>Quezon City</city>
+                    <region>Metro Manila</region>
+                    <code>1101</code>
+                    <country>Philippines</country>
+                </postal>
+                <email>mae.mabanta@eee.upd.edu.ph</email>
             </address>
         </author>
 
@@ -1028,7 +1028,7 @@
                 </section>
                 <section anchor="PeerDisconnect" title="Disconnect">
                     <t>
-                        Type: Broadcasted
+                        Type: Any
                     </t>
                     <t>
                         Peers send a Disconnect message to inform other peers on leaving the network.
@@ -1380,37 +1380,34 @@
         <section anchor="peer-peer" title="Peer-Peer Model">
             <section anchor="peer-peer-discovery" title="Discovery">
                 <t>
-                    Description here
-                        <figure anchor="Discovery-diagram">
-                            <artwork>
-
+                    Discovery is the message sent by a peer to the network. This is a 
+                    broadcasted message, therefore all peers who wish to respond must be
+                    listening to the same port set by the first peer. This is only a query
+                    message and not an attempt to connect with other peers.
+                    <figure anchor="Discovery-diagram">
+                        <artwork>
                       +---------+
-                      |         |
                       | NewPeer |
-                      |         |
                       +----+----+
                            |
                            |
              +----------------------------+
              |             |              |
-             |             |              |
              |Discovery    |Discovery     |Discovery
              |             |              |
        +-----v-----+ +-----v-----+  +-----v-----+
-       |           | |           |  |           |
        |   Peer1   | |   Peer2   |  |   Peer3   |
-       |           | |           |  |           |
        +-----------+ +-----------+  +-----------+
-
-                            </artwork>
-                        </figure>
-            </t>
-
+                        </artwork>
+                    </figure>
+                </t>
                 <t>
-                    Description here
-                        <figure anchor="DiscoveryResponse-diagram">
-                            <artwork>
-
+                    Peers should respond to the Discovery message with a DiscoveryResponse
+                    message. The requesting peer should take note of the usernames from the
+                    "name" field in the message for choosing a valid username for the next 
+                    phase/state.
+                    <figure anchor="DiscoveryResponse-diagram">
+                        <artwork>
                       +---------+
                       |         |
              |------->| NewPeer |&lt;--------|
@@ -1418,37 +1415,33 @@
              |        +----+----+         |
              |             ^              |
              |             |              |
-             |             |              |
-             |             |              |
              |Discovery    |Discovery     |Discovery
              |Response     |Response      |Response 
+             |             |              |
+             |name:"peer1" |name:"peer2"  |name:"peer3"
              |             |              |
        +-----|-----+ +-----|-----+  +-----|-----+
        |           | |           |  |           |
        |   Peer1   | |   Peer2   |  |   Peer3   |
        |           | |           |  |           |
        +-----------+ +-----------+  +-----------+ 
-
-                            </artwork>
-                        </figure>
-            </t>
-
+                        </artwork>
+                    </figure>
+                </t>
             </section>
             <section anchor="peer-peer-handshake" title="Handshake">
                 <t>
-                    Description here
+                    Handshake message is the message sent by a peer that attempts to
+                    connect to other peers. This is a broadcasted message, meaning only peers
+                    listening to the same port in the subnet will receive this. Including in
+                    the message is the requested name, IP, and port. 
                         <figure anchor="Handshake-diagram">
                             <artwork>
-
                       +---------+
-                      |         |
                       |  Peer4  |
-                      |         |
                       +----+----+
                            |
-                           |
              +----------------------------+
-             |             |              |
              |             |              |
              |Handshake    |Handshake     |Handshake
              |             |              |
@@ -1457,19 +1450,23 @@
        |   Peer1   | |   Peer2   |  |   Peer3   |
        |           | |           |  |           |
        +-----------+ +-----------+  +-----------+
-
                             </artwork>
                         </figure>
                 </t>
                 <t>
-                    Description here
-                        <figure anchor="HandshakeResponse-diagram">
-                            <artwork>
+                    HandshakeResponse is the message sent as a response to the Handshake
+                    message sent by a peer. The message includes the name, IP, and port 
+                    of the peer who sent the message. The status code informs the peer if 
+                    a connection has been established.
+                    <figure anchor="HandshakeResponse-diagram">
+                        <preamble>
+                            In the scenario that the username was valid, the peer shall send
+                            a HandshakeResponse with a status field value of "OK".
+                        </preamble>
+                        <artwork>
 
                       +---------+
-                      |         |
              |------->|  Peer4  |&lt;--------|
-             |        |         |         |
              |        +----+----+         |
              |             ^              |
              |             |              |
@@ -1479,23 +1476,22 @@
              |status: "OK" |status: "OK"  |status: "OK"
              |             |              |
        +-----|-----+ +-----|-----+  +-----|-----+
-       |           | |           |  |           |
        |   Peer1   | |   Peer2   |  |   Peer3   |
-       |           | |           |  |           |
        +-----------+ +-----------+  +-----------+ 
 
-                            </artwork>
-                        </figure>
-            </t>
-            <t>
-                    Description here
-                        <figure anchor="HandshakeResponseError-diagram">
-                            <artwork>
-
+                        </artwork>
+                    </figure>
+                </t>
+                <t>
+                    <figure anchor="HandshakeResponseError-diagram">
+                        <preamble>
+                            In the scenario that the username was invalid of has a duplicate, 
+                            the peer shall send a HandshakeResponse with a status field value 
+                            of "DuplicateError".
+                        </preamble>
+                        <artwork>
                         +----------+
-                        |          |
              |--------->|  Peer1   |&lt;-----------|
-             |          |          |            |
              |          +----------+            |
              |                ^                 |
              |                |                 |
@@ -1506,22 +1502,20 @@
      "DuplicateError"  "DuplicateError"   "DuplicateError"
              |                |                 |
        +-----|-----+    +-----|-----+     +-----|-----+
-       |           |    |           |     |           |
        |   Peer1   |    |   Peer2   |     |   Peer3   |
-       |           |    |           |     |           |
        +-----------+    +-----------+     +-----------+ 
 
-                            </artwork>
-                        </figure>
-            </t>
-
+                        </artwork>
+                    </figure>
+                </t>
             </section>
             <section anchor="peer-peer-disconnect" title="Disconnect">
                 <t>
-                    Description here
+                    A peer sends a Disconnect message before leaving the network.
+                    This can be either a Broadcast message or a Direct message to
+                    all peers.
                         <figure anchor="DisconnectPeer-diagram">
                             <artwork>
-
                       +---------+
                       |         |
                       |  Peer4  |
@@ -1539,7 +1533,6 @@
        |   Peer1   | |   Peer2   |  |   Peer3   |
        |           | |           |  |           |
        +-----------+ +-----------+  +-----------+
-
                             </artwork>
                         </figure>
                 </t>
