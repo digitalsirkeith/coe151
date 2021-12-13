@@ -5,7 +5,7 @@ html5lib==1.0.1
 idna==2.9
 intervaltree==3.0.2
 kitchen==1.2.6
-lxml==4.5.0
+lxml==4.6.5
 pycountry==19.8.18
 pyflakes==2.1.1
 requests==2.23.0
